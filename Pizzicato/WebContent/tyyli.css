@@ -1,0 +1,103 @@
+
+/* T‰ss‰ muokkausivun, etusivun, muokkaapizzaasivun tyylitiedostot!!Muistakaa linkitt‰ ohessa oleva
+kuvia+ Pizzicato.jpeg+Pizza.jpg ja poistakaa kaikki vanhat tyyli tiedostot*/
+
+ h1 {
+    font-size: 22px;  
+  }
+  h2 {
+    font-size: 20px;  
+  }
+  h3 {
+    font-size: 18px;  
+  }
+
+@media screen and (max-width: 992px) {
+
+  h1 {
+    font-size: 20px;  
+  }
+  h2 {
+    font-size: 18px;  
+  }
+  h3 {
+    font-size: 16px;  
+  }
+
+  
+}
+
+@media screen and (max-width: 768px) {
+
+  h1 {
+    font-size: 18px;  
+  }
+  h2 {
+    font-size: 16px;  
+  }
+  h3 {
+    font-size: 14px;  
+  }
+  
+}
+
+
+body {background-image:url(Pizza.jpg); /* T‰ss‰ m‰‰ritell‰‰n sivun tausta */
+		background-repeat: no-repeat;
+    background-attachment: fixed;
+	margin-bottom: 60px;
+	background-repeat: repeat-x;
+}
+
+
+.jumbotron {
+   background: rgb(238, 238, 238); /* T‰m‰ on IE8 ja alle */
+   background: rgba(238, 238, 238, 0.9); 
+}
+
+#yhteystiedot /*Laatikko, johon tulee sivuston p‰‰sis‰ltˆ. Laatikko on l‰pin‰kyv‰n responsiivisen containerin sis‰ll‰, joten sen leveytt‰ ei tarvitse m‰‰ritell‰*/
+{
+	max-width: 300px;
+	    margin-left: auto;
+    margin-right: auto;
+margin-bottom: 25px;
+border: 1px solid black; /* Reunuksen v‰ri */
+background-color:rgba(255,255,255,0); /* Laatikon taustalle v‰ri ja l‰pin‰kyvyys */
+border-radius:5px; /* Kulmien pyˆristys */
+padding-top:15px; /* Tyhj‰‰ tilaa ennen sis‰ltˆ‰ */
+padding-left:15px;
+padding-right:15px;
+padding-bottom:15px; 
+position:relative;
+}	
+
+
+  html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+
+iframe /* m‰‰ritell‰‰n google-maps kartalle arvot, !!upotettu Koulun osoite koska pizzantie ei ole olemassa */ { 
+	margin-left:10px;
+	margin-right:10px;
+	text-align: left;  /* vasen laita */
+	width:100%; /* leveys 100% boksin leveydest‰, mik‰li leveys alle 600 pikseli‰ */
+	max-width:400px; /* kartan maksimileveys */
+	height:300px; /* korkeus */
+	padding-bottom:0px; /* tyhj‰ tila kartan alla */
+	border: 1px solid black;
+	
+	
+
+
+
+
+
+
+
+
+
+
+ 
