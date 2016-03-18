@@ -31,7 +31,7 @@ and (max-width: 768px)">
 <body>
 
 	<div class="container">
-		 <img src="Pizzicato.jpeg"
+		 <img src="Pizzicato.png"
 			class="img-responsive center-block" alt="Responsive image" />
 		</a>
 
