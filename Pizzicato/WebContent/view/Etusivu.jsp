@@ -30,16 +30,17 @@ and (max-width: 768px)">
 </head>
 <body>
 
-	<div class="container">
-		 <img src="Pizzicato.png"
-			class="img-responsive center-block" alt="Responsive image" />
-		</a>
+	<div class="kuva1">
+		 <img src="Pizzicato.png" />
+		
 
 	</div>
 	<!--Navigointipalkin linkkien painikkeet ovat tässä-->
-	<div id="navbar" class="navbar-collapse collapse">
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="etusivu">Etusivu</a></li>
+	<div id="navigointipalkki">
+		<ul class="paavalikko">
+			<li><a class="active" href="etusivu">Etusivu</a></li>
+			<li><a href="Muokkaussivu">Muokkaussivu</a></li>
+			<li><a href="Ostoskori">Ostoskori</a></li>
 			<li><a href="PizzicatoControl">Yhteystiedot</a></li>
 		</ul>
 	</div>

@@ -45,8 +45,10 @@ kuvia+ Pizzicato.png+Pizza.jpg ja poistakaa kaikki vanhat tyyli tiedostot*/
 body {background-image:url(Pizza.jpg); /* Tässä määritellään sivun tausta */
 		background-repeat: no-repeat;
     background-attachment: fixed;
-	margin-bottom: 60px;
+	margin:6px auto 6px auto;
 	background-repeat: repeat-x;
+	width:60%;
+	
 }
 
 
@@ -88,16 +90,116 @@ iframe /* määritellään google-maps kartalle arvot, !!upotettu Koulun osoite kosk
 	height:300px; /* korkeus */
 	padding-bottom:0px; /* tyhjä tila kartan alla */
 	border: 1px solid black;
+}
+/* pyry tekemää!*/	
+
+
+#navigointipalkki
+#navigointipalkki,
+#navigointipalkki ul,
+#navigointipalkki ul li,
+#navigointipalkki ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#navigointipalkki:after,
+#navigointipalkki > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#navigointipalkki {
+  width: auto;
+  border-bottom: 3px solid green;
+  font-family: Raleway, sans-serif;
+  line-height: 1;
+}
+#navigointipalkki ul {
+  background: #ffffff;
+}
+#navigointipalkki > ul > li {
+  float: left;
+}
+#navigointipalkki.align-center > ul {
+  font-size: 0;
+  text-align: center;
+}
+#navigointipalkki.align-center > ul > li {
+  display: inline-block;
+  float: none;
+}
+#navigointipalkki.align-right > ul > li {
+  float: right;
+}
+#navigointipalkki.align-right > ul > li > a {
+  margin-right: 0;
+  margin-left: -4px;
+}
+#navigointipalkki > ul > li > a {
+  z-index: 2;
+  padding: 18px 25px 12px 25px;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #444444;
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+  margin-right: -4px;
+}
+#navigointipalkki > ul > li.active > a,
+#navigointipalkki > ul > li:hover > a,
+#navigointipalkki > ul > li > a:hover {
+  color: #ffffff;
+}
+#navigointipalkki > ul > li > a:after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 120%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  content: "";
+  -webkit-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+  -webkit-transform: perspective(5px) rotateX(2deg);
+  -webkit-transform-origin: bottom;
+  -moz-transform: perspective(5px) rotateX(2deg);
+  -moz-transform-origin: bottom;
+  transform: perspective(5px) rotateX(2deg);
+  transform-origin: bottom;
+}
+#navigointipalkki > ul > li.active > a:after,
+#navigointipalkki > ul > li:hover > a:after,
+#navigointipalkki > ul > li > a:hover:after {
+  background: green;
+}
+
+.kuva1 {
+float: left-side;
+margin-right:50px;
+width: 60%;
+height: 80%;
+text-align: center;	
 	
-	
-
-
-
-
-
-
-
-
+}
 
 
  
