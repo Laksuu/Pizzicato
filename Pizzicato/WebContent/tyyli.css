@@ -42,12 +42,13 @@ kuvia+ Pizzicato.png+Pizza.jpg ja poistakaa kaikki vanhat tyyli tiedostot*/
 }
 
 
-body {background-image:url(Pizza.jpg); /* T‰ss‰ m‰‰ritell‰‰n sivun tausta */
-		background-repeat: no-repeat;
-    background-attachment: fixed;
+body {
+	
+    background-image: url("tausta2.jpg");
+    background-repeat: no-repeat;
 	margin:6px auto 6px auto;
-	background-repeat: repeat-x;
 	width:60%;
+	background-size: cover;
 	
 }
 
@@ -192,14 +193,47 @@ iframe /* m‰‰ritell‰‰n google-maps kartalle arvot, !!upotettu Koulun osoite kosk
   background: green;
 }
 
-.kuva1 {
-float: left-side;
-margin-right:50px;
-width: 60%;
-height: 80%;
-text-align: center;	
+#ylaotsikko {
+	
+background-color: white;
+ display: block;	
 	
 }
+#taulukko {
+    border-collapse: collapse;
+    margin-bottom: 3em;
+    width: 100%;
+    background: #fff;
+}
+td, th {
+    padding: 0.75em 1.5em;
+    text-align: left;
+}
+	td.err {
+		background-color: #e992b9;
+		color: #fff;
+		font-size: 0.75em;
+		text-align: center;
+		line-height: 1;
+	}
+th {
+    background-color: #31bc86;
+    font-weight: bold;
+    color: #fff;
+    white-space: nowrap;
+}
+tkeho th {
+	background-color: #2ea879;
+}
+tkeho tr:nth-child(2n-1) {
+    background-color: #f5f5f5;
+    transition: all .125s ease-in-out;
+}
+tkeho tr:hover {
+    background-color: rgba(129,208,177,.3);
+}
 
+footer { 
+    display: block;
+}
 
- 

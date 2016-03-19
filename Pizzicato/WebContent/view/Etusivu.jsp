@@ -30,11 +30,13 @@ and (max-width: 768px)">
 </head>
 <body>
 
-	<div class="kuva1">
-		 <img src="Pizzicato.png" />
-		
+<div class="kuva1">
+   <img src="Pizzicato.png" />
+  
 
-	</div>
+ </div>
+
+
 	<!--Navigointipalkin linkkien painikkeet ovat tässä-->
 	<div id="navigointipalkki">
 		<ul class="paavalikko">
@@ -45,12 +47,8 @@ and (max-width: 768px)">
 		</ul>
 	</div>
 
-	<!--/.nav-collapse -->
-	</div>
-	<!--/.container-fluid -->
-	</nav>
 
-	<!-- Main component for a primary marketing message or call to action -->
+	
 	<div class="jumbotron">
 
 		<div class="row">
@@ -74,7 +72,47 @@ and (max-width: 768px)">
 				<div class="table-responsive">
 
 
-					<h2>Aukioloajat</h2>
+				
+				<section id=pizzalista>
+
+<table id=taulukko>
+<totsikko>
+		<tr>
+		<th>Pizzan numero</th>
+		<th>Pizza</th>
+		<th>Hinta</th>				
+		</tr>
+</totsikko>	
+<tkeho>
+					<%
+						for (int i = 0; i < pizzat.size(); i++) {
+					%>
+					<tr>
+						<td><%=i + 1%></td>
+						<td><%=pizzat.get(i).getNimi()%></td>
+						<td><%=pizzat.get(i).getHinta()%>€</td>
+
+						<td><form action="pizzat" method="POST">
+								<input type=submit name="submit-button" class="submit-button"
+									value="Ostoskoriin" />
+							</form></td>
+					</tr>
+</tkeho>
+					<%
+						}
+					%>
+				</table>
+
+				</section>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	
+		<h2>Aukioloajat</h2>
 					<table class="table table-bordered">
 
 						<tbody>
@@ -116,44 +154,12 @@ and (max-width: 768px)">
 						</tbody>
 					</table>
 				</div>
-
-				<section id=pizzalista>
-
-				<table width="336" id=pizzalista border="1" align="center">
-
-					<%
-						for (int i = 0; i < pizzat.size(); i++) {
-					%>
-					<tr>
-						<td><%=i + 1%></td>
-						<td><%=pizzat.get(i).getNimi()%></td>
-						<td><%=pizzat.get(i).getHinta()%>€</td>
-
-						<td><form action="pizzat" method="POST">
-								<input type=submit name="submit-button" class="submit-button"
-									value="Ostoskoriin" />
-							</form></td>
-					</tr>
-
-					<%
-						}
-					%>
-				</table>
-
-				</section>
-
-			</div>
-		</div>
+	
 
 
-	</div>
-	<!--/.container-fluid -->
-	</nav>
-
-	<!-- Main component for a primary marketing message or call to action -->
 	<div class="jumbotron">
 
-		<footer class="footer">
+		<footer >
 		<div class="row">
 			<div class="col-xs-4 col-md-4">
 				<h3>
@@ -165,9 +171,9 @@ and (max-width: 768px)">
 			</div>
 			<div class="col-xs-4 col-md-4">
 				<h3>
-					pizzeriapizzicato@pizzicato.fi<span class="pull-right">
+					pizzeriapizzicato@pizzicato.fi
 				</h3>
-				</span>
+				
 			</div>
 		</div>
 		</footer>
