@@ -71,7 +71,7 @@ public class TayteDAO extends DataAccessObject{
 		try {
 			//luodaan yhteys, komento jne..
 			conn = getConnection();
-			String sqlSelect = "SELECT tayte_id, hinta, tayte FROM pizza WHERE piilotettu = 1;";
+			String sqlSelect = "SELECT tayte_id, hinta, tayte FROM tayte WHERE piilotettu = 1;";
 			stmt = conn.prepareStatement(sqlSelect);
 			rs = stmt.executeQuery(sqlSelect);
 			//k‰yd‰‰n l‰pi ja luetaan read
