@@ -9,6 +9,7 @@ CREATE TABLE tayte(
 tayte_id int NOT NULL AUTO_INCREMENT,
 tayte_hinta decimal(4,2) NOT NULL,
 tayte varchar(100),
+piilotettutayte boolean NOT NULL default 0,
 PRIMARY KEY (tayte_id)
 )Engine="InnoDB";
 
