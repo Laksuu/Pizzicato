@@ -11,20 +11,6 @@
 </head>
 <body>
 
-<link href="puhelin.css"
-rel="stylesheet" type="text/css"
-media="only screen and (min-width: 0px)
-and (max-width: 360px)" >
-
-<link href="sormitietokone.css"
-rel="stylesheet" type="text/css"
-media="only screen and (min-width: 361px)
-and (max-width: 768px)" >
-
-<link href="tyyli.css"
-rel="stylesheet" type="text/css"
-media="only screen and (min-width: 769px)" >
-
 
 <link href="tyyli.css" rel="stylesheet" type="text/css">
 

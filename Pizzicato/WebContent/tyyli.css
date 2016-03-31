@@ -45,15 +45,16 @@ kuvia+ Pizzicato.png+Pizza.jpg ja poistakaa kaikki vanhat tyyli tiedostot*/
 body {
 	
     background-image: url("tausta2.jpg");
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 	margin:6px auto 6px auto;
-	width:60%;
-	background-size: cover;
+	width:80%;
+	
 	
 }
 
 
-.jumbotron {
+.keho {
    background: rgb(238, 238, 238); /* T‰m‰ on IE8 ja alle */
    background: rgba(238, 238, 238, 0.9); 
 }
@@ -82,8 +83,13 @@ position:relative;
 
 
 
+
+
+ 
+
 iframe /* m‰‰ritell‰‰n google-maps kartalle arvot, !!upotettu Koulun osoite koska pizzantie ei ole olemassa */ { 
 	margin-left:10px;
+	float: right;
 	margin-right:10px;
 	text-align: left;  /* vasen laita */
 	width:100%; /* leveys 100% boksin leveydest‰, mik‰li leveys alle 600 pikseli‰ */
@@ -93,6 +99,8 @@ iframe /* m‰‰ritell‰‰n google-maps kartalle arvot, !!upotettu Koulun osoite kosk
 	border: 1px solid black;
 }
 /* pyry tekem‰‰!*/	
+
+
 
 
 #navigointipalkki
@@ -193,21 +201,20 @@ iframe /* m‰‰ritell‰‰n google-maps kartalle arvot, !!upotettu Koulun osoite kosk
   background: green;
 }
 
-#ylaotsikko {
-	
-background-color: white;
- display: block;	
-	
-}
-#taulukko {
+
+.taulukko {
     border-collapse: collapse;
     margin-bottom: 3em;
-    width: 100%;
+    width: 80%;
+    
     background: #fff;
+    margin-left:10%;
+    
 }
-td, th {
+table, td, th {
     padding: 0.75em 1.5em;
-    text-align: left;
+    text-align: center;
+     border: 1px solid black;
 }
 	td.err {
 		background-color: #e992b9;
@@ -222,18 +229,29 @@ th {
     color: #fff;
     white-space: nowrap;
 }
-tkeho th {
-	background-color: #2ea879;
-}
-tkeho tr:nth-child(2n-1) {
-    background-color: #f5f5f5;
-    transition: all .125s ease-in-out;
-}
-tkeho tr:hover {
-    background-color: rgba(129,208,177,.3);
+
+
+#footer { 
+ background-image: url("footer.png");
+ display: block;
+ height: 20%;
 }
 
-footer { 
-    display: block;
+.kuva1{
+float: left-side;
+width: 100%;
+text-align: center;;
 }
 
+
+
+#aukioloajat {
+	background-color: #fff;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-top: 5%;
+	border-style: groove;
+	border-color: red;
+	
+	
+}

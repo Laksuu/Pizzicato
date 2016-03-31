@@ -1,6 +1,7 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <%@ page import="pizzicato.model.Pizza"%>
@@ -8,13 +9,6 @@
 	scope="request" />
 <%@ page import="java.util.Collection,
 				java.util.ArrayList"%>
-<link href="puhelin.css" rel="stylesheet" type="text/css"
-	media="only screen and (min-width: 0px)
-and (max-width: 360px)">
-
-<link href="sormitietokone.css" rel="stylesheet" type="text/css"
-	media="only screen and (min-width: 361px)
-and (max-width: 768px)">
 
 <link href="tyyli.css" rel="stylesheet" type="text/css"
 	media="only screen and (min-width: 769px)">
@@ -29,153 +23,111 @@ and (max-width: 768px)">
 <title>Pizzeria Pizzicato</title>
 </head>
 <body>
+<div class="keho">
+	<div id="header">
 
-<div class="kuva1">
-   <img src="Pizzicato.png" />
-  
+		<img src="Pizzicato.png" class="kuva1" />
 
- </div>
+		<!--Navigointipalkin linkkien painikkeet ovat tässä-->
+		<div id="navigointipalkki">
+			<ul class="paavalikko">
+				<li><a class="active" href="etusivu">Etusivu</a></li>
+				<li><a href="Muokkaussivu">Muokkaussivu</a></li>
+				<li><a href="Ostoskori">Ostoskori</a></li>
+				<li><a href="PizzicatoControl">Yhteystiedot</a></li>
+			</ul>
+		</div>
 
-
-	<!--Navigointipalkin linkkien painikkeet ovat tässä-->
-	<div id="navigointipalkki">
-		<ul class="paavalikko">
-			<li><a class="active" href="etusivu">Etusivu</a></li>
-			<li><a href="Muokkaussivu">Muokkaussivu</a></li>
-			<li><a href="Ostoskori">Ostoskori</a></li>
-			<li><a href="PizzicatoControl">Yhteystiedot</a></li>
-		</ul>
 	</div>
 
-
-	
-	<div class="jumbotron">
-
-		<div class="row">
-			<div class="col-md-4">
-
-				<div id="yhteystiedot">
-
-					Pizzeria Pizzicato<br> Pizzantie 10<br> 01320 Vantaa<br>
-					pizzeriapizzicato@pizzicato.fi
+<div id="aukioloajat">
 
 
-				</div>
+
+<h2>Avoinna</h2>
+<p>Ma-pe: 10.00 - 23.00</p>
+<p>La: 11.00 - 23.00</p>
+<p>Su: 11.00 - 23.00</p>
+
+
+
+
+
+
+
+		<h2>Tervetuloa herkuttelemaan!</h2>
+		<br>
+		<h4>Helsingin keskustassa jo vuodesta 1999 toiminut Pizzeria
+			Pizzicato kuuluu paikkakunnan suosituimpiin ruokapaikkoihin. Vuosien
+			varrella pizzojen lisäksi rento tunnelma ja loistava asiakaspalvelu.
+
+			Meillä voit nauttia ruokailusta savuttomasti viihtyisässä
+			ympäristössä. TERVETULOA!</h4>
+
+</div>
+
+<br>
+<br>
+<br>		
+<br>
+<br>
+<br>
+<br>
+<br>
+		<div class="table-responsive">
+
+
+
+			<section id=pizzalista>
+
+			<table class="taulukko">
 				
 				
-				
-				
-				<iframe
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1982.75271746526!2d24.931852016103985!3d60.201375147838405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1h!3m3!1m2!1s0x469209921fdba137%3A0x841c90a2862185af!2sRatapiantie+13%2C+00520+Helsinki!5e0!3m2!1sfi!2sfi!4v1455610433438"
-					allowfullscreen></iframe>
-
-				<div class="table-responsive">
-
-
-				
-				<section id=pizzalista>
-
-<table id=taulukko>
-<totsikko>
-		<tr>
-		<th>Pizzan numero</th>
-		<th>Pizza</th>
-		<th>Hinta</th>				
-		</tr>
-</totsikko>	
-<tkeho>
-					<%
-						for (int i = 0; i < pizzat.size(); i++) {
-					%>
 					<tr>
-						<td><%=i + 1%></td>
-						<td><%=pizzat.get(i).getNimi()%></td>
-						<td><%=pizzat.get(i).getHinta()%>€</td>
-
-						<td><form action="pizzat" method="POST">
-								<input type=submit name="submit-button" class="submit-button"
-									value="Ostoskoriin" />
-							</form></td>
+						<th>Pizzan numero</th>
+						<th>Pizza</th>
+						<th>Hinta</th>
+						<th> </th>
 					</tr>
-</tkeho>
-					<%
-						}
-					%>
-				</table>
+			
+				<tkeho> <%
+ 	for (int i = 0; i < pizzat.size(); i++) {
+ %>
+				<tr>
+					<td><%=i + 1%></td>
+					<td><%=pizzat.get(i).getNimi()%></td>
+					<td><%=pizzat.get(i).getHinta()%>€</td>
 
-				</section>
+					<td><form action="pizzat" method="POST">
+							<input type=submit name="submit-button" class="submit-button"
+								value="Ostoskoriin" />
+						</form></td>
+				</tr>
+				</tkeho>
+				<%
+					}
+				%>
+			</table>
 
-			</div>
+			</section>
+
 		</div>
+	
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+</div>
 
+	<div id="footer">
+		<p>
+			Pizzeria Pizzicato| Pizzantie 10 | 01320 Vantaa | pizzeriapizzicato@pizzicato.fi
+		</p>
 	</div>
 
-	
-		<h2>Aukioloajat</h2>
-					<table class="table table-bordered">
-
-						<tbody>
-							<tr class="active">
-								<td>Maanantai</td>
-								<td>10:00-23:00</td>
-
-							</tr>
-							<tr class="active">
-								<td>Tiistai</td>
-								<td>10:00-23:00</td>
-
-							</tr>
-							<tr class="success">
-								<td>Keskiviikko</td>
-								<td>10:00-23:00</td>
-
-							</tr>
-							<tr class="active">
-								<td>Torstai</td>
-								<td>10:00-23:00</td>
-
-							</tr>
-							<tr class="active">
-								<td>Perjantai</td>
-								<td>10:00-23:00</td>
-
-							</tr>
-							<tr class="active">
-								<td>Lauantai</td>
-								<td>12:00-24:00</td>
-
-							</tr>
-							<tr class="active">
-								<td>Sunnuntai</td>
-								<td>14:00-23:00</td>
-
-							</tr>
-						</tbody>
-					</table>
-				</div>
-	
-
-
-	<div class="jumbotron">
-
-		<footer >
-		<div class="row">
-			<div class="col-xs-4 col-md-4">
-				<h3>
-					Pizzeria Pizzicato<br> <br> Pizzantie 10
-				</h3>
-			</div>
-			<div class="col-xs-4 col-md-4">
-				<h3>01320 Vantaa</h3>
-			</div>
-			<div class="col-xs-4 col-md-4">
-				<h3>
-					pizzeriapizzicato@pizzicato.fi
-				</h3>
-				
-			</div>
-		</div>
-		</footer>
 </body>
 </html>
