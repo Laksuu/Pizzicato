@@ -1,6 +1,7 @@
 package pizzicato.control;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pizzicato.model.Tayte;
+import pizzicato.model.dao.TayteDAO;
 
 /**
  * Servlet implementation class Lisaatayte
@@ -26,7 +28,7 @@ public class Lisaatayte extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String tayte = request.getParameter("tayte");
+		String taytenimi = request.getParameter("tayte");
 		String hinta = request.getParameter("tayte_hinta");
 		
 		double hintaa = Double.parseDouble(hinta);
@@ -34,10 +36,17 @@ public class Lisaatayte extends HttpServlet {
 		TayteDAO taytedao = new TayteDAO();
 		
 		Tayte tayte = new Tayte();
-		tayte.setTayte(tayte);
+		tayte.setTayte(taytenimi);
 		tayte.setTayte_hinta(hintaa);
 		
-		
+		try{
+			taytedao.addTayte(tayte);
+			System.out.println("test");
+		} catch (SQLException e){
+			System.out.println(e.getMessage());
+		}
+		String page ="/Pizzicato/Muokkaussivu";
+		response.sendRedirect(page);
 	}
 
 }
