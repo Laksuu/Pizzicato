@@ -164,7 +164,7 @@ public class TayteDAO extends DataAccessObject{
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();
-			String sql = "UPDATE tayte SET hinta='?', tayte='?' WHERE tayte_id='?'";
+			String sql = "UPDATE tayte SET hinta=?, tayte=? WHERE tayte_id=?";
 			pstmt = conn.prepareStatement(sql);
 			int p = 1;
 				pstmt.setInt(p++, tayte.getTayte_id());
