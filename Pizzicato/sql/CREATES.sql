@@ -55,3 +55,14 @@ PRIMARY KEY (tilaus_id, pizza_id),
 FOREIGN KEY (tilaus_id) REFERENCES tilaus (tilaus_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza (pizza_id)
 )Engine="InnoDB";
+
+Login Logout juttuja a la Jamppa
+
+CREATE TABLE kayttaja
+(
+   id integer primary key,
+   username varchar(255) unique,
+   password varchar(255)
+);
+
+INSERT INTO kayttaja (id, username, password) values (1, 'admin', 'admin');
