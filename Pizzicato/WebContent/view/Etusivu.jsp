@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
+<link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
 <%@ page import="pizzicato.model.Pizza"%>
 <jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
 	scope="request" />
@@ -23,73 +24,80 @@
 <title>Pizzeria Pizzicato</title>
 </head>
 <body>
-<div class="keho">
-	<div id="header">
+	<div class="keho">
+		<div class="header">
 
-		<img src="Pizzicato.png" class="kuva1" />
+			<img src="Pizzicato.png" class="kuva1" />
 
-		<!--Navigointipalkin linkkien painikkeet ovat tässä-->
-		<div id="navigointipalkki">
-			<ul class="paavalikko">
-				<li><a class="active" href="etusivu">Etusivu</a></li>
-				<li><a href="Muokkaussivu">Muokkaussivu</a></li>
-				<li><a href="Ostoskori">Ostoskori</a></li>
-				<li><a href="PizzicatoControl">Yhteystiedot</a></li>
-			</ul>
+			<!--Navigointipalkin linkkien painikkeet ovat tässä-->
+			<div id="navigointipalkki">
+				<ul class="paavalikko">
+					<li><a class="active" href="Etusivu">Etusivu</a></li>
+					<li><a href="Muokkaussivu">Muokkaussivu</a></li>
+					<li><a href="Ostoskori">Ostoskori</a></li>
+					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
+				</ul>
+			</div>
+
 		</div>
 
-	</div>
-
-<div id="aukioloajat">
-
-
-
-<h2>Avoinna</h2>
-<p>Ma-pe: 10.00 - 23.00</p>
-<p>La: 11.00 - 23.00</p>
-<p>Su: 11.00 - 23.00</p>
 
 
 
 
 
+		<div id="aukioloajat">
+<div class="teksti">
+			<h1>Avoinna</h1>
+			<h4>Ma-pe: 10.00 - 23.00</h4>
+			<h4>La: 11.00 - 23.00</h4>
+			<h4>Su: 11.00 - 23.00</h4>
 
 
-		<h2>Tervetuloa herkuttelemaan!</h2>
-		<br>
-		<h4>Helsingin keskustassa jo vuodesta 1999 toiminut Pizzeria
-			Pizzicato kuuluu paikkakunnan suosituimpiin ruokapaikkoihin. Vuosien
-			varrella pizzojen lisäksi rento tunnelma ja loistava asiakaspalvelu.
 
-			Meillä voit nauttia ruokailusta savuttomasti viihtyisässä
-			ympäristössä. TERVETULOA!</h4>
 
+
+
+
+			<h1>Tervetuloa herkuttelemaan!</h1>
+			<h4>Helsingin keskustassa jo vuodesta 1999 toiminut Pizzeria
+				Pizzicato kuuluu paikkakunnan suosituimpiin ruokapaikkoihin. Vuosien
+				varrella pizzojen lisäksi rento tunnelma ja loistava asiakaspalvelu.
+
+				Meillä voit nauttia ruokailusta savuttomasti viihtyisässä
+				ympäristössä. TERVETULOA!</h4>
 </div>
 
-<br>
-<br>
-<br>		
-<br>
-<br>
-<br>
-<br>
-<br>
-		<div class="table-responsive">
+		</div>
+		
+		<hr>
+		<div id="kuvajono">
+			<img src="kuva3.jpg" class="kuva3" /> <img src="pizza.jpg"
+				class="kuva4" /> <img src="tausta.jpg" class="kuva5" />
+		</div>
+		<br>
+		<hr>
+		 <br> <br>
+		
+<div class="otsikko">
+<h1> Pizzalista</h1>
+</div>
+		
 
 
 
-			<section id=pizzalista>
+			
 
 			<table class="taulukko">
-				
-				
-					<tr>
-						<th>Pizzan numero</th>
-						<th>Pizza</th>
-						<th>Hinta</th>
-						<th> </th>
-					</tr>
-			
+
+
+				<tr>
+					<th>Pizzan numero</th>
+					<th>Pizza</th>
+					<th>Hinta</th>
+					<th></th>
+				</tr>
+
 				<tkeho> <%
  	for (int i = 0; i < pizzat.size(); i++) {
  %>
@@ -97,6 +105,7 @@
 					<td><%=i + 1%></td>
 					<td><%=pizzat.get(i).getNimi()%></td>
 					<td><%=pizzat.get(i).getHinta()%>€</td>
+				
 
 					<td><form action="pizzat" method="POST">
 							<input type=submit name="submit-button" class="submit-button"
@@ -109,24 +118,17 @@
 				%>
 			</table>
 
-			</section>
+		
 
-		</div>
-	
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-</div>
+
+		<br> <br> <br> <br> <br> <br> <br>
+
+	</div>
 
 	<div id="footer">
-		<p>
-			Pizzeria Pizzicato| Pizzantie 10 | 01320 Vantaa | pizzeriapizzicato@pizzicato.fi
-		</p>
+		<p>Pizzeria Pizzicato| Pizzantie 10 | 01320 Vantaa |
+			pizzeriapizzicato@pizzicato.fi</p>
 	</div>
 
 </body>

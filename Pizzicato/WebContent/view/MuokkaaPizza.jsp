@@ -6,6 +6,11 @@
 	<%@ page import="pizzicato.control.MuokkaaPizza"%>
 <html>
 <head>
+<link href="tyyli.css" rel="stylesheet" type="text/css">
+<link href="tyyli.css" rel="stylesheet" type="text/css"
+	media="only screen and (min-width: 769px)">
+	<link rel="shortcut icon" href="faviconi.ico" />
+<link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,35 +18,26 @@
 </head>
 <body>
 
+<div class="keho">
+		<div class="header">
 
-	<div class="container">
-	 <img src="Pizzicato.jpeg"
-			class="img-responsive center-block" alt="Responsive image" />
-		</a>
+			<img src="Pizzicato.png" class="kuva1" />
 
-	</div>
-	<!--Navigointipalkin linkkien painikkeet ovat tässä-->
-	<div id="navbar" class="navbar-collapse collapse">
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="etusivu">Etusivu</a></li>
-			<li><a href="PizzicatoControl">Yhteystiedot</a></li>
-		</ul>
-	</div>
+			<!--Navigointipalkin linkkien painikkeet ovat tässä-->
+			<div id="navigointipalkki">
+				<ul class="paavalikko">
+					<li><a class="active" href="Etusivu">Etusivu</a></li>
+					<li><a href="Muokkaussivu">Muokkaussivu</a></li>
+					<li><a href="Ostoskori">Ostoskori</a></li>
+					<li><a href="PizzicatoControl">Yhteystiedot</a></li>
+				</ul>
+			</div>
 
-	<!--/.nav-collapse -->
-	</div>
-	<!--/.container-fluid -->
-	</nav>
-
-	<!-- Main component for a primary marketing message or call to action -->
-	<div class="jumbotron">
-
-		<div class="row">
-			<div class="col-md-4">
+		</div>
 
 
-
-<table width="336" id=pizzalista border="1" align="center">
+<br>
+<table class="taulukko">
 		<jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>" scope="request" />
 			<%@ page import="java.util.Collection, java.util.ArrayList"%>
 			
@@ -67,31 +63,16 @@
 			%>
 			</table>
 
+			<br> <br> <br> <br> <br> <br> <br>
+
+	</div>
+
+	<div id="footer">
+		<p>Pizzeria Pizzicato| Pizzantie 10 | 01320 Vantaa |
+			pizzeriapizzicato@pizzicato.fi</p>
+	</div>
 			
 			
-<!--/.container-fluid -->
-	</nav>
 
-	<!-- Main component for a primary marketing message or call to action -->
-	<div class="jumbotron">
-
-		<footer class="footer">
-		<div class="row">
-			<div class="col-xs-4 col-md-4">
-				<h3>
-					Pizzeria Pizzicato<br> <br> Pizzantie 10
-				</h3>
-			</div>
-			<div class="col-xs-4 col-md-4">
-				<h3>01320 Vantaa</h3>
-			</div>
-			<div class="col-xs-4 col-md-4">
-				<h3>
-					pizzeriapizzicato@pizzicato.fi<span class="pull-right">
-				</h3>
-				</span>
-			</div>
-		</div>
-		</footer>
 </body>
 </html>

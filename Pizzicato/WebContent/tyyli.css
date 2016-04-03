@@ -56,8 +56,12 @@ body {
 
 .keho {
    background: rgb(238, 238, 238); /* Tämä on IE8 ja alle */
-   background: rgba(238, 238, 238, 0.9); 
+    /*  background: rgba(238, 238, 238, 0.9); */
+ background-image: url("listatausta.jpg"); 
+  background-repeat: no-repeat;
+   background-size: 100% 100%;
 }
+
 
 #yhteystiedot /*Laatikko, johon tulee sivuston pääsisältö. Laatikko on läpinäkyvän responsiivisen containerin sisällä, joten sen leveyttä ei tarvitse määritellä*/
 {
@@ -88,13 +92,13 @@ position:relative;
  
 
 iframe /* määritellään google-maps kartalle arvot, !!upotettu Koulun osoite koska pizzantie ei ole olemassa */ { 
-	margin-left:10px;
+	
 	float: right;
 	margin-right:10px;
 	text-align: left;  /* vasen laita */
 	width:100%; /* leveys 100% boksin leveydestä, mikäli leveys alle 600 pikseliä */
-	max-width:400px; /* kartan maksimileveys */
-	height:300px; /* korkeus */
+	max-width:60%; /* kartan maksimileveys */
+	height:550px; /* korkeus */
 	padding-bottom:0px; /* tyhjä tila kartan alla */
 	border: 1px solid black;
 }
@@ -199,59 +203,124 @@ iframe /* määritellään google-maps kartalle arvot, !!upotettu Koulun osoite kosk
 #navigointipalkki > ul > li:hover > a:after,
 #navigointipalkki > ul > li > a:hover:after {
   background: green;
+  
+ 
+  
+  
 }
 
 
 .taulukko {
     border-collapse: collapse;
     margin-bottom: 3em;
-    width: 80%;
+    width: 90%;
     
-    background: #fff;
-    margin-left:10%;
+    background-image: url("taulukkotausta.jpg");
+    margin-left:5%;
     
 }
 table, td, th {
     padding: 0.75em 1.5em;
     text-align: center;
-     border: 1px solid black;
+    
 }
-	td.err {
-		background-color: #e992b9;
-		color: #fff;
-		font-size: 0.75em;
-		text-align: center;
-		line-height: 1;
-	}
+
 th {
-    background-color: #31bc86;
+    background-color: green;
     font-weight: bold;
+     font-style: italic;
     color: #fff;
     white-space: nowrap;
+   height: 30px;
 }
 
+td {
+	
+	
+}
+hr {
+	background-image: url("italy.jpg");
+	
+background-repeat: repeat;
+    height: 20px;
+}
 
 #footer { 
- background-image: url("footer.png");
+-webkit-border-top-right-radius: 200px;
+-webkit-border-bottom-right-radius: 200px;
+-moz-border-radius-topright: 200px;
+-moz-border-radius-bottomright: 200px;
+border-top-right-radius: 200px;
+border-bottom-right-radius: 200px;
+background-image: url("listatausta.jpg"); 
  display: block;
- height: 20%;
+ height: 15%;
+ 
+ text-align: center;
 }
 
 .kuva1{
 float: left-side;
 width: 100%;
-text-align: center;;
+text-align: center;
 }
 
+.kuva3 {
+	width: 29%;	
+	float: right;
+	margin-top: 4%;
+	margin-right: 2%;
+}
+.kuva4 {
+	width: 30%;
+	float: left;
+	margin-top: 4%;
+	margin-right: 2%;
+	margin-left:2%;
+}
+.kuva5 {
+	width: 30%;
+	float:;
+	margin-top: 4%;
+	margin-right: 2%;
+	margin-left: 2%;
+	
+}
+.kuva6 {
+width: 35%;
+	float: left;
+	margin-top: 4%;
+	margin-right: 2%;
+	margin-left:2%;	
+}
+#kuvajono {
+	
+}
+#kuvajono img {
+	display: inline-block;
+	margin:
+	
+}
 
-
+.teksti {
+	position: relative;
+    left: 30px;
+    margin-right: 4%;
+}
+.otsikko {
+	position: relative;
+    left: 15%;
+  
+}
 #aukioloajat {
-	background-color: #fff;
-	margin-right: 10%;
-	margin-left: 10%;
-	margin-top: 5%;
-	border-style: groove;
-	border-color: red;
-	
-	
+	background-image: url("tekstitausta2.jpg");
+	margin-right: 2%;
+	margin-left: 2%;
+	margin-top: 4%;
+	margin-bottom: 2%;
+	  border-width: 5px;
+    border-style:solid;
+    border-color: 304646  ;
+    		
 }
+
