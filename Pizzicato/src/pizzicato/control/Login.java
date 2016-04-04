@@ -1,5 +1,5 @@
 package pizzicato.control;
-/**
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -16,15 +16,19 @@ import javax.servlet.http.HttpSession;
 
 import pizzicato.model.Kayttaja;
 import pizzicato.model.dao.KayttajaDAO;
-@WebServlet("/MuokkaaPizza")
+
+@WebServlet("/Login")
 public class Login extends HttpServlet {
 
-		private static final long serialVersionUID = 1L;
-    private RequestDispatcher jsp;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private RequestDispatcher jsp;
     
     public void init(ServletConfig config) throws ServletException {
         ServletContext context = config.getServletContext();
-        jsp = context.getRequestDispatcher("/view/login.jsp");
+        jsp = context.getRequestDispatcher("/view/Login.jsp");
      }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
@@ -63,4 +67,3 @@ public class Login extends HttpServlet {
        resp.sendRedirect(url);
     }  
 }
-**/
