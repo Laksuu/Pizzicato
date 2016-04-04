@@ -146,6 +146,78 @@
 			</table>
 		</form>
 <hr>
+<table class="taulukko">
+
+
+			<%
+				for (int i = 0; i < taytteet.size(); i++) {
+			%>
+			<tr>
+				<td><%=i + 1%></td>
+				<td><%=taytteet.get(i).getTayte()%></td>
+				<td><%=taytteet.get(i).getTayte_hinta()%></td>
+
+				<td>
+					<form action="/Pizzicato/PiilotaTayte" method="POST">
+						<input type="hidden" name="tid"
+							value="<%=taytteet.get(i).getTayte_id()%>" /> <input type=submit
+							name="submit-button" class="submit-button" value="Piilota" />
+					</form>
+				</td>
+				<td><form action="Poistatayte" method="POST">
+						<input type=hidden name=tayte_id
+							value="<%=taytteet.get(i).getTayte_id()%>" /> <input type=submit
+							name="submit-button" class="submit-button" value="Poista" />
+					</form>
+				<td>
+					<form action="/Pizzicato/MuokkaaTayte" method="GET">
+						<input type=hidden name="tayte_id"
+							value="<%=taytteet.get(i).getTayte_id()%>" /> <input type=hidden
+							name="tayte" value="<%=taytteet.get(i).getTayte()%>" /> <input
+							type=hidden name="tayte_hinta" value="<%=taytteet.get(i).getTayte_hinta()%>" />
+						<input type=submit name="Muokkaa" class="submit-button"
+							value="Muokkaa" />
+					</form>
+
+				</td>
+			</tr>
+
+			<%
+				}
+			%>
+		</table>
+<hr>
+
+		<br> <br>
+
+		<h2>Piilotetut pizzat</h2>
+
+		<table class="taulukko">
+			<jsp:useBean id="piilotaytteet" type="java.util.ArrayList<Tayte>"
+				scope="request" />
+			<%
+				for (int i = 0; i < piilotaytteet.size(); i++) {
+			%>
+			<tr>
+				<td><%=i + 1%></td>
+				<td><%=piilotaytteet.get(i).getTayte()%></td>
+				<td><%=piilotaytteet.get(i).getTayte_hinta()%></td>
+
+				<td>
+					<form action="/Pizzicato/NaytaPiilotetutTaytteet" method="POST">
+						<input type="hidden" name="tid"
+							value="<%=piilotaytteet.get(i).getTayte_id()%>" /> <input
+							type=submit name="submit-button" class="submit-button"
+							value="N‰yt‰" />
+					</form>
+				</td>
+			</tr>
+
+			<%
+				}
+			%>
+		</table>
+<hr>
 		<h2>Lis‰‰ uusi t‰yte</h2>
 		<form action="Lisaatayte" method="POST">
 			<table class="lis‰‰tayte">

@@ -62,6 +62,11 @@ public class Muokkaussivu extends HttpServlet {
 		  PizzaDAO pizzadao = new PizzaDAO();
 		  ArrayList<Pizza> pizza = pizzadao.findAll();
 		  
+		  String valitunTaytteenId=request.getParameter("tayte_id");
+		  int tid = Integer.parseInt(valitunTaytteenId);
+		  TayteDAO taytedao = new TayteDAO();
+		  ArrayList<Tayte> tayte = taytedao.findAll();
+		  
 		  Pizza valittuPizza = new Pizza();
 		  for(Pizza pizzaa : pizza){
 		   if(pizzaa.getPizza_id()==(id)){
@@ -69,24 +74,24 @@ public class Muokkaussivu extends HttpServlet {
 		   }
 		  }
 		  
-		  request.setAttribute("valittuPizza", valittuPizza);
-		  
-		  String jsp = "/view/Muokkaussivu.jsp";
-		  RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-		  dispather.forward(request, response);
-		  
-		  
-		  String valitunTaytteenId=request.getParameter("tayte_id");
-		  int tid = Integer.parseInt(valitunTaytteenId);
-		  TayteDAO taytedao = new TayteDAO();
-		  ArrayList<Tayte> tayte = taytedao.findAll();
-		  
 		  Tayte valittuTayte = new Tayte();
 		  for(Tayte taytee : tayte){
 			  if(taytee.getTayte_id()==(tid)){
 				  valittuTayte = taytee;
 			  }
 		  }
+		  
+		  request.setAttribute("valittuPizza", valittuPizza);
+		  request.setAttribute("valittuTayte", valittuTayte);
+		  
+		  String jsp = "/view/Muokkaussivu.jsp";
+		  RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
+		  dispather.forward(request, response);
+		  
+		  
+		  
+		  
+		 
 	}	
 	
 } 
