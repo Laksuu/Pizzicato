@@ -156,7 +156,7 @@
 				</tr>
 			</table>
 		</form>
-<<<<<<< HEAD
+
 <hr>
 <table class="taulukko">
 
@@ -230,12 +230,11 @@
 			%>
 		</table>
 <hr>
-=======
-		<hr>
 
 
 
->>>>>>> branch 'master' of https://github.com/Laksuu/Pizzicato.git
+
+
 		<h2>Lis‰‰ uusi t‰yte</h2>
 		<form action="Lisaatayte" method="POST">
 			<table class="lis‰‰tayte">
