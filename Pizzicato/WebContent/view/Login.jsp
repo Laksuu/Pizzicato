@@ -19,11 +19,11 @@
 
 <form method="post" action="">
    <div>
-      Kayttajanimi:	<input type="text" name="username" size="36" />
+      Kayttajatunnus:	<input type="text" name="username" size="36" />
 
    </div>
    <div>
-      Salasana:		<input type="password" name="password" size="36" />
+      Salasana:			<input type="password" name="password" size="36" />
 
    </div>
    <div>

@@ -45,7 +45,7 @@ public class Login extends HttpServlet {
        if (kayttaja == null)
        {
           
-          req.setAttribute("message", "Authentication failed.");
+          req.setAttribute("message", "Tarkista käyttäjätunnus ja salasana.");
           jsp.forward(req, resp);
           return;
        }
@@ -54,7 +54,7 @@ public class Login extends HttpServlet {
        if (password == null || !kayttaja.getPassword().equals(password))
        {
           
-          req.setAttribute("message", "Authentication failed.");
+          req.setAttribute("message", "Tarkista käyttäjätunnus ja salasana.");
           jsp.forward(req, resp);
           return;
        }
