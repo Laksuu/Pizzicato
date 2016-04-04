@@ -44,14 +44,27 @@
 
 
 
-
+<div id="kuvajono">
+			<img src="kuva3.jpg" class="kuva3" /> <img src="pizza.jpg"
+				class="kuva4" /> <img src="tausta.jpg" class="kuva5" />
+		</div>
+		<br>
+		<hr>
 
 		<div id="aukioloajat">
 <div class="teksti">
-			<h1>Avoinna</h1>
-			<h4>Ma-pe: 10.00 - 23.00</h4>
-			<h4>La: 11.00 - 23.00</h4>
-			<h4>Su: 11.00 - 23.00</h4>
+			<p>
+			<h4><b><font size="5">Avoinna</font><br>
+			&nbsp;&nbsp;Ma-pe: 10.00 - 23.00<br>
+			&nbsp;&nbsp;La: 11.00 - 23.00<br>
+			&nbsp;&nbsp;Su: 11.00 - 23.00</b></h4>
+			
+			
+			 <h4><b>Helsinki<br>
+						P. 0500555555</b></h4>
+			
+			</p>
+			
 
 
 
@@ -63,20 +76,17 @@
 			<h4>Helsingin keskustassa jo vuodesta 1999 toiminut Pizzeria
 				Pizzicato kuuluu paikkakunnan suosituimpiin ruokapaikkoihin. Vuosien
 				varrella pizzojen lisäksi rento tunnelma ja loistava asiakaspalvelu.
-
+<br><br>
 				Meillä voit nauttia ruokailusta savuttomasti viihtyisässä
 				ympäristössä. TERVETULOA!</h4>
 </div>
 
 		</div>
 		
+		 <br> 
+		
 		<hr>
-		<div id="kuvajono">
-			<img src="kuva3.jpg" class="kuva3" /> <img src="pizza.jpg"
-				class="kuva4" /> <img src="tausta.jpg" class="kuva5" />
-		</div>
-		<br>
-		<hr>
+		
 		 <br> <br>
 		
 <div class="otsikko">
