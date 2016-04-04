@@ -202,7 +202,7 @@
 
 		<br> <br>
 
-		<h2>Piilotetut pizzat</h2>
+		<h2>Piilotetut taytteet</h2>
 
 		<table class="taulukko">
 			<jsp:useBean id="piilotaytteet" type="java.util.ArrayList<Tayte>"
