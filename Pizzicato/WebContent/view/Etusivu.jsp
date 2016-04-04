@@ -53,17 +53,21 @@
 
 		<div id="aukioloajat">
 <div class="teksti">
-			<p>
+			
+			
+				<div class="puhnum">
+			 <h4><b>Helsinki<br>
+						P. 0500555555</b></h4>
+			
+			</div>
+			
+			
 			<h4><b><font size="5">Avoinna</font><br>
 			&nbsp;&nbsp;Ma-pe: 10.00 - 23.00<br>
 			&nbsp;&nbsp;La: 11.00 - 23.00<br>
 			&nbsp;&nbsp;Su: 11.00 - 23.00</b></h4>
 			
-			
-			 <h4><b>Helsinki<br>
-						P. 0500555555</b></h4>
-			
-			</p>
+		
 			
 
 

@@ -323,4 +323,9 @@ width: 35%;
     border-color: 304646  ;
     		
 }
+.puhnum{
+	float:right;
+	position: absolute;
+	right: 45%;
 
+}

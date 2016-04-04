@@ -119,7 +119,6 @@
 		<form action="Lisaapizza" method="POST">
 			<table class="lisääpizza">
 				<jsp:useBean id="jsp" scope="request" class="java.lang.String" />
-
 				<tr>
 					<td>Anna pizzan nimi:</td>
 					<td><input type="text" value="" name="nimi" size="60" /></td>
@@ -128,12 +127,22 @@
 					<td>Anna pizzan hinta:</td>
 					<td><input type="text" value="" name="hinta" size="60" /></td>
 				</tr>
-				<!-- 		<tr>
-				<td>Anna pizzan täytteet:</td>
+				<tr>
+				<td><form>Anna pizzan täytteet:</td>
 				<td><input type="text" value="" name="tayte_id" size="60" /></td>
-			</tr> -->
-				<td><input type="submit" name="submit-button"
-					class="submit-button" value="Tallenna" /></td>
+				</tr> 
+				<tr>
+				<td>
+				<input type="checkbox" name="tayte" value="">
+					<label for="checkbox_id">Text</label>
+					</td>
+					</tr> 
+					<tr> 
+				<td>
+				<input type="submit" name="submit-button"
+					class="submit-button" value="Tallenna" />
+				</td>
+			</tr>
 			</table>
 		</form>
 <hr>
@@ -155,7 +164,7 @@
 					class="submit-button" value="Tallenna" /></td>
 			</table>
 		</form>
-
+<hr>
 
 	
 
