@@ -4,6 +4,7 @@ public class Kayttaja {
 	private Long id;
 	private String username;
 	private String password;
+	private String logtype;
 
 	public Long getId() {
 		return id;
@@ -27,6 +28,14 @@ public class Kayttaja {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getLogtype() {
+		return logtype;
+	}
+
+	public void setLogtype(String logtype) {
+		this.logtype = logtype;
 	}
 
 

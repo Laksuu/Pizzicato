@@ -22,10 +22,12 @@ public class KayttajaDAO extends DataAccessObject {
       Long id = new Long(rs.getLong("id"));
       String username = rs.getString("username");
       String password = rs.getString("password");
+      String logtype = rs.getString("logtype");
       Kayttaja kayttaja = new Kayttaja();
       kayttaja.setId(id);
       kayttaja.setUsername(username);
       kayttaja.setPassword(password);
+      kayttaja.setLogtype(logtype);
       return kayttaja;
    }
  
@@ -125,6 +127,7 @@ public class KayttajaDAO extends DataAccessObject {
          statement = connection.prepareStatement(sql);
          statement.setString(1, kayttaja.getPassword());
          statement.setLong(2, kayttaja.getId().longValue());
+         statement.setString(3, kayttaja.getLogtype());
          statement.executeUpdate();
       } catch (SQLException e)
       {
@@ -144,13 +147,14 @@ public class KayttajaDAO extends DataAccessObject {
       try
       {
          connection = getConnection();
-         String sql = "INSERT INTO kayttaja " + "(id, username, password) "
+         String sql = "INSERT INTO kayttaja " + "(id, username, password, logtype) "
 
-               + "values (?, ?, ?)";
+               + "values (?, ?, ?, ?)";
          statement = connection.prepareStatement(sql);
          statement.setLong(1, id.longValue());
          statement.setString(2, kayttaja.getUsername());
          statement.setString(3, kayttaja.getPassword());
+         statement.setString(4, kayttaja.getLogtype());
          statement.executeUpdate();
       } catch (SQLException e)
       {

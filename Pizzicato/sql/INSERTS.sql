@@ -61,4 +61,5 @@ INSERT INTO pizzantayte (pizza_id, tayte_id) values ('7', '11');
 
 Login logout juttuja ala jamppa
 
-INSERT INTO kayttaja (id, username, password) values (1, 'admin', 'admin');
+INSERT INTO kayttaja (id, username, password, logtype) values (1, 'admin', 'admin', 'master');
+INSERT INTO kayttaja (id, username, password, logtype) values (2, 'kokki', 'kokki', 'kokki');
