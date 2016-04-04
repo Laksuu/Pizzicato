@@ -29,9 +29,9 @@ public class Lisaatayte extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String taytenimi = request.getParameter("tayte");
-		String hinta = request.getParameter("tayte_hinta");
+		String taytehinta = request.getParameter("tayte_hinta");
 		
-		double hintaa = Double.parseDouble(hinta);
+		double hintaa = Double.parseDouble(taytehinta);
 		
 		TayteDAO taytedao = new TayteDAO();
 		

@@ -136,7 +136,25 @@
 					class="submit-button" value="Tallenna" /></td>
 			</table>
 		</form>
+<hr>
+		<h2>Lis‰‰ uusi t‰yte</h2>
+		<form action="Lisaatayte" method="POST">
+			<table class="lis‰‰tayte">
+				<jsp:useBean id="tjsp" scope="request" class="java.lang.String" />
 
+				<tr>
+					<td>Anna t‰ytteen nimike:</td>
+					<td><input type="text" value="" name="tayte" size="60" /></td>
+				</tr>
+				<tr>
+					<td>Anna t‰ytteen kilohinta:</td>
+					<td><input type="text" value="" name="tayte_hinta" size="60" /></td>
+				</tr>
+				
+				<td><input type="submit" name="submit-button"
+					class="submit-button" value="Tallenna" /></td>
+			</table>
+		</form>
 
 
 	

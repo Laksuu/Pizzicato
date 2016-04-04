@@ -18,7 +18,7 @@ public class TayteDAO extends DataAccessObject{
 			//yhteyden luonti, transaktion alku:
 			connection = getConnection();
 			//luodaan uusi t‰yte
-			String sqlInsert = "INSERT INTO tayte(hinta, tayte) VALUES (?,?)";
+			String sqlInsert = "INSERT INTO tayte(tayte_hinta, tayte) VALUES (?,?)";
 			stmtInsert = connection.prepareStatement(sqlInsert);
 			stmtInsert.setDouble(1, tayte.getTayte_hinta());
 			stmtInsert.setString(2, tayte.getTayte());
@@ -42,7 +42,7 @@ public class TayteDAO extends DataAccessObject{
 			// luodaan yhteys
 			conn = getConnection();
 			//luodaan komento: haetaan rivit taulusta
-			String sqlSelect = "SELECT tayte_id, hinta, tayte FROM tayte WHERE piilotettu = '0';";
+			String sqlSelect = "SELECT tayte_id, tayte_hinta, tayte FROM tayte WHERE piilotettutayte = '0';";
 			// valmistellaan komento
 			stmt = conn.prepareStatement(sqlSelect);
 			// l‰hetet‰‰ komento
@@ -71,7 +71,7 @@ public class TayteDAO extends DataAccessObject{
 		try {
 			//luodaan yhteys, komento jne..
 			conn = getConnection();
-			String sqlSelect = "SELECT tayte_id, hinta, tayte FROM tayte WHERE piilotettu = 1;";
+			String sqlSelect = "SELECT tayte_id, tayte_hinta, tayte FROM tayte WHERE piilotettutayte = 1;";
 			stmt = conn.prepareStatement(sqlSelect);
 			rs = stmt.executeQuery(sqlSelect);
 			//k‰yd‰‰n l‰pi ja luetaan read
@@ -164,7 +164,7 @@ public class TayteDAO extends DataAccessObject{
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();
-			String sql = "UPDATE tayte SET hinta=?, tayte=? WHERE tayte_id=?";
+			String sql = "UPDATE tayte SET tayte_hinta=?, tayte=? WHERE tayte_id=?";
 			pstmt = conn.prepareStatement(sql);
 			int p = 1;
 				pstmt.setInt(p++, tayte.getTayte_id());
