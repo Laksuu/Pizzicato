@@ -63,7 +63,7 @@ public class Login extends HttpServlet {
        Long userId = kayttaja.getId();
        session.setAttribute("userId", userId);
       
-       String url = "Etusivu";
+       String url = "Muokkaussivu";
        resp.sendRedirect(url);
     }  
 }

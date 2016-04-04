@@ -27,7 +27,7 @@
 
    </div>
    <div>
-      <input type="submit" value="Login" />
+      <input type="submit" value="Kirjaudu" />
    </div>
 
 </form>
