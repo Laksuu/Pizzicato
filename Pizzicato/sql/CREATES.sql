@@ -64,5 +64,3 @@ CREATE TABLE kayttaja
    username varchar(255) unique,
    password varchar(255)
 );
-
-INSERT INTO kayttaja (id, username, password) values (1, 'admin', 'admin');
