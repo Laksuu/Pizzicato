@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="pizzicato.model.Pizza"%>
+<%@ page import="pizzicato.model.Tayte"%>
 <html>
 <head>
 <link rel="shortcut icon" href="faviconi.ico" />
@@ -12,6 +13,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:useBean id="taytteet" type="java.util.ArrayList<Tayte>"
+	scope="request" />
 <jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
 	scope="request" />
 <%@ page import="java.util.Collection, java.util.ArrayList"%>
@@ -83,7 +86,7 @@
 				}
 			%>
 		</table>
-<hr>
+		<hr>
 
 		<br> <br>
 
@@ -114,7 +117,7 @@
 				}
 			%>
 		</table>
-<hr>
+		<hr>
 		<h2>Lis‰‰ uusi pizza</h2>
 		<form action="Lisaapizza" method="POST">
 			<table class="lis‰‰pizza">
@@ -128,24 +131,34 @@
 					<td><input type="text" value="" name="hinta" size="60" /></td>
 				</tr>
 				<tr>
-				<td><form>Anna pizzan t‰ytteet:</td>
-				<td><input type="text" value="" name="tayte_id" size="60" /></td>
-				</tr> 
+					<td>Anna pizzan t‰ytteet:</td>
+
+					<td>
+						<%
+							for (int i = 0; i < taytteet.size(); i++) {
+						%>
+					
 				<tr>
-				<td>
-				<input type="checkbox" name="tayte" value="">
-					<label for="checkbox_id">Text</label>
+					<td><%=i + 1%></td>
+					<td><input type="checkbox" name=tayte value="Tid"><%=taytteet.get(i).getTayte()%></td>
+				
+					<%
+						}
+					%>
+					
 					</td>
-					</tr> 
-					<tr> 
-				<td>
-				<input type="submit" name="submit-button"
-					class="submit-button" value="Tallenna" />
-				</td>
-			</tr>
+				</tr>
+
+				<tr>
+					<td><input type="submit" name="submit-button"
+						class="submit-button" value="Tallenna" /></td>
+				</tr>
 			</table>
 		</form>
-<hr>
+		<hr>
+
+
+
 		<h2>Lis‰‰ uusi t‰yte</h2>
 		<form action="Lisaatayte" method="POST">
 			<table class="lis‰‰tayte">
@@ -159,25 +172,26 @@
 					<td>Anna t‰ytteen kilohinta:</td>
 					<td><input type="text" value="" name="tayte_hinta" size="60" /></td>
 				</tr>
-				
+
 				<td><input type="submit" name="submit-button"
 					class="submit-button" value="Tallenna" /></td>
 			</table>
 		</form>
-<hr>
+		<hr>
 
-	
+		<select name="t‰ytteet"><option>Salami</option>
+			<option>Aurajuusto</option>
+			<option>juusto</option>
+			<option>jauhenliha</option></select> <br> <br> <br> <br> <br>
+		<br> <br>
 
 
-		<br> <br> <br> <br> <br> <br> <br>
-
-	
-</div>
+	</div>
 	<div id="footer">
 		<p>Pizzeria Pizzicato| Pizzantie 10 | 01320 Vantaa |
 			pizzeriapizzicato@pizzicato.fi</p>
 	</div>
-	
+
 
 </body>
 </html>
