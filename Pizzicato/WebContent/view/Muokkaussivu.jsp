@@ -47,7 +47,7 @@
 
 		<h1>Muokkaussivu</h1>
 
-		<table class="taulukko">
+		<table class="admintaulukko">
 
 
 			<%
@@ -93,7 +93,7 @@
 
 		<h2>Piilotetut pizzat</h2>
 
-		<table class="taulukko">
+		<table class="admintaulukko">
 			<jsp:useBean id="piilopizzat" type="java.util.ArrayList<Pizza>"
 				scope="request" />
 			<%
@@ -121,7 +121,7 @@
 		<hr>
 		<h2>Lis‰‰ uusi pizza</h2>
 		<form action="Lisaapizza" method="POST">
-			<table class="lis‰‰pizza">
+			<table class="admintaulukko">
 				<jsp:useBean id="jsp" scope="request" class="java.lang.String" />
 				<tr>
 					<td>Anna pizzan nimi:</td>
@@ -132,15 +132,14 @@
 					<td><input type="text" value="" name="hinta" size="60" /></td>
 				</tr>
 				<tr>
-					<td>Anna pizzan t‰ytteet:</td>
-
-					<td>
+				
 						<%
 							for (int i = 0; i < taytteet.size(); i++) {
 						%>
 					
 				<tr>
-					<td><%=i + 1%></td>
+					<td id="piilossa" style="display: none;"><%=i + 1%></td>
+					<td> </td>
 					<td><input type="checkbox" name=tayte value="Tid"><%=taytteet.get(i).getTayte()%></td>
 				
 					<%
@@ -158,7 +157,7 @@
 		</form>
 
 <hr>
-<table class="taulukko">
+<table class="admintaulukko">
 
 
 			<%
@@ -202,9 +201,9 @@
 
 		<br> <br>
 
-		<h2>Piilotetut pizzat</h2>
+		<h2>Piilotetut taytteet</h2>
 
-		<table class="taulukko">
+		<table class="admintaulukko">
 			<jsp:useBean id="piilotaytteet" type="java.util.ArrayList<Tayte>"
 				scope="request" />
 			<%
@@ -237,7 +236,7 @@
 
 		<h2>Lis‰‰ uusi t‰yte</h2>
 		<form action="Lisaatayte" method="POST">
-			<table class="lis‰‰tayte">
+			<table class="admintaulukko">
 				<jsp:useBean id="tjsp" scope="request" class="java.lang.String" />
 
 				<tr>
@@ -255,10 +254,7 @@
 		</form>
 		<hr>
 
-		<select name="t‰ytteet"><option>Salami</option>
-			<option>Aurajuusto</option>
-			<option>juusto</option>
-			<option>jauhenliha</option></select> <br> <br> <br> <br> <br>
+		 <br> <br> <br> <br> <br>
 		<br> <br>
 
 
