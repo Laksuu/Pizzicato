@@ -17,7 +17,7 @@ import pizzicato.model.dao.TayteDAO;
 public class NaytaPiilotetutTaytteet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idIn = request.getParameter("tayte_id");
+		String idIn = request.getParameter("tid");
 		int tid = Integer.parseInt(idIn);
 		TayteDAO taytedao = new TayteDAO();
 		taytedao.poistaPiilotustayte(tid);
