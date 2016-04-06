@@ -42,16 +42,6 @@ public class MuokkaaPizza extends HttpServlet {
 		
 		request.setAttribute("pizzat", Pizzat);
 		
-	
-		
-		System.out.println(pizza_id + nimi + hinta);
-		
-		System.out.println(pizza);
-	
-		
-		
-		System.out.println(pizza_id + nimi + hinta + "3");
-		System.out.println(pizza_id + nimi + hinta + "3");
 		 String jsp = "/view/MuokkaaPizza.jsp";
 		  RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
 		  dispather.forward(request, response);
@@ -77,12 +67,11 @@ public class MuokkaaPizza extends HttpServlet {
 			return;
 		}
 		String nimi = request.getParameter("nimi");
-		System.out.println("TESTI1" + pizza_id);
+	
 		
-		System.out.println("TESTI2" + hinta);
+	
 		Pizza pizza = new Pizza(pizza_id, nimi, hinta);
 		PizzaDAO dao = new PizzaDAO();
-		System.out.println("TESTI3");
 		dao.muokkaa(pizza);
 		
 		String page = "Muokkaussivu";

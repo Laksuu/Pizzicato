@@ -60,7 +60,6 @@ public class Lisaapizza extends HttpServlet {
 		
 		try{
 			pizzadao.addPizza(pizza);
-			System.out.println("test");
 		} catch(SQLException e){
 			System.out.print(e.getMessage());
 		}
