@@ -32,8 +32,8 @@
 					<li><a href="Etusivu">Etusivu</a></li>
 					<li><a class="active" href="Muokkaussivu">Muokkaussivu</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
-					<li><a href="PizzicatoControl">Yhteystiedot</a></li>
-					<li><a href="Logout">Kirjaudu ulos</a> 
+					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
+					<li><a href="Logout">Kirjaudu ulos</a>
 				</ul>
 			</div>
 
@@ -132,20 +132,20 @@
 					<td><input type="text" value="" name="hinta" size="60" /></td>
 				</tr>
 				<tr>
+
+					<%
+						for (int i = 0; i < taytteet.size(); i++) {
+					%>
 				
-						<%
-							for (int i = 0; i < taytteet.size(); i++) {
-						%>
-					
 				<tr>
 					<td id="piilossa" style="display: none;"><%=i + 1%></td>
-					<td> </td>
+					<td></td>
 					<td><input type="checkbox" name=tayte value="Tid"><%=taytteet.get(i).getTayte()%></td>
-				
+
 					<%
 						}
 					%>
-					
+
 					</td>
 				</tr>
 
@@ -156,8 +156,8 @@
 			</table>
 		</form>
 
-<hr>
-<table class="admintaulukko">
+		<hr>
+		<table class="admintaulukko">
 
 
 			<%
@@ -185,9 +185,9 @@
 						<input type=hidden name="tayte_id"
 							value="<%=taytteet.get(i).getTayte_id()%>" /> <input type=hidden
 							name="tayte" value="<%=taytteet.get(i).getTayte()%>" /> <input
-							type=hidden name="tayte_hinta" value="<%=taytteet.get(i).getTayte_hinta()%>" />
-						<input type=submit name="Muokkaa" class="submit-button"
-							value="Muokkaa" />
+							type=hidden name="tayte_hinta"
+							value="<%=taytteet.get(i).getTayte_hinta()%>" /> <input
+							type=submit name="Muokkaa" class="submit-button" value="Muokkaa" />
 					</form>
 
 				</td>
@@ -197,7 +197,7 @@
 				}
 			%>
 		</table>
-<hr>
+		<hr>
 
 		<br> <br>
 
@@ -228,7 +228,7 @@
 				}
 			%>
 		</table>
-<hr>
+		<hr>
 
 
 
@@ -254,8 +254,7 @@
 		</form>
 		<hr>
 
-		 <br> <br> <br> <br> <br>
-		<br> <br>
+		<br> <br> <br> <br> <br> <br> <br>
 
 
 	</div>
