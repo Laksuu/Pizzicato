@@ -312,6 +312,11 @@ width: 35%;
     left: 15%;
   
 }
+.pienempifontti {
+	font-size: 10px;
+	font-style: italic; 
+}
+
 #aukioloajat {
 	background-image: url("tekstitausta2.jpg");
 	margin-right: 2%;

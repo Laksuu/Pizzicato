@@ -8,7 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import pizzicato.model.Pizza;
+import pizzicato.model.Tayte;
 
 public class PizzaDAO extends DataAccessObject {
 
@@ -35,26 +37,42 @@ public class PizzaDAO extends DataAccessObject {
 		}
 	}
 	
+	// hakee kaikki pizzat täytteineen
 	public ArrayList<Pizza> findAll() {	
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
 		Pizza pizza = null; 
+		int edellinenPizzaId = 0;
+		int nykyinenPizzaId = 0;
+		Tayte tayte = null;
+		
+		
 		try {
 			// Luodaan yhteys
 			conn = getConnection();
 			// Luodaan komento: haetaan kaikki rivit -taulusta
-			String sqlSelect = "SELECT pizza_id, nimi, hinta FROM pizza WHERE piilotettu = '0';";
+			String sqlSelect = "SELECT p.pizza_id, p.nimi, p.hinta, t.tayte_id, t.tayte FROM pizza p JOIN pizzantayte x ON x.pizza_id = p.pizza_id JOIN tayte t ON t.tayte_id = x.tayte_id WHERE p.piilotettu = '0';";
 			// Valmistellaan komento:
 			stmt = conn.prepareStatement(sqlSelect);
 			// Lähetetään komento:
 			rs = stmt.executeQuery(sqlSelect);
 			// Käydään tulostaulun rivit läpi ja luetaan read()-metodilla:
 			while (rs.next()) {
-				pizza = readPizza(rs);
-				// lisätään pizza listaan
-				pizzat.add(pizza);
+				nykyinenPizzaId = rs.getInt("pizza_id");
+				
+				// -> jos pizza_id vaihtuu tee uusi pizzaolio
+				if (nykyinenPizzaId != edellinenPizzaId){
+					pizza = readPizza(rs);
+					// lisätään pizza listaan
+					pizzat.add(pizza);
+					edellinenPizzaId = nykyinenPizzaId;
+				} 
+				// -> tee uusi täyteolio
+				tayte = readTayte(rs);
+				// -> lisää täyteolio pizzan täytelistaan (arraylist pizza.java -> add metodi pizzaluokassa)
+				pizza.addTayte(tayte);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -196,6 +214,20 @@ public class PizzaDAO extends DataAccessObject {
 			             close(pstmt, conn);
 			          
 			   }
+		   
+		   // read tayte ilman hintaa, koska hintaa ei tässä haeta
+			private Tayte readTayte(ResultSet rs) {
+				try {
+					//yhden tiedot haetaan
+					int tayte_id = rs.getInt("tayte_id");
+				double tayte_hinta = 0.00;
+					String tayte = rs.getString("tayte");
+					//luodaan uusi ja palautetaan
+					return new Tayte(tayte_id, tayte_hinta, tayte);
+				} catch (SQLException e) {
+					throw new RuntimeException(e);
+				}
+			}
 			    
 			}
 

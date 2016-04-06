@@ -6,6 +6,7 @@
 <head>
 <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
 <%@ page import="pizzicato.model.Pizza"%>
+<%@ page import="pizzicato.model.Tayte"%>
 <jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
 	scope="request" />
 <%@ page import="java.util.Collection,
@@ -113,15 +114,27 @@
 					<th></th>
 				</tr>
 
-				<tkeho> <%
- 	for (int i = 0; i < pizzat.size(); i++) {
+				<tkeho> <% 
+				Pizza pizza;
+				Tayte tayte;
+ 		for (int i = 0; i < pizzat.size(); i++) {
+ 			pizza=pizzat.get(i);
+
  %>
 				<tr>
 					<td><%=i + 1%></td>
-					<td><%=pizzat.get(i).getNimi()%></td>
-					<td><%=pizzat.get(i).getHinta()%>€</td>
-				
-
+					<td><%=pizza.getNimi()%> <br> <div class="pienempifontti">
+					
+				 <%
+				 for (int t = 0; t < pizza.getTayteMaara(); t++ ){
+					 tayte=pizza.getTayte(t);
+					 %>
+					 <%=tayte.getTayte()%>
+				<% }
+				 %>
+				 </div>
+					  </td>
+					<td><%=pizza.getHinta()%>€</td>
 					<td><form action="pizzat" method="POST">
 							<input type=submit name="submit-button" class="submit-button"
 								value="Ostoskoriin" />
