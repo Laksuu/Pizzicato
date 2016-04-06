@@ -27,7 +27,6 @@ public class Poistatayte extends HttpServlet {
 		
 		try {
 			tayte_idstr = request.getParameter("tayte_id");
-			System.out.println("Tayte_id jotakin... " + tayte_idstr);
 			tayte_id = Integer.parseInt(request.getParameter("tayte_id"));
 		} catch (NumberFormatException e){
 			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

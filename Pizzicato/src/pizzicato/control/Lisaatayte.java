@@ -41,7 +41,6 @@ public class Lisaatayte extends HttpServlet {
 		
 		try{
 			taytedao.addTayte(tayte);
-			System.out.println("test");
 		} catch (SQLException e){
 			System.out.println(e.getMessage());
 		}

@@ -33,12 +33,13 @@ public class Etusivu extends HttpServlet {
 		TayteDAO taytteetDAO = new TayteDAO();
 		ArrayList<Tayte> Taytteet = taytteetDAO.findAll();
 
+		
 		// Talletetaan request-olion alle henkilölista, jotta tiedot ovat
 		// käytössä jsp:llä
 		request.setAttribute("pizzat", Pizzat); 
 		request.setAttribute("taytteet", Taytteet);
 		
-
+		
 		// lähetä selaimelta tullut pyyntö servletiltä edelleen jsp:lle
 		String jsp = "/view/Etusivu.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(

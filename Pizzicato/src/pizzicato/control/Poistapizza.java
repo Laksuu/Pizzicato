@@ -27,7 +27,6 @@ public class Poistapizza extends HttpServlet {
 		try 
 		{
 			pizza_idstr = request.getParameter("pizza_id");
-			System.out.println("Pizza_id onfdsafds "+ pizza_idstr);
 			pizza_id = Integer.parseInt(request.getParameter("pizza_id"));
 		} catch (NumberFormatException e) {
 			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

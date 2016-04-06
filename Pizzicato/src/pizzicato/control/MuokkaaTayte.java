@@ -48,12 +48,9 @@ public class MuokkaaTayte extends HttpServlet {
 			return;
 		}
 		String taytenimi = request.getParameter("tayte");
-		System.out.println("TESTI1" + tayte_id);
 		
-		System.out.println("TESTI2" + hinta);
 		Tayte tayte = new Tayte(tayte_id, hinta, taytenimi);
 		TayteDAO taytedao = new TayteDAO();
-		System.out.println("TESTI3");
 		taytedao.muokkaa(tayte);
 		
 		String page = "Muokkaussivu";

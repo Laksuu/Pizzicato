@@ -16,11 +16,10 @@ public class PiilotaTayte extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idIn = request.getParameter("tid");
-		System.out.println(idIn);
 		int tayte_id = Integer.parseInt(idIn);
 		TayteDAO taytedao = new TayteDAO();
 		taytedao.piilotatayte(tayte_id);
-		System.out.println(idIn + tayte_id);
+
 		
 		String page ="/Pizzicato/Muokkaussivu";
 		response.sendRedirect(page);
