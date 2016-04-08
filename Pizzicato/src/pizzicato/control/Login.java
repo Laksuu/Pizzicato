@@ -62,8 +62,19 @@ public class Login extends HttpServlet {
        HttpSession session = req.getSession();
        Long userId = kayttaja.getId();
        session.setAttribute("userId", userId);
-      
+     
+       if (username.equals("admin")){
        String url = "Muokkaussivu";
        resp.sendRedirect(url);
+      }
+      else {
+    	  String url = "Etusivu";
+       resp.sendRedirect(url);
+       }
+       
+    }
+      
+    
+    
     }  
-}
+
