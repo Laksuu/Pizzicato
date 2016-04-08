@@ -10,7 +10,7 @@ public class Pizza {
 int pizza_id;
 String nimi;
 double hinta;
-private ArrayList<Tayte> taytteet;
+public ArrayList<Tayte> taytteet;
 
 
 //construktori
@@ -69,10 +69,21 @@ public Tayte getTayte(int index){
 public int getTayteMaara(){
 	return taytteet.size();
 }
+
+public ArrayList<Tayte> getTaytteet(){
+	return this.taytteet;
+}
 //To_String
 public String toString() {
 	return "Pizzat [pizza_id=" + pizza_id + ", nimi=" + nimi
 			+ ", hinta=" + hinta + "]";
 }
+
+
+public int getTayte_id() {
+	
+	return 0;
+}
+
 
 }

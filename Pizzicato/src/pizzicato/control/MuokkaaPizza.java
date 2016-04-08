@@ -28,12 +28,14 @@ public class MuokkaaPizza extends HttpServlet {
 		String nimi;
 		double hinta;
 		String hintastr;
+		// arraylist taytteet
 		
 		pizza_idstr = request.getParameter("pizza_id");
 		pizza_id = Integer.parseInt(request.getParameter("pizza_id"));
 		nimi= request.getParameter("nimi");
 		hintastr = request.getParameter("hinta");
 		hinta = Double.parseDouble(request.getParameter("hinta"));
+		// arraylist taytteet
 		
 		Pizza pizza = new Pizza(pizza_id, nimi, hinta);
 		
@@ -67,7 +69,7 @@ public class MuokkaaPizza extends HttpServlet {
 			return;
 		}
 		String nimi = request.getParameter("nimi");
-	
+		// arraylist täytteet??
 		
 	
 		Pizza pizza = new Pizza(pizza_id, nimi, hinta);

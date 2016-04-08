@@ -5,6 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
+
+
+
+
 import javax.servlet.RequestDispatcher;
 // import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pizzicato.model.Pizza;
+import pizzicato.model.Tayte;
 import pizzicato.model.dao.PizzaDAO;
 
 /**
@@ -46,6 +51,7 @@ public class Lisaapizza extends HttpServlet {
 		// String pizza_id = request.getParameter("pizza_id");
 		String nimi = request.getParameter("nimi");
 		String hinta = request.getParameter("hinta");
+		String[] taytteet = request.getParameterValues("taytteet");
 		
 		double hintaa = Double.parseDouble(hinta);
 		// int pizza_idInt = Integer.parseInt(pizza_id);
@@ -55,6 +61,15 @@ public class Lisaapizza extends HttpServlet {
 		Pizza pizza = new Pizza();
 		pizza.setHinta(hintaa);
 		pizza.setNimi(nimi);
+		// TÄSSÄ alla on jotain vikaa, mutta ei haisua että MITÄ
+		for (int i = 0; i < taytteet.length; i++) {
+			Tayte tayte = new Tayte(
+					);
+			String idstr = taytteet[i];
+			int tid = new Integer(idstr);
+			tayte.setTayte_id(tid);
+			pizza.addTayte(tayte);
+		}
 		// pizza.setPizza_id(pizza_idInt);
 
 		

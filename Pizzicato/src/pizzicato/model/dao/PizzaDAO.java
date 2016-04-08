@@ -28,6 +28,18 @@ public class PizzaDAO extends DataAccessObject {
 			stmtInsert.setDouble(2, pizza.getHinta());
 			stmtInsert.executeUpdate();
 			
+			for (int i = 0; i < pizza.getTaytteet().size(); i++) {
+				
+			Tayte tayte = pizza.getTaytteet().get(i);
+			
+			sqlInsert = "INSERT INTO pizzantayte(pizza_id, tayte_id) VALUES (?, ?)";
+			stmtInsert = connection.prepareStatement(sqlInsert);
+			stmtInsert.setInt(1, pizza.getPizza_id());
+			stmtInsert.setInt(2, tayte.getTayte_id());
+			stmtInsert.executeUpdate();
+			
+			}
+			
 			System.out.println("Rows inserted succesfully!");
 			
 		} catch (SQLException e) {
@@ -93,7 +105,7 @@ public class PizzaDAO extends DataAccessObject {
 			// Luodaan yhteys
 			conn = getConnection();
 			// Luodaan komento: haetaan kaikki rivit -taulusta
-			String sqlSelect = "SELECT pizza_id, nimi, hinta FROM pizza WHERE piilotettu = 1;";
+			String sqlSelect = "SELECT p.pizza_id, p.nimi, p.hinta, t.tayte_id, t.tayte FROM pizza p JOIN pizzantayte x ON x.pizza_id = p.pizza_id JOIN tayte t ON t.tayte_id = x.tayte_id WHERE p.piilotettu = '1';";
 			// Valmistellaan komento:
 			stmt = conn.prepareStatement(sqlSelect);
 			// Lähetetään komento:
@@ -119,6 +131,9 @@ public class PizzaDAO extends DataAccessObject {
 				int pizza_id = rs.getInt("pizza_id");
 				String nimi = rs.getString("nimi");
 				double hinta = rs.getDouble("hinta");
+				
+				// Tässä pitäisi olla myös ArrayList pizza.javasta ?? ja return new alla pitäisi olla myös ko arraylist?
+				
 				//  Luodaan ja palautetaan uusi pizza
 				return new Pizza(pizza_id, nimi, hinta);
 			} catch (SQLException e) {
@@ -169,6 +184,10 @@ public class PizzaDAO extends DataAccessObject {
 			PreparedStatement pstmt = null;
 			try {
 				conn = getConnection();
+				
+				// Delete pitäisi lisätä tähän myös pizzantäytteeseen ??
+				// "DELETE FROM pizzantayte WHERE pizza_id = ?"
+				
 				String sql = "DELETE FROM pizza WHERE pizza_id = ?";
 				pstmt = conn.prepareStatement(sql);
 				int p;
@@ -177,6 +196,16 @@ public class PizzaDAO extends DataAccessObject {
 				if (p != 1) {
 					System.out.print("virhe");
 				}
+				
+				sql = "DELETE FROM pizzantayte WHERE pizza_id = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, pizza_id);
+				p = pstmt.executeUpdate();
+				if (p != 1) {
+					System.out.print("virhe");
+				}
+				
+				
 				pstmt.close();
 
 			} catch (SQLException e) {
