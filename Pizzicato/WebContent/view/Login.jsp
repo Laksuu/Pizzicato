@@ -15,8 +15,21 @@
 
 </head>
 <body>
-
 <div class="keho">
+		<div class="header">
+
+			<img src="Pizzicato.png" class="kuva1" />
+
+			<!--Navigointipalkin linkkien painikkeet ovat t‰ss‰-->
+			<div id="navigointipalkki">
+				<ul class="paavalikko">
+					<li><a class="active" href="Etusivu">Etusivu</a></li>
+					<li><a href="Ostoskori">Ostoskori</a></li>
+					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
+				</ul>
+			</div>
+
+		</div>
 <br>
 <br>
 <h1>Kirjaudu sis‰‰n</h1>

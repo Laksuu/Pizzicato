@@ -15,13 +15,12 @@ import pizzicato.model.Tayte;
 import pizzicato.model.dao.PizzaDAO;
 import pizzicato.model.dao.TayteDAO;
 
-/**
- * Servlet implementation class Etusivu
- */
+
+
 @WebServlet("/Etusivu")
 public class Etusivu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    /** testi testi**/
+
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
