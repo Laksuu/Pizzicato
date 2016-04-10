@@ -114,7 +114,7 @@
 					<th></th>
 				</tr>
 
-				<tkeho> <% 
+				 <% 
 				Pizza pizza;
 				Tayte tayte;
  		for (int i = 0; i < pizzat.size(); i++) {
@@ -135,12 +135,27 @@
 				 </div>
 					  </td>
 					<td><%=pizza.getHinta()%>€</td>
-					<td><form action="pizzat" method="POST">
+					<td>Määrä: <select name="lkm">
+											<option value="1">1 kpl</option>
+											<option value="2">2 kpl</option>
+											<option value="3">3 kpl</option>
+											<option value="4">4 kpl</option>
+											<option value="5">5 kpl</option>
+											<option value="6">6 kpl</option>
+											<option value="7">7 kpl</option>
+											<option value="8">8 kpl</option>
+											<option value="9">9 kpl</option>
+									</select></td>
+									<td class="pmauste"><input type="checkbox" name="oregano"
+										value="1"> Oregano </td>
+					<td>
+					
+					<form action="pizzat" method="POST">
 							<input type=submit name="submit-button" class="submit-button"
 								value="Ostoskoriin" />
 						</form></td>
 				</tr>
-				</tkeho>
+				
 				<%
 					}
 				%>
