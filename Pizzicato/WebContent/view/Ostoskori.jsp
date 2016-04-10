@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,21 +13,60 @@
 <title>Ostoskori sivu</title>
 </head>
 <body>
+
+
+<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
+			<div id="Login">
+					<c:choose>
+					
+					<c:when test="${Username != null}">
+							<h1> <c:out value="${sessionScope.Kayttaja.getUsername()}"></c:out> </h1>
+							<div> <a href="Logout"> Kirjaudu ulos </a> </div>
+						</c:when>
+						
+						<c:otherwise>
+						<form method=post action="Login" id="kirjaudu_form" >
+							<div id="username">
+								<div> <input placeholder=username name=username required /> </div>
+							</div>
+							<div id="password"> 
+								<div> <input placeholder=password name=password type=password required /> </div>
+							</div>
+							<div id="submit"> 
+								<div> <button type=submit> Kirjaudu </button> </div>
+							</div> 
+						</form>
+						<div class="error">
+							<p style="color:crimson"> <c:out value="${error}"></c:out></p>
+						</div>
+						</c:otherwise>
+						
+					</c:choose>
+			</div>
+
 <div class="keho">
 		<div class="header">
 
 			<img src="Pizzicato.png" class="kuva1" />
 
-			<!--Navigointipalkin linkkien painikkeet ovat tässä-->
+				<!--Navigointipalkin linkkien painikkeet ovat tässä-->	
 			<div id="navigointipalkki">
 				<ul class="paavalikko">
 					<li><a class="active" href="Etusivu">Etusivu</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
+					<li>	<c:choose>
+							<c:when test="${Username != null}">
+						<a href="Muokkaussivu">Muokkaussivu  </a>
+							</c:when>
+							</c:choose>
+					
+				
 				</ul>
 			</div>
 
 		</div>
+
 <br>
 
 

@@ -20,12 +20,19 @@
 
 			<img src="Pizzicato.png" class="kuva1" />
 
-			<!--Navigointipalkin linkkien painikkeet ovat tässä-->
+			<!--Navigointipalkin linkkien painikkeet ovat tässä-->	
 			<div id="navigointipalkki">
 				<ul class="paavalikko">
 					<li><a class="active" href="Etusivu">Etusivu</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
+					<li>	<c:choose>
+							<c:when test="${Username != null}">
+						<a href="Muokkaussivu">Muokkaussivu  </a>
+							</c:when>
+							</c:choose>
+					
+				
 				</ul>
 			</div>
 

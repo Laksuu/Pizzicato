@@ -44,7 +44,6 @@ public class Login extends HttpServlet {
        Kayttaja kayttaja = new KayttajaDAO().findByUsername(username);
        if (kayttaja == null)
        {
-          
           req.setAttribute("message", "Tarkista käyttäjätunnus ja salasana.");
           jsp.forward(req, resp);
           return;
@@ -60,18 +59,21 @@ public class Login extends HttpServlet {
        }
 
        HttpSession session = req.getSession();
-       Long userId = kayttaja.getId();
-       session.setAttribute("userId", userId);
-     
-       if (username.equals("admin")){
-       String url = "Muokkaussivu";
+       String Username = kayttaja.getUsername();
+       session.setAttribute("Username", Username);
+       System.out.println("TESTINGGGGGGGGG");
+       String url = "Etusivu";
        resp.sendRedirect(url);
-      }
-      else {
-    	  String url = "Etusivu";
-       resp.sendRedirect(url);
-       }
+       System.out.println(Username);
        
+      session = req.getSession(false);
+       if (session == null || session.getAttribute("Username") == null) {
+           // user is not logged in, do something about it
+       } else {
+           // user IS logged in, do something: set model or do whatever you need
+       }
+      
+      
     }
       
     
