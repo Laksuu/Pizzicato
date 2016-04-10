@@ -99,8 +99,11 @@ public class PizzaDAO extends DataAccessObject {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		List<Pizza> pizzat = new ArrayList<Pizza>();
+		ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
 		Pizza pizza = null; 
+		int edellinenPizzaId = 0;
+		int nykyinenPizzaId = 0;
+		Tayte tayte = null;
 		try {
 			// Luodaan yhteys
 			conn = getConnection();
@@ -112,9 +115,19 @@ public class PizzaDAO extends DataAccessObject {
 			rs = stmt.executeQuery(sqlSelect);
 			// Käydään tulostaulun rivit läpi ja luetaan read()-metodilla:
 			while (rs.next()) {
-				pizza = readPizza(rs);
-				// lisätään pizza listaan
-				pizzat.add(pizza);
+				nykyinenPizzaId = rs.getInt("pizza_id");
+				
+				// -> jos pizza_id vaihtuu tee uusi pizzaolio
+				if (nykyinenPizzaId != edellinenPizzaId){
+					pizza = readPizza(rs);
+					// lisätään pizza listaan
+					pizzat.add(pizza);
+					edellinenPizzaId = nykyinenPizzaId;
+				} 
+				// -> tee uusi täyteolio
+				tayte = readTayte(rs);
+				// -> lisää täyteolio pizzan täytelistaan (arraylist pizza.java -> add metodi pizzaluokassa)
+				pizza.addTayte(tayte);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

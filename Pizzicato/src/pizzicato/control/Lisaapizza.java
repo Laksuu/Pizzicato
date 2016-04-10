@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 
 
+
 import javax.servlet.RequestDispatcher;
 // import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import pizzicato.model.Pizza;
 import pizzicato.model.Tayte;
 import pizzicato.model.dao.PizzaDAO;
+import pizzicato.model.dao.TayteDAO;
 
 /**
  * Servlet implementation class Lisaapizza
@@ -61,17 +63,13 @@ public class Lisaapizza extends HttpServlet {
 		Pizza pizza = new Pizza();
 		pizza.setHinta(hintaa);
 		pizza.setNimi(nimi);
-		// TÄSSÄ alla on jotain vikaa, mutta ei haisua että MITÄ
-		for (int i = 0; i < taytteet.length; i++) {
-			Tayte tayte = new Tayte(
-					);
-			String idstr = taytteet[i];
-			int tid = new Integer(idstr);
-			tayte.setTayte_id(tid);
-			pizza.addTayte(tayte);
-		}
-		// pizza.setPizza_id(pizza_idInt);
-
+		System.out.println(pizza);
+		
+		String taytenimi = request.getParameter("tayte");
+	
+		
+		Tayte tayte = new Tayte();
+		tayte.setTayte(taytenimi);
 		
 		try{
 			pizzadao.addPizza(pizza);
