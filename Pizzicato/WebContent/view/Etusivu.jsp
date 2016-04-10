@@ -34,10 +34,11 @@
 			<div id="navigointipalkki">
 				<ul class="paavalikko">
 					<li><a class="active" href="Etusivu">Etusivu</a></li>
-					<li><a href="Muokkaussivu">Muokkaussivu</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><a href="Login">Kirjaudu sisään</a> 
+					<li><a href="Logout">Kirjaudu ulos</a>
+				
 				</ul>
 			</div>
 

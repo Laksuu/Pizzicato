@@ -30,10 +30,11 @@
 			<div id="navigointipalkki">
 				<ul class="paavalikko">
 					<li><a href="Etusivu">Etusivu</a></li>
-					<li><a class="active" href="Muokkaussivu">Muokkaussivu</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><a href="Logout">Kirjaudu ulos</a>
+				
+				
 				</ul>
 			</div>
 
@@ -51,12 +52,25 @@
 
 
 			<%
+			Pizza pizza;
+			Tayte tayte;
+			
 				for (int i = 0; i < pizzat.size(); i++) {
+					pizza=pizzat.get(i);
 			%>
 			<tr>
 				<td><%=i + 1%></td>
-				<td><%=pizzat.get(i).getNimi()%></td>
-				<td><%=pizzat.get(i).getHinta()%></td>
+				<td><%=pizza.getNimi()%> <br> <div class="pienempifontti">
+					
+				 <%
+				 for (int t = 0; t < pizza.getTayteMaara(); t++ ){
+					 tayte=pizza.getTayte(t);
+					 %>
+					 <%=tayte.getTayte()%>
+				<% }
+				 %>
+				 </div></td>
+				<td><%=pizza.getHinta()%></td>
 
 				<td>
 					<form action="/Pizzicato/PiilotaPizza" method="POST">
@@ -97,11 +111,23 @@
 			<jsp:useBean id="piilopizzat" type="java.util.ArrayList<Pizza>"
 				scope="request" />
 			<%
+			
+			
 				for (int i = 0; i < piilopizzat.size(); i++) {
+					pizza=pizzat.get(i);
 			%>
 			<tr>
 				<td><%=i + 1%></td>
-				<td><%=piilopizzat.get(i).getNimi()%></td>
+				<td><%=piilopizzat.get(i).getNimi()%><br> <div class="pienempifontti">
+					
+				 <%
+				 for (int t = 0; t < pizza.getTayteMaara(); t++ ){
+					 tayte=pizza.getTayte(t);
+					 %>
+					 <%=tayte.getTayte()%>
+				<% }
+				 %>
+				 </div></td>
 				<td><%=piilopizzat.get(i).getHinta()%></td>
 
 				<td>
@@ -141,7 +167,7 @@
 					<td id="piilossa" style="display: none;"><%=i + 1%></td>
 					<td></td>
 					<td><input type="checkbox" name=tayte value="Tid"><%=taytteet.get(i).getTayte()%></td>
-
+					
 					<%
 						}
 					%>
