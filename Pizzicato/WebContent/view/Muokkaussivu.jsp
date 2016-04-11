@@ -200,7 +200,7 @@
 				<tr>
 					<td id="piilossa" style="display: none;"><%=i + 1%></td>
 					<td></td>
-					<td><input type="checkbox" name=taytteet value="Tid"><%=taytteet.get(i).getTayte()%></td>
+					<td><input type="checkbox" name=taytteet value="<%=taytteet.get(i).getTayte_id()%>"><%=taytteet.get(i).getTayte()%></td>
 					
 					<%
 						}

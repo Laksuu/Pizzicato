@@ -65,11 +65,19 @@ public class Lisaapizza extends HttpServlet {
 		pizza.setNimi(nimi);
 		System.out.println(pizza);
 		
-		String taytenimi = request.getParameter("tayte");
+		//String taytenimi = request.getParameter("tayte");
+		for (int i = 0; i < taytteet.length; i++) {
+			 			Tayte tayte = new Tayte(
+			 					);
+			 			String idstr = taytteet[i];
+						int tid = new Integer(idstr);
+			 			tayte.setTayte_id(tid);
+			 			pizza.addTayte(tayte);
+			 		}
 	
 		
-		Tayte tayte = new Tayte();
-		tayte.setTayte(taytenimi);
+		//Tayte tayte = new Tayte();
+		//tayte.setTayte(taytenimi);
 		
 		try{
 			pizzadao.addPizza(pizza);

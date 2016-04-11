@@ -28,14 +28,15 @@ public class PizzaDAO extends DataAccessObject {
 			stmtInsert.setDouble(2, pizza.getHinta());
 			stmtInsert.executeUpdate();
 			
+			
+			
 			for (int i = 0; i < pizza.getTaytteet().size(); i++) {
 				
 			Tayte tayte = pizza.getTaytteet().get(i);
 			
-			sqlInsert = "INSERT INTO pizzantayte(pizza_id, tayte_id) VALUES (?, ?)";
+			sqlInsert = "INSERT INTO pizzantayte(pizza_id, tayte_id) VALUES (last_insert_id(), ?)";
 			stmtInsert = connection.prepareStatement(sqlInsert);
-			stmtInsert.setInt(1, pizza.getPizza_id());
-			stmtInsert.setInt(2, tayte.getTayte_id());
+			stmtInsert.setInt(1, tayte.getTayte_id());
 			stmtInsert.executeUpdate();
 			
 			}
