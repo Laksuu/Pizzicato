@@ -15,13 +15,14 @@ import pizzicato.model.dao.PizzaDAO;
  */
 @WebServlet("/NaytaPiilotetutPizzat")
 public class NaytaPiilotetutPizzat extends HttpServlet {
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String idIn = request.getParameter("id");
 		int id = Integer.parseInt(idIn);
 		PizzaDAO pizzadao = new PizzaDAO();
 		pizzadao.poistaPiilotus(id);
-		
-		String page ="/Pizzicato/Muokkaussivu";
+
+		String page = "/Pizzicato/Muokkaussivu";
 		response.sendRedirect(page);
 	}
 }

@@ -38,7 +38,4 @@ public class Kayttaja {
 		this.logtype = logtype;
 	}
 
-
-
-
 }

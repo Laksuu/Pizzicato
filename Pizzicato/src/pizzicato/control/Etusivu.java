@@ -15,42 +15,35 @@ import pizzicato.model.Tayte;
 import pizzicato.model.dao.PizzaDAO;
 import pizzicato.model.dao.TayteDAO;
 
-
-
 @WebServlet("/Etusivu")
 public class Etusivu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
 		// Luodaan pizzatDAO ja käsketään hakemaan kaikki jutut
 		PizzaDAO pizzatDAO = new PizzaDAO();
-		ArrayList<Pizza> Pizzat = pizzatDAO.findAll(); 
+		ArrayList<Pizza> Pizzat = pizzatDAO.findAll();
 		TayteDAO taytteetDAO = new TayteDAO();
 		ArrayList<Tayte> Taytteet = taytteetDAO.findAll();
 
-		
 		// Talletetaan request-olion alle henkilölista, jotta tiedot ovat
 		// käytössä jsp:llä
-		request.setAttribute("pizzat", Pizzat); 
+		request.setAttribute("pizzat", Pizzat);
 		request.setAttribute("taytteet", Taytteet);
-		
-		
+
 		// lähetä selaimelta tullut pyyntö servletiltä edelleen jsp:lle
 		String jsp = "/view/Etusivu.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(
 				jsp);
 		dispather.forward(request, response);
-		
-		
+
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 	}
 
 }
-

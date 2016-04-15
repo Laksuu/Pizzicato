@@ -10,22 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 import pizzicato.model.Pizza;
 import pizzicato.model.dao.PizzaDAO;
 
-
-
-
 @WebServlet("/Poistapizza")
 public class Poistapizza extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	
+
 		int pizza_id;
 		String pizza_idstr;
-		
-		try 
-		{
+
+		try {
 			pizza_idstr = request.getParameter("pizza_id");
 			pizza_id = Integer.parseInt(request.getParameter("pizza_id"));
 		} catch (NumberFormatException e) {
@@ -34,11 +30,9 @@ public class Poistapizza extends HttpServlet {
 		}
 		PizzaDAO dao = new PizzaDAO();
 		dao.poista(pizza_id);
-		
+
 		String page = "Muokkaussivu";
 		response.sendRedirect(page);
 	}
-
-
 
 }

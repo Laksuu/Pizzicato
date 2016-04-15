@@ -1,29 +1,29 @@
 package pizzicato.model;
 
 public class Tayte {
-	
+
 	int tayte_id;
 	double tayte_hinta;
 	String tayte;
-	
-	//construktorit
-	
+
+	// construktorit
+
 	public Tayte(int tayte_id, double tayte_hinta, String tayte) {
 		super();
 		this.tayte_id = tayte_id;
 		this.tayte_hinta = tayte_hinta;
 		this.tayte = tayte;
 	}
-	
-	public Tayte(){
+
+	public Tayte() {
 		super();
 		this.tayte_id = 0;
 		this.tayte_hinta = 0.00;
 		this.tayte = "";
 	}
 
-	//getterit ja setterit
-	
+	// getterit ja setterit
+
 	public int getTayte_id() {
 		return tayte_id;
 	}
@@ -48,12 +48,11 @@ public class Tayte {
 		this.tayte = tayte;
 	}
 
-	//tostring
-	
+	// tostring
+
 	public String toString() {
 		return "Tayte [tayte_id=" + tayte_id + ", tayte_hinta=" + tayte_hinta
 				+ ", tayte=" + tayte + "]";
 	}
-	
-	
+
 }

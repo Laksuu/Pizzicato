@@ -15,14 +15,15 @@ import pizzicato.model.dao.TayteDAO;
  */
 @WebServlet("/NaytaPiilotetutTaytteet")
 public class NaytaPiilotetutTaytteet extends HttpServlet {
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String idIn = request.getParameter("tid");
 		int tid = Integer.parseInt(idIn);
 		TayteDAO taytedao = new TayteDAO();
 		taytedao.poistaPiilotustayte(tid);
-		
-		String page ="/Pizzicato/Muokkaussivu";
+
+		String page = "/Pizzicato/Muokkaussivu";
 		response.sendRedirect(page);
 	}
 
