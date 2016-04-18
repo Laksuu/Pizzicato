@@ -1,4 +1,4 @@
-DROP TABLE tilausrivi;
+DROP TABLE yhdenpizzantilaus;
 DROP TABLE tilaus;
 DROP TABLE asiakas;
 DROP TABLE pizzantayte;
@@ -30,30 +30,28 @@ FOREIGN KEY (pizza_id) REFERENCES pizza (pizza_id)
 )Engine="InnoDB";
 
 CREATE TABLE asiakas(
-asiakas_id int NOT NULL AUTO_INCREMENT,
+asiakas_id varchar(12) NOT NULL,
 nimi varchar(30) NOT NULL,
 osoite varchar(30) NOT NULL,
 puh int(10) NOT NULL,
+maksutiedot varchar(30),
 sposti varchar(30) NOT NULL,
 PRIMARY KEY (asiakas_id)
 )Engine="InnoDB";
 
 CREATE TABLE tilaus(
-tilaus_id int NOT NULL AUTO_INCREMENT,
-asiakas_id int,
-pvm TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-toimitus boolean NOT NULL default 0,
-maksu boolean NOT NULL default 0,
+tilaus_id varchar(12) NOT NULL,
+asiakas_id varchar(12),
+tilauksen_sisalto varchar(50) NOT NULL,
+toimitus varchar(10) NOT NULL,
 PRIMARY KEY (tilaus_id),
 FOREIGN KEY (asiakas_id) REFERENCES asiakas (asiakas_id)
 )Engine="InnoDB";
 
-CREATE TABLE tilausrivi(
-tilausrivi_id int NOT NULL AUTO_INCREMENT,
+CREATE TABLE yhdenpizzantilaus(
+tilaus_id varchar(12) NOT NULL,
 pizza_id int NOT NULL,
-tilaus_id int NOT NULL,
-maara int NOT NULL,
-PRIMARY KEY (tilausrivi_id, tilaus_id),
+PRIMARY KEY (tilaus_id, pizza_id),
 FOREIGN KEY (tilaus_id) REFERENCES tilaus (tilaus_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza (pizza_id)
 )Engine="InnoDB";

@@ -1,0 +1,11 @@
+tilaus -> toimitus
+0 = nouto
+1 = kotiinkuljetus
+
+tilaus -> maksu
+0 = käteinen
+1 = kortti
+
+piilotettu
+0 = ei
+1 = kyllä
