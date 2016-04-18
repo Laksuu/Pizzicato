@@ -9,3 +9,9 @@ tilaus -> maksu
 piilotettu
 0 = ei
 1 = kyllä
+
+extramauste int
+ESIM
+1 = valkosipuli
+2 = oregano
+3 = ...

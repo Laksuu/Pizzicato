@@ -53,6 +53,7 @@ tilausrivi_id int NOT NULL AUTO_INCREMENT,
 pizza_id int NOT NULL,
 tilaus_id int NOT NULL,
 maara int NOT NULL,
+extramauste int,
 PRIMARY KEY (tilausrivi_id, tilaus_id),
 FOREIGN KEY (tilaus_id) REFERENCES tilaus (tilaus_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza (pizza_id)
