@@ -9,6 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import pizzicato.model.Pizza;
+import pizzicato.model.dao.PizzaDAO;
 
 /**
  * Servlet implementation class Ostoskori
@@ -32,9 +36,14 @@ public class Ostoskori extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
+		HttpSession session = request.getSession();
+		Ostoskori kori = (Ostoskori) session.getAttribute("kori");
+	
 		
-		
-		
+		if (request.getParameter("pizza_id").equals("add")) {
+			if (kori == null) {
+				kori = new Ostoskori();
+			}
 		
 		String strid = request.getParameter("pizza_id");
 		String strlkm = request.getParameter("lkm");
@@ -47,9 +56,23 @@ public class Ostoskori extends HttpServlet {
 		System.out.print("Pizzan id:"+pizza_id);
 		System.out.print("Pizzan id:"+strid);
 		System.out.print("Pizzan lukum‰‰r‰:"+strlkm);
+
+		
+		String valittuOregano = request.getParameter("oregano");
+		
+		boolean oregano = false;
+		
+		if (valittuOregano != null) {
+			oregano = true;
+		}
 		
 		
+		
+		PizzaDAO pizzadao = new PizzaDAO();
+		
+		
+		Pizza uusiPizza = pizzadao.etsiPizza(pizza_id);
 	
 	}
 
-}
+}}
