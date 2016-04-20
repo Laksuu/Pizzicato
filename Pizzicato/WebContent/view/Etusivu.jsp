@@ -175,7 +175,10 @@
 											<option value="7">7 kpl</option>
 											<option value="8">8 kpl</option>
 											<option value="9">9 kpl</option>
-									</select></td>
+									</select><input type="hidden" name="action" value="add">
+									
+									
+									</td>
 									<td class="pmauste"><input type="checkbox" name="oregano"
 										value="1"> Oregano </td>
 					<td>

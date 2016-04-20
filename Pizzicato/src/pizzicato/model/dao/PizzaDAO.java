@@ -270,6 +270,39 @@ public class PizzaDAO extends DataAccessObject {
 		}
 	}
 
+	
+public Pizza etsiPizza(int pizza_id){
+	
+
+Pizza pizza = null;
+Connection conn = null;
+PreparedStatement pstmt = null;	
+try {
+	// avataan yhteys tietokantaan
+	conn = getConnection();
+
+	// Luodaan sql stringistä statement ja suoritetaan sql haku
+	String sql = "SELECT pizza_id, nimi, hinta FROM pizza where pizza_id = ?";
+		
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setInt(1, pizza_id);
+
+	ResultSet rs = pstmt.executeQuery();
+	
+	while (rs.next()) {
+		
+		pizza = new Pizza(rs.getInt("pizza_id"), rs.getString("nimi"),rs.getDouble("hinta"));
+		}
+	
+} catch (SQLException e) { throw new RuntimeException(e); } finally {
+ close(pstmt, conn);} // Suljetaan statement ja yhteys
+ 
+ close(pstmt, conn);
+	// palautetaan saatu tulos
+	
+	return pizza;
+}
+
 }
 
 // String sql = "UPDATE pizza SET nimi='?', hinta='?' WHERE pizza_id='?'";
