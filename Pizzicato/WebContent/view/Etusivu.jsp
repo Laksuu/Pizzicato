@@ -135,7 +135,7 @@
 
 
 			
-<form action="Ostoskori" method="POST">
+
 			<table class="taulukko">
 
 
@@ -151,7 +151,7 @@
  		for (int i = 0; i < pizzat.size(); i++) {
  			pizza=pizzat.get(i); %>
 				<tr>
-					<td><%=i + 1%></td>
+					<td><form action="Ostoskori" method="POST"><%=i + 1%></td>
 					<td><%=pizza.getNimi()%> <br> <div class="pienempifontti">
 					
 				 <%
@@ -182,7 +182,7 @@
 					
 					<input type=hidden name=pizza_id value=<%=pizza.getPizza_id()%> />
 					</td><td>
-							<button class="nappula" type="submit" value="add">Tilaa</button>
+							<button class="nappula" type="submit" value="add">Tilaa</button></form>
 						</td>
 				</tr>
 				
@@ -190,11 +190,11 @@
 					}
 				%>
 			</table>
-</form>
+
 		
 
 <form action="Ostoskori" method="POST">
-<input type=text name=nimi />
+<input type=hidden name=nimi value="4"/>
 <button class="nappula" type="submit" value="add">Tilaa</button>
 </form>
 
