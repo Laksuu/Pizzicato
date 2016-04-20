@@ -2,87 +2,93 @@ package pizzicato.model;
 
 public class Asiakas {
 
-	String etunimi;
-	String sukunimi;
-	String osoite;
-	String postinmr;
-	String puh;
-	String sposti;
-
-	public Asiakas(String etunimi, String sukunimi, String osoite,
-			String postinmr, String puh, String sposti) {
+	private int asiakas_id;
+	private String nimi;
+	private String osoite;
+	private int puh;
+	private String sposti;
+	
+	
+	public Asiakas(int asiakas_id, String nimi, String osoite, int puh,
+			String sposti) {
 		super();
-		this.etunimi = etunimi;
-		this.sukunimi = sukunimi;
+		this.asiakas_id = asiakas_id;
+		this.nimi = nimi;
 		this.osoite = osoite;
-		this.postinmr = postinmr;
 		this.puh = puh;
 		this.sposti = sposti;
 	}
 
+
 	public Asiakas() {
-		this.etunimi = "";
-		this.sukunimi = "";
-		this.osoite = "";
-		this.postinmr = "";
-		this.puh = "";
-		this.sposti = "";
-
+		super();
+		this.asiakas_id = 0;
+		this.nimi = null;
+		this.osoite = null;
+		this.puh = 0;
+		this.sposti = null;
 	}
 
-	public String getEtunimi() {
-		return etunimi;
+
+	public int getAsiakas_id() {
+		return asiakas_id;
 	}
 
-	public void setEtunimi(String etunimi) {
-		this.etunimi = etunimi;
+
+	public void setAsiakas_id(int asiakas_id) {
+		this.asiakas_id = asiakas_id;
 	}
 
-	public String getSukunimi() {
-		return sukunimi;
+
+	public String getNimi() {
+		return nimi;
 	}
 
-	public void setSukunimi(String sukunimi) {
-		this.sukunimi = sukunimi;
+
+	public void setNimi(String nimi) {
+		this.nimi = nimi;
 	}
+
 
 	public String getOsoite() {
 		return osoite;
 	}
 
+
 	public void setOsoite(String osoite) {
 		this.osoite = osoite;
 	}
 
-	public String getPostinmr() {
-		return postinmr;
-	}
 
-	public void setPostinmr(String postinmr) {
-		this.postinmr = postinmr;
-	}
-
-	public String getPuh() {
+	public int getPuh() {
 		return puh;
 	}
 
-	public void setPuh(String puh) {
+
+	public void setPuh(int puh) {
 		this.puh = puh;
 	}
+
 
 	public String getSposti() {
 		return sposti;
 	}
 
+
 	public void setSposti(String sposti) {
 		this.sposti = sposti;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Asiakas [etunimi=" + etunimi + ", sukunimi=" + sukunimi
-				+ ", osoite=" + osoite + ", postinmr=" + postinmr + ", puh="
-				+ puh + ", sposti=" + sposti + "]";
+		return "Asiakas [asiakas_id=" + asiakas_id + ", nimi=" + nimi
+				+ ", osoite=" + osoite + ", puh=" + puh + ", sposti=" + sposti
+				+ "]";
 	}
+	
+	
+	
+	
 
 }

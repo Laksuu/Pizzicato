@@ -20,14 +20,12 @@ public class AsiakasDAO extends DataAccessObject {
 			// Luodaan yhteys ja aloitetaan transaktio:
 			connection = getConnection();
 			// Luodaan uusi asiakas tietokantaan:
-			String sqlInsert = "INSERT INTO asiakas(etunimi, sukunimi, osoite, postinmr, puh, sposti) VALUES (?, ?, ?, ?, ?,?)";
+			String sqlInsert = "INSERT INTO asiakas(nimi, osoite, puh, sposti) VALUES (?, ?, ?, ?)";
 			stmtInsert = connection.prepareStatement(sqlInsert);
-			stmtInsert.setString(1, asiakas.getEtunimi());
-			stmtInsert.setString(2, asiakas.getSukunimi());
-			stmtInsert.setString(3, asiakas.getOsoite());
-			stmtInsert.setString(4, asiakas.getPostinmr());
-			stmtInsert.setString(5, asiakas.getPuh());
-			stmtInsert.setString(6, asiakas.getSposti());
+			stmtInsert.setString(1, asiakas.getNimi());
+			stmtInsert.setString(2, asiakas.getOsoite());
+			stmtInsert.setInt(3, asiakas.getPuh());
+			stmtInsert.setString(4, asiakas.getSposti());
 
 			stmtInsert.executeUpdate();
 
@@ -50,7 +48,7 @@ public class AsiakasDAO extends DataAccessObject {
 			// Luodaan yhteys
 			conn = getConnection();
 			// Luodaan komento: haetaan kaikki rivit -taulusta
-			String sqlSelect = "SELECT etunimi, sukunimi, osoite, postinmr, puh, sposti FROM asiakas;";
+			String sqlSelect = "SELECT asiakas_id, nimi, osoite, puh, sposti FROM asiakas;";
 			// Valmistellaan komento:
 			stmt = conn.prepareStatement(sqlSelect);
 			// Lähetetään komento:
@@ -74,17 +72,16 @@ public class AsiakasDAO extends DataAccessObject {
 		try {
 			// Haetaan yhden henkilön tiedot kyselyn tulostaulun
 			// (ResultSet-tyyppinen rs-olion) aktiiviselta tietoriviltä
-			String etunimi = rs.getString("etunimi");
-			String sukunimi = rs.getString("sukunimi");
-			String osoite = rs.getString("vastaaja");
-			String postinmr = rs.getString("kysymys_id");
-			String puh = rs.getString("puh");
+			int asiakas_id = rs.getInt("asiakas_id");
+			String nimi = rs.getString("nimi");
+			String osoite = rs.getString("osoite");
+			int puh = rs.getInt("puh");
 			String sposti = rs.getString("sposti");
 
-			// etunimi, sukunimi, osoite, postinmr, puh
+			// asiakas_id, nimi, osoite, puh, sposti
 
 			// Luodaan ja palautetaan uusi asiakas
-			return new Asiakas(etunimi, sukunimi, osoite, postinmr, puh, sposti);
+			return new Asiakas(asiakas_id, nimi, osoite, puh, sposti);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

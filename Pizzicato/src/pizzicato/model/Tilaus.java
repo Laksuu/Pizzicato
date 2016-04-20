@@ -105,6 +105,11 @@ public class Tilaus {
 		return 0;
 	}
 	
+	//ei periaatteessa tarpeen, mutta laitoin kuitenkin... alla siis
+	public ArrayList<Tilausrivi> getTilausrivit(){
+		return this.tilausrivit;
+	}
+	
 	@Override
 	public String toString() {
 		return "Tilaus [tilaus_id=" + tilaus_id + ", asiakas=" + asiakas
