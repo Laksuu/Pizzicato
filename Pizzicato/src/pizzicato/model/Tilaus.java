@@ -86,7 +86,7 @@ public class Tilaus {
 	}
 	
 	
-
+// pizza.java mukaillen addTayte ja getTayte (arraylist gettaytteet??) allaolevat turhia
 
 	public ArrayList<Tilausrivi> getTilausrivit() {
 		return tilausrivit;
@@ -98,6 +98,7 @@ public class Tilaus {
 	}
 
 
+	
 	@Override
 	public String toString() {
 		return "Tilaus [tilaus_id=" + tilaus_id + ", asiakas=" + asiakas
