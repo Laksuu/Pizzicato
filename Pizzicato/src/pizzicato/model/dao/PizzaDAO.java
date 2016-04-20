@@ -287,7 +287,7 @@ try {
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setInt(1, pizza_id);
 
-	ResultSet rs = ((PreparedStatement) conn).executeQuery();
+	ResultSet rs = pstmt.executeQuery();
 	
 	while (rs.next()) {
 		
@@ -302,6 +302,7 @@ try {
 	
 	return pizza;
 }
+
 }
 
 // String sql = "UPDATE pizza SET nimi='?', hinta='?' WHERE pizza_id='?'";

@@ -35,44 +35,39 @@ public class Ostoskori extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	
-		HttpSession session = request.getSession();
-		Ostoskori kori = (Ostoskori) session.getAttribute("kori");
-	
-		
-		if (request.getParameter("pizza_id").equals("add")) {
-			if (kori == null) {
-				kori = new Ostoskori();
-			}
-		
+		/*
+		 * HttpSession session = request.getSession(); Ostoskori kori =
+		 * (Ostoskori) session.getAttribute("kori");
+		 * 
+		 * 
+		 * if (request.getParameter("pizza_id").equals("add")) { if (kori ==
+		 * null) { kori = new Ostoskori(); }
+		 */
 		String strid = request.getParameter("pizza_id");
 		String strlkm = request.getParameter("lkm");
-		
+
 		// muunna string-tiedot luvuiksi
 		int pizza_id = new Integer(strid);
 		int lkm = new Integer(strlkm);
-		
-		
-		System.out.print("Pizzan id:"+pizza_id);
-		System.out.print("Pizzan id:"+strid);
-		System.out.print("Pizzan lukum‰‰r‰:"+strlkm);
 
-		
+		System.out.print("Pizzan id:" + pizza_id);
+		System.out.print("Pizzan id:" + strid);
+		System.out.print("Pizzan lukum‰‰r‰:" + strlkm);
+
 		String valittuOregano = request.getParameter("oregano");
-		
+
 		boolean oregano = false;
-		
+
 		if (valittuOregano != null) {
 			oregano = true;
 		}
-		
-		
-		
+
 		PizzaDAO pizzadao = new PizzaDAO();
-		
-		
+
 		Pizza uusiPizza = pizzadao.etsiPizza(pizza_id);
-	
+		System.out.print("PIZZA:" + uusiPizza);
+		double rivihinta = lkm * uusiPizza.getHinta();
+
 	}
 
-}}
+}
