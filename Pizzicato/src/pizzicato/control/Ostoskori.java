@@ -31,11 +31,10 @@ public class Ostoskori extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
+	
 		
 		
-		String name = request.getParameter("nimi");
-		System.out.print("Pizzan id:"+name);
+		
 		
 		String strid = request.getParameter("pizza_id");
 		String strlkm = request.getParameter("lkm");
@@ -48,6 +47,9 @@ public class Ostoskori extends HttpServlet {
 		System.out.print("Pizzan id:"+pizza_id);
 		System.out.print("Pizzan id:"+strid);
 		System.out.print("Pizzan lukum‰‰r‰:"+strlkm);
+		
+		
+	
 	}
 
 }
