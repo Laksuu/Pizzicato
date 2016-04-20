@@ -29,7 +29,8 @@ public class TilausDAO extends DataAccessObject {
 			for (int i = 0; i < tilaus.getTilausrivit().size(); i++) {
 				
 				Tilausrivi tilausrivi = tilaus.getTilausrivit().get(i);
-				Pizza pizza = pizza.getPizza_id()
+				Pizza pizza = pizza.getPizza_id();
+				//yläpuolella jotain hämmää... 
 				
 				sqlInsert = "INSERT INTO tilausrivi(tilausrivi_id, pizza_id, tilaus_id, maara, extramauste) VALUES (last_insert_id(),?,?,?.?)";
 				stmtInsert = connection.prepareStatement(sqlInsert);
