@@ -1,6 +1,7 @@
 package pizzicato.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,7 +31,23 @@ public class Ostoskori extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		PrintWriter out = response.getWriter();
+		
+		
+		String name = request.getParameter("nimi");
+		System.out.print("Pizzan id:"+name);
+		
+		String strid = request.getParameter("pizza_id");
+		String strlkm = request.getParameter("lkm");
+		
+		// muunna string-tiedot luvuiksi
+		int pizza_id = new Integer(strid);
+		int lkm = new Integer(strlkm);
+		
+		
+		System.out.print("Pizzan id:"+pizza_id);
+		System.out.print("Pizzan id:"+strid);
+		System.out.print("Pizzan lukum‰‰r‰:"+strlkm);
 	}
 
 }
