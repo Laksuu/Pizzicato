@@ -5,12 +5,12 @@ import java.util.Date;
 
 public class Tilaus {
 
-	int tilaus_id;
-	Asiakas asiakas;
-	public Date pvm;
-	boolean toimitus;
-	boolean maksu;
-	public ArrayList<Tilausrivi> tilausrivit;
+	private int tilaus_id;
+	private Asiakas asiakas;
+	private Date pvm;
+	private boolean toimitus;
+	private boolean maksu;
+	private ArrayList<Tilausrivi> tilausrivit;
 	
 	
 	public Tilaus(int tilaus_id, Asiakas asiakas, Date pvm, boolean toimitus,
@@ -86,18 +86,24 @@ public class Tilaus {
 	}
 	
 	
-// pizza.java mukaillen addTayte ja getTayte (arraylist gettaytteet??) allaolevat turhia
+	// pizza.java mukaillen addTayte ja getTayte yms
+	// arraylist<tayte> rivi 72 pizza.java periaatteessa tarpeeton eikä tässä
 
-	public ArrayList<Tilausrivi> getTilausrivit() {
-		return tilausrivit;
+	public void addTilausrivi(Tilausrivi tilausrivi){
+		tilausrivit.add(tilausrivi);
 	}
-
-
-	public void setTilausrivit(ArrayList<Tilausrivi> tilausrivit) {
-		this.tilausrivit = tilausrivit;
+	
+	public Tilausrivi getTilausrivi(int index){
+		return tilausrivit.get(index);
 	}
-
-
+	
+	public int getTilausriviMaara() {
+		return tilausrivit.size();
+	}
+	
+	public int getTilausrivi_id(){
+		return 0;
+	}
 	
 	@Override
 	public String toString() {
