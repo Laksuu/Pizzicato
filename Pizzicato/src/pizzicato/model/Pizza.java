@@ -67,7 +67,8 @@ public class Pizza {
 	public int getTayteMaara() {
 		return taytteet.size();
 	}
-
+	
+	//allaoleva ei periaatteessa tarpeen
 	public ArrayList<Tayte> getTaytteet() {
 		return this.taytteet;
 	}
