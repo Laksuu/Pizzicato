@@ -29,6 +29,15 @@
 		<div class="header">
 
 			<img src="Pizzicato.png" class="kuva1" />
+			
+			
+			<div class="fixed">
+			<b>Pizzeria Pizzicato
+			<br>Helsinki<br>
+					P. 0500555555</b>
+			<br><a href="Ostoskori">Ostoskori</a>
+			</div>
+			
 
 	<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
 			<div id="Login">
@@ -82,45 +91,7 @@
 			<img src="kuva3.jpg" class="kuva3" /> <img src="pizza.jpg"
 				class="kuva4" /> <img src="tausta.jpg" class="kuva5" />
 		</div>
-		<br>
-		<hr>
-
-		<div id="aukioloajat">
-<div class="teksti">
-			
-			
-				<div class="puhnum">
-			 <h4><b>Helsinki<br>
-						P. 0500555555</b></h4>
-			
-			</div>
-			
-			
-			<h4><b><font size="5">Avoinna</font><br>
-			&nbsp;&nbsp;Ma-pe: 10.00 - 23.00<br>
-			&nbsp;&nbsp;La: 11.00 - 23.00<br>
-			&nbsp;&nbsp;Su: 11.00 - 23.00</b></h4>
-			
-		
-			
-
-
-
-
-
-
-
-			<h1>Tervetuloa herkuttelemaan!</h1>
-			<h4>Helsingin keskustassa jo vuodesta 1999 toiminut Pizzeria
-				Pizzicato kuuluu paikkakunnan suosituimpiin ruokapaikkoihin. Vuosien
-				varrella pizzojen lisäksi rento tunnelma ja loistava asiakaspalvelu.
-<br><br>
-				Meillä voit nauttia ruokailusta savuttomasti viihtyisässä
-				ympäristössä. TERVETULOA!</h4>
-</div>
-
-		</div>
-		
+	
 		 <br> 
 		
 		<hr>
@@ -203,7 +174,45 @@
 
 		<br> <br> <br> <br> <br> <br> <br>
 
+		<br>
+		<hr>
+
+		<div id="aukioloajat">
+<div class="teksti">
+			
+			
+				<div class="puhnum">
+			
+			
+			</div>
+			
+			
+			<h4><b><font size="5">Avoinna</font><br>
+			&nbsp;&nbsp;Ma-pe: 10.00 - 23.00<br>
+			&nbsp;&nbsp;La: 11.00 - 23.00<br>
+			&nbsp;&nbsp;Su: 11.00 - 23.00</b></h4>
+			
+	
+				<h1>Tervetuloa herkuttelemaan!</h1>
+			<h4>Helsingin keskustassa jo vuodesta 1999 toiminut Pizzeria
+				Pizzicato kuuluu paikkakunnan suosituimpiin ruokapaikkoihin. Vuosien
+				varrella pizzojen lisäksi rento tunnelma ja loistava asiakaspalvelu.
+<br><br>
+				Meillä voit nauttia ruokailusta savuttomasti viihtyisässä
+				ympäristössä. TERVETULOA!</h4>
+	
+
+
+</div>
+
+
+		</div>
+		<br>
+		<hr>
+		<br>
 	</div>
+
+		
 
 	<div id="footer">
 		<p>Pizzeria Pizzicato| Pizzantie 10 | 01320 Vantaa |

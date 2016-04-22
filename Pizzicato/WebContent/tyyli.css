@@ -313,8 +313,22 @@ width: 35%;
   
 }
 .pienempifontti {
-	font-size: 10px;
+	font-size: 12px;
 	font-style: italic; 
+}
+
+div.fixed {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 150px;
+    height: 75px;
+    border: 2px solid #400040;
+    text-align: center;
+    background-color:rgba(255,255,255,0);
+    background-image: url("listatausta.jpg");
+   
+ 
 }
 
 #aukioloajat {
