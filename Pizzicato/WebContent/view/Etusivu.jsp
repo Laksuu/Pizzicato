@@ -31,7 +31,7 @@
 			<img src="Pizzicato.png" class="kuva1" />
 			
 			
-			<div class="fixed">
+			<div class="fixedpuhno">
 			<b>Pizzeria Pizzicato
 			<br>Helsinki<br>
 					P. 0500555555</b>
@@ -40,15 +40,20 @@
 			
 
 	<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
+			
 			<div id="Login">
 					<c:choose>
 					
 						<c:when test="${Username != null}">
+						<div class="fixedlogin">
 						<h1> <c:out value="${session.getAttribute(Username)}"></c:out> </h1>
 							<div> <a href="Logout"> Kirjaudu ulos </a> </div>
+						</div>
 						</c:when>
 						
 						<c:otherwise>
+						<div class="fixedlogin2">
+						<br>
 						<form method=post action="Login" id="kirjaudu_form" >
 							<div id="username">
 								<div> <input placeholder=username name=username required /> </div>
@@ -63,9 +68,11 @@
 						<div class="error">
 							<p style="color:crimson"> <c:out value="${error}"></c:out></p>
 						</div>
+						</div>
 						</c:otherwise>
 						
 					</c:choose>
+			
 			</div>
 			
 		<!--Navigointipalkin linkkien painikkeet ovat tässä-->	
