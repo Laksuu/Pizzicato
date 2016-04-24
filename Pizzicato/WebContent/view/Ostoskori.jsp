@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -68,6 +69,25 @@
 		</div>
 
 <br>
+
+<table class="taulukko">
+<tr>
+					<th>Pizzan numero</th>
+					<th>Pizza</th>
+					<th>Hinta</th></tr>
+<c:forEach items="${pizzat}" var = "pizza">
+	
+				<tr>
+				<td><c:out value="${pizza.pizza_id}"></c:out></td>
+				<td><c:out value="${pizza.nimi}"></c:out></td>
+				<td><fmt:formatNumber type="currency"  currencySymbol=""  value="${pizza.hinta}" /> EUR</td>
+				
+						</tr>
+</c:forEach>				
+</table>
+
+
+<a href="Etusivu">etusivu</a>
 
 
 <div class="yhteystiedotteksti">
