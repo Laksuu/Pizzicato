@@ -106,7 +106,7 @@ public class Ostoskori extends HttpServlet {
 		
 		session.setAttribute("pizzat",pizzat);
 		
-		
+		System.out.print("pizzat::::"+pizzat);
 		
 		response.sendRedirect("/Pizzicato/Ostoskori");
 		/*

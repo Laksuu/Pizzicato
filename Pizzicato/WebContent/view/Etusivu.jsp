@@ -174,12 +174,9 @@
 
 		
 
-<form action="Ostoskori" method="POST">
-<input type=hidden name=nimi value="4"/>
-<button class="nappula" type="submit" value="add">Tilaa</button>
-</form>
 
-		<br> <br> <br> <br> <br> <br> <br>
+
+		 <br> <br>
 
 		<br>
 		<hr>
