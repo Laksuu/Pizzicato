@@ -27,7 +27,7 @@ public class Ostoskori extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		HttpSession session = request.getSession(false);
-		
+
 		String jsp = "/view/Ostoskori.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(
 				jsp);
@@ -38,38 +38,28 @@ public class Ostoskori extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
-		
+
 		HttpSession session = request.getSession(false);
-		List <Ostos> ostokset = null;
+		List<Ostos> ostokset = null;
 		try {
 			ostokset = (List<Ostos>) session.getAttribute("ostokset");
-			
-			
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-			
-		
-		
-		if (ostokset == null){
+
+		if (ostokset == null) {
 			ostokset = new ArrayList<Ostos>();
 		}
-		
-		
-		
-		
-		
-		
-		/*  HttpSession session = request.getSession(); Ostoskoriluokka kori =
-		  (Ostoskoriluokka) session.getAttribute("kori");
-		  
-		  
-		  if (request.getParameter("pizza_id").equals("add")) { if (kori ==
-		  null) { kori = new Ostoskoriluokka(); }
-		*/
+
+		/*
+		 * HttpSession session = request.getSession(); Ostoskoriluokka kori =
+		 * (Ostoskoriluokka) session.getAttribute("kori");
+		 * 
+		 * 
+		 * if (request.getParameter("pizza_id").equals("add")) { if (kori ==
+		 * null) { kori = new Ostoskoriluokka(); }
+		 */
 		String strid = request.getParameter("pizza_id");
 		String strlkm = request.getParameter("lkm");
 
@@ -77,9 +67,11 @@ public class Ostoskori extends HttpServlet {
 		int pizza_id = new Integer(strid);
 		int lkm = new Integer(strlkm);
 
-		/*System.out.print("Pizzan id:" + pizza_id);
-		System.out.print("Pizzan id:" + strid);
-		System.out.print("Pizzan lukum‰‰r‰:" + strlkm);*/
+		/*
+		 * System.out.print("Pizzan id:" + pizza_id);
+		 * System.out.print("Pizzan id:" + strid);
+		 * System.out.print("Pizzan lukum‰‰r‰:" + strlkm);
+		 */
 
 		String valittuOregano = request.getParameter("oregano");
 
@@ -94,50 +86,44 @@ public class Ostoskori extends HttpServlet {
 		Pizza uusiPizza = pizzadao.etsiPizza(pizza_id);
 		System.out.print("PIZZA:" + uusiPizza);
 		double rivihinta = lkm * uusiPizza.getHinta();
-		
-		
+
 		Ostos uusiostos = new Ostos();
 		uusiostos.setPizza(uusiPizza);
 		uusiostos.setLkm(lkm);
 		uusiostos.setRivihinta(rivihinta);
 		uusiostos.setOregano(oregano);
-		
+
 		ostokset.add(uusiostos);
-		/* luo ostoskorin, jos ostoskori on koko on nolla*/
+		/* luo ostoskorin, jos ostoskori on koko on nolla */
 		if (ostokset.size() == 0) {
 			session = request.getSession(true);
-			
+
 		}
-		
-		
-		
-		session.setAttribute("ostokset",ostokset);
-		
-		System.out.print("ostokset::::"+ostokset);
-		
+
+		session.setAttribute("ostokset", ostokset);
+
+		System.out.print("ostokset::::" + ostokset);
+
 		response.sendRedirect("/Pizzicato/Ostoskori");
 		/*
-		double rivihinta = lkm * uusiPizza.getHinta();
-
-		Pizza uusipizza = uusiPizza;
-		
-		Ostos ostos = new Ostos(uusipizza,lkm, rivihinta, oregano);
-		kori.lisaaOstoskoriin(ostos);	
-		
-		//Hinnat sessioon
-		double hinta = kori.getTilauksenHinta();
-		request.getSession().setAttribute("hinta", hinta);
-		request.getSession().setAttribute("ohinta", hinta*0.9);
-	
-		
-		  request.getSession().setAttribute("kori", kori);
-				response.sendRedirect("/Pizzicato/Etusivu"); 
-				System.out.print("Ostoskori"+ kori);
-	}
-		  String jsp = "/view/Ostoskori.jsp";
-			RequestDispatcher dispather = getServletContext().getRequestDispatcher(
-					jsp);
-			dispather.forward(request, response);
-	*/
+		 * double rivihinta = lkm * uusiPizza.getHinta();
+		 * 
+		 * Pizza uusipizza = uusiPizza;
+		 * 
+		 * Ostos ostos = new Ostos(uusipizza,lkm, rivihinta, oregano);
+		 * kori.lisaaOstoskoriin(ostos);
+		 * 
+		 * //Hinnat sessioon double hinta = kori.getTilauksenHinta();
+		 * request.getSession().setAttribute("hinta", hinta);
+		 * request.getSession().setAttribute("ohinta", hinta*0.9);
+		 * 
+		 * 
+		 * request.getSession().setAttribute("kori", kori);
+		 * response.sendRedirect("/Pizzicato/Etusivu");
+		 * System.out.print("Ostoskori"+ kori); } String jsp =
+		 * "/view/Ostoskori.jsp"; RequestDispatcher dispather =
+		 * getServletContext().getRequestDispatcher( jsp);
+		 * dispather.forward(request, response);
+		 */
 	}
 }
