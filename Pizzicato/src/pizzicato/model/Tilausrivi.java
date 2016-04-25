@@ -1,19 +1,23 @@
 package pizzicato.model;
 
+import pizzicato.model.Pizza;
+
 public class Tilausrivi {
 
 	private int tilausrivi_id;
 	private int maara;
 	private Pizza pizza;
+	private int extramauste;
 	
 	
 	//construktorit
 	
-	public Tilausrivi(int tilausrivi_id, int maara, Pizza pizza) {
+	public Tilausrivi(int tilausrivi_id, int maara, Pizza pizza, int extramauste) {
 		super();
 		this.tilausrivi_id = tilausrivi_id;
 		this.maara = maara;
 		this.pizza = pizza;
+		this.extramauste = extramauste;
 	}
 	
 	public Tilausrivi(){
@@ -21,6 +25,7 @@ public class Tilausrivi {
 		this.tilausrivi_id = 0;
 		this.maara = 0;
 		this.pizza = null;
+		this.extramauste = 0;
 	}
 	
 	//getterit ja setterit
@@ -50,7 +55,13 @@ public class Tilausrivi {
 		this.pizza = pizza;
 	}
 
-	
+	public int getExtramauste() {
+		return extramauste;
+	}
+
+	public void setExtramauste(int extramauste) {
+		this.extramauste = extramauste;
+	}
 	
 
 	
