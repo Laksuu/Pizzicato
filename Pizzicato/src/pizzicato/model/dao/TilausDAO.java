@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
 import pizzicato.model.Asiakas;
 import pizzicato.model.Pizza;
 import pizzicato.model.Tilaus;
