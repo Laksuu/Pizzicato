@@ -145,10 +145,7 @@ public class PizzaDAO extends DataAccessObject {
 			String nimi = rs.getString("nimi");
 			double hinta = rs.getDouble("hinta");
 
-			// Tässä pitäisi olla myös ArrayList pizza.javasta ?? ja return new
-			// alla pitäisi olla myös ko arraylist?
-
-			// Luodaan ja palautetaan uusi pizza
+			
 			return new Pizza(pizza_id, nimi, hinta);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -198,8 +195,7 @@ public class PizzaDAO extends DataAccessObject {
 		try {
 			conn = getConnection();
 
-			// Delete pitäisi lisätä tähän myös pizzantäytteeseen ??
-			// "DELETE FROM pizzantayte WHERE pizza_id = ?"
+		
 
 			String sql = "DELETE FROM pizza WHERE pizza_id = ?";
 			pstmt = conn.prepareStatement(sql);

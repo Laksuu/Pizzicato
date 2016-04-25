@@ -59,6 +59,9 @@ FOREIGN KEY (tilaus_id) REFERENCES tilaus (tilaus_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza (pizza_id)
 )Engine="InnoDB";
 
+
+
+
 Login Logout juttuja a la Jamppa
 
 CREATE TABLE kayttaja
@@ -68,3 +71,13 @@ CREATE TABLE kayttaja
    password varchar(255),
    logtype varchar(30)
 );
+
+ -> allaoleva ei kannassa!!!! suunnittelua!!! Eikä tulekaan kantaan oletuksella... 
+ 
+CREATE TABLE suositut(
+pizza_id int NOT NULL,
+maara int NOT NULL,
+PRIMARY KEY (pizza_id, maara)
+FOREIGN KEY (maara) REFERENCES tilausrivi (maara),
+FOREIGN KEY (pizza_id) REFERENCES pizza (pizza_id)
+)Engine="InnoDB";
