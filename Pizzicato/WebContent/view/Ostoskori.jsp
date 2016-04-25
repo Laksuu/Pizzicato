@@ -74,26 +74,28 @@
 <tr>
 					<th>Pizzan numero</th>
 					<th>Pizza</th>
-					<th>Hinta</th></tr>
-<c:forEach items="${pizzat}" var = "pizza">
+					<th>yksilöHinta</th>
+					<th>Lukumäärä</th>
+					<th>Kokonaishinta</th>
+					<th>Oregano</th>
+					</tr>
+<c:forEach items="${ostokset}" var = "ostos">
 	
 				<tr>
-				<td><c:out value="${pizza.pizza_id}"></c:out></td>
-				<td><c:out value="${pizza.nimi}"></c:out></td>
-				<td><fmt:formatNumber type="currency"  currencySymbol=""  value="${pizza.hinta}" /> EUR</td>
-				
+				<td><c:out value="${ostos.getPizza().getPizza_id()}"></c:out></td>
+				<td><c:out value="${ostos.getPizza().getNimi()}"></c:out></td>
+				<td><fmt:formatNumber type="currency"  currencySymbol=""  value="${ostos.getPizza().getHinta()}" /> EUR</td>
+				<td><c:out value="${ostos.getLkm()}"></c:out></td>
+				<td><fmt:formatNumber type="currency"  currencySymbol=""  value="${ostos.rivihinta}"/> EUR</td>
+				<td><c:out value="${ostos.oregano}"></c:out></td>
 						</tr>
 </c:forEach>				
 </table>
 
 
-<a href="Etusivu">etusivu</a>
-
-
-<div class="yhteystiedotteksti">
-<h1>Pizzeria Pizzicaton yhteystiedot</h1>
-<p>
-</div>
+<form action=Etusivu>
+<p>Siirry takaisin Etusivulle</p><button type="submit">Siirry</button>
+</form>
 
 			
 	</div>

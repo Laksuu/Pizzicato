@@ -80,7 +80,7 @@
 
 		</div>
 
-		<h1>Muokkaussivu</h1>
+		<div class=otsikointi align="center"><h1>Muokkaa Pizzaa</h1> </div>
 
 		<table class="admintaulukko">
 
@@ -139,7 +139,7 @@
 
 		<br> <br>
 
-		<h2>Piilotetut pizzat</h2>
+		<div class=otsikointi align="center"><h1>Piilotetut Pizzat</h1> </div>
 
 		<table class="admintaulukko">
 			<jsp:useBean id="piilopizzat" type="java.util.ArrayList<Pizza>"
@@ -179,7 +179,7 @@
 			%>
 		</table>
 		<hr>
-		<h2>Lis‰‰ uusi pizza</h2>
+		<div class=otsikointi align="center"><h1>Lis‰‰ Pizza</h1> </div>
 		<form action="Lisaapizza" method="POST">
 			<table class="admintaulukko">
 				<jsp:useBean id="jsp" scope="request" class="java.lang.String" />
@@ -217,6 +217,7 @@
 		</form>
 
 		<hr>
+		<div class=otsikointi align="center"><h1>Muokkaa T‰ytteit‰</h1> </div>
 		<table class="admintaulukko">
 
 
@@ -261,7 +262,7 @@
 
 		<br> <br>
 
-		<h2>Piilotetut taytteet</h2>
+		<div class=otsikointi align="center"><h1>Piilotetut T‰ytteet</h1> </div>
 
 		<table class="admintaulukko">
 			<jsp:useBean id="piilotaytteet" type="java.util.ArrayList<Tayte>"
@@ -294,7 +295,7 @@
 
 
 
-		<h2>Lis‰‰ uusi t‰yte</h2>
+		<div class=otsikointi align="center"><h1>Lis‰‰ T‰yte</h1> </div>
 		<form action="Lisaatayte" method="POST">
 			<table class="admintaulukko">
 				<jsp:useBean id="tjsp" scope="request" class="java.lang.String" />

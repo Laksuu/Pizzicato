@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import pizzicato.model.Pizza;
+import pizzicato.model.Ostos;
 import pizzicato.model.dao.PizzaDAO;
 
 /**
@@ -42,9 +42,9 @@ public class Ostoskori extends HttpServlet {
 		
 		
 		HttpSession session = request.getSession(false);
-		List <Pizza> pizzat = null;
+		List <Ostos> ostokset = null;
 		try {
-			pizzat = (List<Pizza>) session.getAttribute("pizzat");
+			ostokset = (List<Ostos>) session.getAttribute("ostokset");
 			
 			
 			
@@ -54,8 +54,8 @@ public class Ostoskori extends HttpServlet {
 			
 		
 		
-		if (pizzat == null){
-			pizzat = new ArrayList<Pizza>();
+		if (ostokset == null){
+			ostokset = new ArrayList<Ostos>();
 		}
 		
 		
@@ -93,20 +93,27 @@ public class Ostoskori extends HttpServlet {
 
 		Pizza uusiPizza = pizzadao.etsiPizza(pizza_id);
 		System.out.print("PIZZA:" + uusiPizza);
+		double rivihinta = lkm * uusiPizza.getHinta();
 		
 		
-		pizzat.add(uusiPizza);
+		Ostos uusiostos = new Ostos();
+		uusiostos.setPizza(uusiPizza);
+		uusiostos.setLkm(lkm);
+		uusiostos.setRivihinta(rivihinta);
+		uusiostos.setOregano(oregano);
+		
+		ostokset.add(uusiostos);
 		/* luo ostoskorin, jos ostoskori on koko on nolla*/
-		if (pizzat.size() == 0) {
+		if (ostokset.size() == 0) {
 			session = request.getSession(true);
 			
 		}
 		
 		
 		
-		session.setAttribute("pizzat",pizzat);
+		session.setAttribute("ostokset",ostokset);
 		
-		System.out.print("pizzat::::"+pizzat);
+		System.out.print("ostokset::::"+ostokset);
 		
 		response.sendRedirect("/Pizzicato/Ostoskori");
 		/*

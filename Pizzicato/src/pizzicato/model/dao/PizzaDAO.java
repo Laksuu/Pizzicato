@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import pizzicato.model.Ostos;
 import pizzicato.model.Pizza;
 import pizzicato.model.Tayte;
 
