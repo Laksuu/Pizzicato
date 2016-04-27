@@ -39,7 +39,7 @@
 			</div>
 
 
-			<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
+			<!--  Näytetään logout jos kirjautunut sisään! -->
 
 			<div id="Login">
 				<c:choose>
@@ -64,12 +64,9 @@
 										<input placeholder=username name=username required />
 									</div>
 								</div>
-								<div id="password">
-									<div>
-										<input placeholder=password name=password type=password
-											required />
-									</div>
-								</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<input placeholder=password name=password id=password type=password />
+<span class="caps-lock-warning" title="Caps lock on päällä!"></span>
 								<div id="submit">
 									<div>
 										<button type=submit>Kirjaudu</button>

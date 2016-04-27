@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,19 +21,17 @@
 
 			<img src="Pizzicato.png" class="kuva1" />
 
-			<!--Navigointipalkin linkkien painikkeet ovat tässä-->	
+		<!--Navigointipalkin linkkien painikkeet ovat tässä-->
 			<div id="navigointipalkki">
 				<ul class="paavalikko">
 					<li><a class="active" href="Etusivu">Etusivu</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
-					<li>	<c:choose>
+					<li><c:choose>
 							<c:when test="${Username != null}">
-						<a href="Muokkaussivu">Muokkaussivu  </a>
+								<a href="Muokkaussivu">Muokkaussivu </a>
 							</c:when>
-							</c:choose>
-					
-				
+						</c:choose>
 				</ul>
 			</div>
 
