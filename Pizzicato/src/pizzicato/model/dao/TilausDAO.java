@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import pizzicato.model.Asiakas;
+//import pizzicato.model.Asiakas;
 import pizzicato.model.Pizza;
 import pizzicato.model.Tilaus;
 import pizzicato.model.Tilausrivi;
@@ -18,17 +18,26 @@ public class TilausDAO extends DataAccessObject {
 		Connection connection = null;
 		PreparedStatement stmtInsert = null;
 		
-		//MUOKKAA ALLAOLEVA "UUDEN KANNAN" MUKAISEKSI!!!!
+		// Muokkaa vielä findAll ja read uuden kannan mukaisiksi. poista kommentti kun tehty
 		
 		try {
 			connection = getConnection();
 			//uusi tilaus tietokantaan
-			String sqlInsert = "INSERT INTO tilaus(asiakas_id, toimitus, maksu) VALUES (?, ?, ?)";
+			String sqlInsert = "INSERT INTO tilaus(toimitus, maksu, nimi, osoite, puh, sposti) VALUES (?, ?, ?, ?, ?, ?)";
 			stmtInsert = connection.prepareStatement(sqlInsert);
-			Asiakas asiakas = tilaus.getAsiakas();
-			stmtInsert.setInt(1, asiakas.getAsiakas_id());
-			stmtInsert.setBoolean(2, tilaus.isToimitus());
-			stmtInsert.setBoolean(3, tilaus.isMaksu());
+			/* Kaksi allaolevaa jos asiakkaalle rekisteröityminen, tallessa jos muutos, älä poista
+			 Samoin import asiakas kommenttina. Älä poista tätä kommenttia kun DAO korjattu, vaan vasta
+			 jos asiakas tippuu kokonaan pois.
+			 
+			 Asiakas asiakas = tilaus.getAsiakas();
+			 stmtInsert.setInt(1, asiakas.getAsiakas_id());
+			 */
+			stmtInsert.setBoolean(1, tilaus.isToimitus());
+			stmtInsert.setBoolean(2, tilaus.isMaksu());
+			stmtInsert.setString(3, tilaus.getNimi());
+			stmtInsert.setString(4, tilaus.getOsoite());
+			stmtInsert.setInt(5, tilaus.getPuh());
+			stmtInsert.setString(6, tilaus.getSposti());
 			stmtInsert.executeUpdate();
 			
 			for (int i = 0; i < tilaus.getTilausrivit().size(); i++) {
@@ -68,9 +77,10 @@ public class TilausDAO extends DataAccessObject {
 		int nykyinenTilausId = 0;
 		Tilausrivi tilausrivi = null;
 		
+		
 		try{
 			conn = getConnection();
-			String sqlSelect = "SELECT t.tilaus_id, t.asiakas_id, t.pvm, t.toimitus, t.maksu, r.tilausrivi_id, r.pizza_id, r.tilaus_id, r.maara, r.extramauste FROM tilaus t JOIN tilausrivi r ON r.tilaus_id = t.tilaus_id;";
+			String sqlSelect = "SELECT t.tilaus_id, t.pvm, t.toimitus, t.maksu, t. nimi, t.osoite, t.puh, t.sposti, r.tilausrivi_id, r.pizza_id, r.tilaus_id, r.maara, r.extramauste FROM tilaus t JOIN tilausrivi r ON r.tilaus_id = t.tilaus_id;";
 			stmt = conn.prepareStatement(sqlSelect);
 			rs = stmt.executeQuery(sqlSelect);
 			while (rs.next()){
@@ -94,18 +104,27 @@ public class TilausDAO extends DataAccessObject {
 		return tilaukset;
 		}
 
+	//korjaa allaolevat kentät kannan mukaisiksi, poista kommentti kun korjattu
+	
 	private Tilaus readTilaus(ResultSet rs){
 		try {
 			int tilaus_id = rs.getInt("tilaus_id");
-			int asiakas_id = rs.getInt("asiakas_id");
+			
+			/*Säilytä tämä kommentti toistaiseksi, jos asiakasrekisteröityminen tulee
+			 * int asiakas_id = rs.getInt("asiakas_id");
 			Asiakas asiakas = new Asiakas();
 			asiakas.setAsiakas_id(asiakas_id);
+			*/
 			
 			Date pvm = rs.getDate("pvm");
 			boolean toimitus = rs.getBoolean("toimitus");
 			boolean maksu = rs.getBoolean("maksu");
+			String nimi = rs.getString("nimi");
+			String osoite = rs.getString("osoite");
+			int puh = rs.getInt("puh");
+			String sposti = rs.getString("sposti");
 			
-			return new Tilaus(tilaus_id, asiakas, pvm, toimitus, maksu);
+			return new Tilaus(tilaus_id, pvm, toimitus, maksu, nimi, osoite, puh, sposti);
 		
 		} catch (SQLException e){
 			throw new RuntimeException(e);
