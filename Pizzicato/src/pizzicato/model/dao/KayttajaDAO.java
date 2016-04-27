@@ -15,7 +15,7 @@ public class KayttajaDAO extends DataAccessObject {
 	public static KayttajaDAO getInstance() {
 		return instance;
 	}
-
+	
 	private Kayttaja read(ResultSet rs) throws SQLException {
 		Long id = new Long(rs.getLong("id"));
 		String username = rs.getString("username");

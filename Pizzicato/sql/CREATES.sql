@@ -1,6 +1,5 @@
 DROP TABLE tilausrivi;
 DROP TABLE tilaus;
-DROP TABLE asiakas;
 DROP TABLE pizzantayte;
 DROP TABLE pizza;
 DROP TABLE tayte;
@@ -29,23 +28,16 @@ FOREIGN KEY (tayte_id) REFERENCES tayte (tayte_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza (pizza_id)
 )Engine="InnoDB";
 
-CREATE TABLE asiakas(
-asiakas_id int NOT NULL AUTO_INCREMENT,
+CREATE TABLE tilaus(
+tilaus_id int NOT NULL AUTO_INCREMENT,
+pvm TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+toimitus boolean NOT NULL default 0,
+maksu boolean NOT NULL default 0,
 nimi varchar(30) NOT NULL,
 osoite varchar(30) NOT NULL,
 puh int(10) NOT NULL,
 sposti varchar(30) NOT NULL,
-PRIMARY KEY (asiakas_id)
-)Engine="InnoDB";
-
-CREATE TABLE tilaus(
-tilaus_id int NOT NULL AUTO_INCREMENT,
-asiakas_id int,
-pvm TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-toimitus boolean NOT NULL default 0,
-maksu boolean NOT NULL default 0,
-PRIMARY KEY (tilaus_id),
-FOREIGN KEY (asiakas_id) REFERENCES asiakas (asiakas_id)
+PRIMARY KEY (tilaus_id)
 )Engine="InnoDB";
 
 CREATE TABLE tilausrivi(
@@ -72,12 +64,3 @@ CREATE TABLE kayttaja
    logtype varchar(30)
 );
 
- -> allaoleva ei kannassa!!!! suunnittelua!!! Eikä tulekaan kantaan oletuksella... 
- 
-CREATE TABLE suositut(
-pizza_id int NOT NULL,
-maara int NOT NULL,
-PRIMARY KEY (pizza_id, maara)
-FOREIGN KEY (maara) REFERENCES tilausrivi (maara),
-FOREIGN KEY (pizza_id) REFERENCES pizza (pizza_id)
-)Engine="InnoDB";

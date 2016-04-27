@@ -18,6 +18,8 @@ public class TilausDAO extends DataAccessObject {
 		Connection connection = null;
 		PreparedStatement stmtInsert = null;
 		
+		//MUOKKAA ALLAOLEVA "UUDEN KANNAN" MUKAISEKSI!!!!
+		
 		try {
 			connection = getConnection();
 			//uusi tilaus tietokantaan
@@ -33,7 +35,7 @@ public class TilausDAO extends DataAccessObject {
 				
 				Tilausrivi tilausrivi = tilaus.getTilausrivi(i);
 				Pizza pizza = tilausrivi.getPizza();
-				//yläpuolella jotain hämmää... 
+				 
 				
 				sqlInsert = "INSERT INTO tilausrivi(pizza_id, tilaus_id, maara, extramauste) VALUES (?,last_insert_id(),?.?)";
 				stmtInsert = connection.prepareStatement(sqlInsert);
@@ -42,7 +44,7 @@ public class TilausDAO extends DataAccessObject {
 				stmtInsert.setInt(4, tilausrivi.getExtramauste());
 				stmtInsert.executeUpdate();
 				
-				// tähänkö suositutpizzat insert vai uusi for??
+			
 			}
 			
 			System.out.println("tilaus ja tilausrivit lisätty");
