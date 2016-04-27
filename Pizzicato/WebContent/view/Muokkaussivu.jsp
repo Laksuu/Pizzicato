@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="pizzicato.model.Pizza"%>
 <%@ page import="pizzicato.model.Tayte"%>
@@ -28,7 +28,7 @@
 
 <body>
 
-<!--  JOS KIRJAUTUNUT SISƒƒN NƒYTƒ KIRAJUDU ULOS, JOS EI NIIN NƒYTƒ KIRJAUTUMIS LOMAKE -->
+<!--  JOS KIRJAUTUNUT SIS√Ñ√ÑN N√ÑYT√Ñ KIRAJUDU ULOS, JOS EI NIIN N√ÑYT√Ñ KIRJAUTUMIS LOMAKE -->
 			<div id="Login">
 					<c:choose>
 					
@@ -62,7 +62,7 @@
 
 			<img src="Pizzicato.png" class="kuva1" />
 
-			<!--Navigointipalkin linkkien painikkeet ovat t‰ss‰-->	
+			<!--Navigointipalkin linkkien painikkeet ovat t√§ss√§-->	
 			<div id="navigointipalkki">
 				<ul class="paavalikko">
 					<li><a class="active" href="Etusivu">Etusivu</a></li>
@@ -169,7 +169,7 @@
 						<input type="hidden" name="id"
 							value="<%=piilopizzat.get(i).getPizza_id()%>" /> <input
 							type=submit name="submit-button" class="submit-button"
-							value="N‰yt‰" />
+							value="N√§yt√§" />
 					</form>
 				</td>
 			</tr>
@@ -179,17 +179,17 @@
 			%>
 		</table>
 		<hr>
-		<div class=otsikointi align="center"><h1>Lis‰‰ Pizza</h1> </div>
+		<div class=otsikointi align="center"><h1>Lis√§√§ Pizza</h1> </div>
 		<form action="Lisaapizza" method="POST">
 			<table class="admintaulukko">
 				<jsp:useBean id="jsp" scope="request" class="java.lang.String" />
 				<tr>
 					<td>Anna pizzan nimi:</td>
-					<td><input type="text" value="" name="nimi" size="60" /></td>
+					<td><input type="text" value="" name="nimi" size="60" pattern="\D\s[A-Za-z]{3,16}" title="Pizzan nimen tulee olla alle 16 kirjainmerkki√§" /></td>
 				</tr>
 				<tr>
 					<td>Anna pizzan hinta:</td>
-					<td><input type="text" value="" name="hinta" size="60" /></td>
+					<td><input type="text" value="" name="hinta" size="60" pattern="\d{1,10}(\.\d{2})?" title="Pizzan hinnan minimi hinta on 6‚Ç¨ ja maksimi hinta 30‚Ç¨" /></td>
 				</tr>
 				<tr>
 
@@ -217,7 +217,7 @@
 		</form>
 
 		<hr>
-		<div class=otsikointi align="center"><h1>Muokkaa T‰ytteit‰</h1> </div>
+		<div class=otsikointi align="center"><h1>Muokkaa T√§ytteit√§</h1> </div>
 		<table class="admintaulukko">
 
 
@@ -262,7 +262,7 @@
 
 		<br> <br>
 
-		<div class=otsikointi align="center"><h1>Piilotetut T‰ytteet</h1> </div>
+		<div class=otsikointi align="center"><h1>Piilotetut T√§ytteet</h1> </div>
 
 		<table class="admintaulukko">
 			<jsp:useBean id="piilotaytteet" type="java.util.ArrayList<Tayte>"
@@ -280,7 +280,7 @@
 						<input type="hidden" name="tid"
 							value="<%=piilotaytteet.get(i).getTayte_id()%>" /> <input
 							type=submit name="submit-button" class="submit-button"
-							value="N‰yt‰" />
+							value="N√§yt√§" />
 					</form>
 				</td>
 			</tr>
@@ -295,17 +295,17 @@
 
 
 
-		<div class=otsikointi align="center"><h1>Lis‰‰ T‰yte</h1> </div>
+		<div class=otsikointi align="center"><h1>Lis√§√§ T√§yte</h1> </div>
 		<form action="Lisaatayte" method="POST">
 			<table class="admintaulukko">
 				<jsp:useBean id="tjsp" scope="request" class="java.lang.String" />
 
 				<tr>
-					<td>Anna t‰ytteen nimike:</td>
+					<td>Anna t√§ytteen nimike:</td>
 					<td><input type="text" value="" name="tayte" size="60" /></td>
 				</tr>
 				<tr>
-					<td>Anna t‰ytteen kilohinta:</td>
+					<td>Anna t√§ytteen kilohinta:</td>
 					<td><input type="text" value="" name="tayte_hinta" size="60" /></td>
 				</tr>
 
