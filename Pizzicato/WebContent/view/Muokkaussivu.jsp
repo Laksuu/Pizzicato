@@ -28,33 +28,54 @@
 
 <body>
 
+
 <!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
+
+<!--  N�ytet��n logout jos kirjautunut sis��n! -->
+
+
 			<div id="Login">
-					<c:choose>
-					
-						<c:when test="${Username != null}">
-							<h1> <c:out value="${sessionScope.Kayttaja.getUsername()}"></c:out> </h1>
-							<div> <a href="Logout"> Kirjaudu ulos </a> </div>
-						</c:when>
-						
-						<c:otherwise>
-						<form method=post action="Login" id="kirjaudu_form" >
-							<div id="username">
-								<div> <input placeholder=username name=username required /> </div>
+				<c:choose>
+
+					<c:when test="${Username != null}">
+						<div class="fixedlogin">
+							<h1>
+								<c:out value="${session.getAttribute(Username)}"></c:out>
+							</h1>
+							<div>
+								<a href="Logout"> Kirjaudu ulos </a>
 							</div>
-							<div id="password"> 
-								<div> <input placeholder=password name=password type=password required /> </div>
-							</div>
-							<div id="submit"> 
-								<div> <button type=submit> Kirjaudu </button> </div>
-							</div> 
-						</form>
-						<div class="error">
-							<p style="color:crimson"> <c:out value="${error}"></c:out></p>
 						</div>
-						</c:otherwise>
-						
-					</c:choose>
+					</c:when>
+
+					<c:otherwise>
+						<div class="fixedlogin2">
+							<br>
+							<form method=post action="Login" id="kirjaudu_form">
+								<div id="username">
+									<div>
+										<input placeholder=username name=username required />
+									</div>
+								</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<input placeholder=password name=password id=password type=password />
+<span class="caps-lock-warning" title="Caps lock is on!"></span>
+								<div id="submit">
+									<div>
+										<button type=submit>Kirjaudu</button>
+									</div>
+								</div>
+							</form>
+							<div class="error">
+								<p style="color: crimson">
+									<c:out value="${error}"></c:out>
+								</p>
+							</div>
+						</div>
+					</c:otherwise>
+
+				</c:choose>
+
 			</div>
 			
 	<div class="keho">
