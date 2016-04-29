@@ -104,14 +104,13 @@ public class TilausDAO extends DataAccessObject {
 		return tilaukset;
 		}
 
-	//korjaa allaolevat kentät kannan mukaisiksi, poista kommentti kun korjattu
 	
 	private Tilaus readTilaus(ResultSet rs){
 		try {
 			int tilaus_id = rs.getInt("tilaus_id");
 			
 			/*Säilytä tämä kommentti toistaiseksi, jos asiakasrekisteröityminen tulee
-			 * int asiakas_id = rs.getInt("asiakas_id");
+			  int asiakas_id = rs.getInt("asiakas_id");
 			Asiakas asiakas = new Asiakas();
 			asiakas.setAsiakas_id(asiakas_id);
 			*/

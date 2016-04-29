@@ -1,3 +1,4 @@
+DROP TABLE extratayte;
 DROP TABLE tilausrivi;
 DROP TABLE tilaus;
 DROP TABLE pizzantayte;
@@ -49,6 +50,15 @@ extramauste int,
 PRIMARY KEY (tilausrivi_id, tilaus_id),
 FOREIGN KEY (tilaus_id) REFERENCES tilaus (tilaus_id),
 FOREIGN KEY (pizza_id) REFERENCES pizza (pizza_id)
+)Engine="InnoDB";
+
+CREATE TABLE extratayte(
+extratayte_id int NOT NULL AUTO_INCREMENT,
+tilausrivi_id int NOT NULL,
+tayte_id int NOT NULL,
+PRIMARY KEY (extratayte_id),
+FOREIGN KEY (tilausrivi_id) REFERENCES tilausrivi (tilausrivi_id),
+FOREIGN KEY (tayte_id) REFERENCES tayte (tayte_id)
 )Engine="InnoDB";
 
 
