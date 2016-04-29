@@ -80,6 +80,15 @@ public class Ostoskori extends HttpServlet {
 		if (valittuOregano != null) {
 			oregano = true;
 		}
+		
+
+		String valittuValkosipuli = request.getParameter("valkosipuli");
+
+		boolean valkosipuli = false;
+
+		if (valittuValkosipuli != null) {
+			valkosipuli = true;
+		}
 
 		PizzaDAO pizzadao = new PizzaDAO();
 
@@ -92,6 +101,7 @@ public class Ostoskori extends HttpServlet {
 		uusiostos.setLkm(lkm);
 		uusiostos.setRivihinta(rivihinta);
 		uusiostos.setOregano(oregano);
+		uusiostos.setValkosipuli(valkosipuli);
 
 		ostokset.add(uusiostos);
 		/* luo ostoskorin, jos ostoskori on koko on nolla */

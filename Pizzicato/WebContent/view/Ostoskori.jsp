@@ -93,6 +93,7 @@
 				<th>Lukum‰‰r‰</th>
 				<th>Kokonaishinta</th>
 				<th>Oregano</th>
+				<th>Valkosipuli</th>
 			</tr>
 			
 			
@@ -107,6 +108,7 @@
 					<td><fmt:formatNumber type="currency" currencySymbol=""
 							value="${ostos.rivihinta}" /> EUR</td>
 					<td><c:out value="${ostos.oregano}"></c:out></td>
+					<td><c:out value="${ostos.valkosipuli}"></c:out></td>
 				</tr>
 			</c:forEach>
 		</table>

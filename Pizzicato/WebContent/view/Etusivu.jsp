@@ -172,7 +172,9 @@
 
 				</td>
 				<td class="pmauste"><input type="checkbox" name="oregano"
-					value="1"> Oregano</td>
+					value="1"> oregano</td>
+					<td class="pmauste"><input type="checkbox" name="valkosipuli"
+					value="0"> valkosipuli</td>
 				<td><input type=hidden name=pizza_id
 					value=<%=pizza.getPizza_id()%> /></td>
 				<td>
