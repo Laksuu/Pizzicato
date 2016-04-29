@@ -84,7 +84,7 @@
 		</div>
 
 		<br>
-
+<form action="?" method="POST">
 		<table class="taulukko">
 			<tr>
 				<th>Pizzan numero</th>
@@ -94,6 +94,8 @@
 				<th>Kokonaishinta</th>
 				<th>Oregano</th>
 			</tr>
+			
+			
 			<c:forEach items="${ostokset}" var="ostos">
 
 				<tr>
@@ -109,7 +111,45 @@
 			</c:forEach>
 		</table>
 
+	
+<table id="tilauslomake">
+<tr>
+<th>Tilauslomake</th>
+</tr>
+<tr>
+<td>Nimi:</td> 
+<td><input type="text" name="nimi" value="Etunimi Sukunimi"></td>
+</tr>
+<tr>
+<td>Osoite:</td> 
+<td><input type="text" name="osoite" value="esimerkkikuja 2 vantaa"></td>
+</tr>
+<tr>
+<td>Puh:</td> 
+<td><input type="text" name="puh" value="045 9325948"></td>
+</tr>
+<tr>
+<td>Sähköposti:</td>
+<td><input type="text" name="sposti" value="esimerkki@gmail.com"></td>
+</tr>
+<tr>
+<td>Nouto vai kotiinkuljetus?</td>
+<td><input type="radio" name="toimitus" value="0" checked> Nouto
+  <input type="radio" name="toimitus" value="1"> Kotiinkuljetus
+</td>
+</tr>
+<tr>
+<td>Maksutapa?</td>
+<td> <input type="radio" name="maksutapa" value="0" checked> Käteinen
+  <input type="radio" name="maksutapa" value="1"> Kortti
 
+</td>
+</tr>
+<tr>
+<td><input type="submit" value="Tilaa"></td>
+</tr>
+</table>
+</form>
 		<form action=Etusivu>
 			<p>Siirry takaisin Etusivulle</p>
 			<button type="submit">Siirry</button>
