@@ -213,11 +213,12 @@ iframe /* m‰‰ritell‰‰n google-maps kartalle arvot, !!upotettu Koulun osoite kosk
 .taulukko {
     border-collapse: collapse;
     margin-bottom: 3em;
-    width: 70%;
+    width: 80%;
     background-repeat: initial;
     background-image: url("paperi.jpg");
-    margin-left:15%;
-    margin-right:15%;
+    margin-left:10%;
+    margin-right:10%;
+    border: 1px solid black;
     
 }
 table.taulukko table, td, th {
@@ -229,17 +230,17 @@ table.taulukko table, td, th {
 table.taulukko th {
     background-color: green;
     font-weight: bold;
-    font-size:130%;
-     font-style: italic;
+    font-size:110%;
     color: #fff;
     white-space: nowrap;
-   height: 30px;
+   height: 40px;
+    border:none;
 }
 
 table.taulukko td {
 
 
-height:60px;
+height:80px;
 font-size:100%;
 }
  
@@ -409,6 +410,7 @@ border-collapse: initial;
     background-color: #fff;
     margin-left:25%;	
     margin-right:25%;	
+    border: 1px solid black;
 	
 }
 

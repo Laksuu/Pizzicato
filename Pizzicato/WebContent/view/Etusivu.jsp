@@ -129,10 +129,11 @@
 				<th>Pizzan numero</th>
 				<th>Pizza</th>
 				<th>Hinta</th>
+				<th>kpl</th>
+				<th>mausteet</th>
+				<th>mausteet</th>
 				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
+				<th>tilaus</th>
 			</tr>
 
 			<%
