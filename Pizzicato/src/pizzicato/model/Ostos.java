@@ -7,14 +7,16 @@ public class Ostos {
 	Pizza pizza;
 	int lkm;
 	double rivihinta;
+	int extramauste;
 	boolean oregano;
 	boolean valkosipuli;
 
-	public Ostos(Pizza pizza, int lkm, double rivihinta, boolean oregano, boolean valkosipuli) {
+	public Ostos(Pizza pizza, int lkm, double rivihinta, int extramauste, boolean oregano, boolean valkosipuli) {
 		super();
 		this.pizza = pizza;
 		this.lkm = lkm;
 		this.rivihinta = rivihinta;
+		this.extramauste = extramauste;
 		this.oregano = oregano;
 		this.valkosipuli = valkosipuli;
 	}
@@ -23,6 +25,7 @@ public class Ostos {
 		super();
 		this.pizza = null;
 		this.lkm = 0;
+		this.extramauste = 0;
 		this.rivihinta = 0;
 		this.oregano = false;
 		this.valkosipuli = false;
@@ -52,6 +55,16 @@ public class Ostos {
 		this.rivihinta = rivihinta;
 	}
 
+	public int getExtramauste() {
+		return extramauste;
+	}
+
+	public void setExtramauste(int extramauste) {
+		this.extramauste = extramauste;
+	}
+	
+	
+	
 	public boolean isOregano() {
 		return oregano;
 	}
@@ -73,7 +86,7 @@ public class Ostos {
 	@Override
 	public String toString() {
 		return "Ostos [pizza=" + pizza + ", lkm=" + lkm + ", rivihinta="
-				+ rivihinta + ", oregano=" + oregano + ", valkosipuli=" + valkosipuli + "]";
+				+ rivihinta + ", extramauste=" + extramauste + ", oregano=" + oregano + ", valkosipuli=" + valkosipuli + "]";
 	}
 
 }
