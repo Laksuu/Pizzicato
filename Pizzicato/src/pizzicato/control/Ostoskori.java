@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import pizzicato.model.Pizza;
 import pizzicato.model.Ostos;
 import pizzicato.model.dao.PizzaDAO;
@@ -35,6 +36,7 @@ public class Ostoskori extends HttpServlet {
 
 	}
 
+	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -75,6 +77,9 @@ public class Ostoskori extends HttpServlet {
 
 		String valittuOregano = request.getParameter("oregano");
 
+		
+		
+		
 		boolean oregano = false;
 
 		if (valittuOregano != null) {
@@ -89,7 +94,43 @@ public class Ostoskori extends HttpServlet {
 		if (valittuValkosipuli != null) {
 			valkosipuli = true;
 		}
+		
+		
+		
 
+		
+		
+	System.out.print("dasdasdasdasdas" + valittuOregano);
+	System.out.print("dasdasdasdasdas      " + valittuValkosipuli);
+	
+	
+		int extramauste = 0;
+	
+		
+		 if (valittuOregano == null && valittuValkosipuli.equals("3")) {
+			 extramauste = 2;
+		 	
+		
+		 }
+		 
+		 
+		 else if (valittuOregano.equals("1") && valittuValkosipuli == null) {
+				
+			 extramauste = 1; 
+		}
+		 
+		 
+		 else if (valittuOregano.equals("1") && valittuValkosipuli.equals("3")) {
+			
+			 extramauste = 3; 
+		}
+	 
+		 else {
+			 extramauste = 0;
+		 }
+
+	
+	
 		PizzaDAO pizzadao = new PizzaDAO();
 
 		Pizza uusiPizza = pizzadao.etsiPizza(pizza_id);
@@ -100,6 +141,7 @@ public class Ostoskori extends HttpServlet {
 		uusiostos.setPizza(uusiPizza);
 		uusiostos.setLkm(lkm);
 		uusiostos.setRivihinta(rivihinta);
+		uusiostos.setExtramauste(extramauste);
 		uusiostos.setOregano(oregano);
 		uusiostos.setValkosipuli(valkosipuli);
 
