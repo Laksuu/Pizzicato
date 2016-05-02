@@ -16,9 +16,7 @@ import pizzicato.model.Pizza;
 import pizzicato.model.Ostos;
 import pizzicato.model.dao.PizzaDAO;
 
-/**
- * Servlet implementation class Ostoskori
- */
+
 @WebServlet("/Ostoskori")
 public class Ostoskori extends HttpServlet {
 	private static final long serialVersionUID = 1L;
