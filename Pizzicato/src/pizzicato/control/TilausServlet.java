@@ -3,6 +3,7 @@ package pizzicato.control;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +31,14 @@ public class TilausServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		HttpSession session = request.getSession(false);
+
+		String jsp = "/view/Ostoskori.jsp";
+		RequestDispatcher dispather = getServletContext().getRequestDispatcher(
+				jsp);
+		dispather.forward(request, response);
+
 	}
 
 
