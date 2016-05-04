@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import pizzicato.model.Ostos;
+import pizzicato.model.Tilaus;
+import pizzicato.model.Tilausrivi;
 
 /**
  * Servlet implementation class TilausServlet
@@ -38,7 +40,31 @@ public class TilausServlet extends HttpServlet {
 		List<Ostos> ostokset = null;
 		ostokset = (List<Ostos>) session.getAttribute("ostokset");
 	
-	
+		/* luo tilaus olio */
+		// for toistolla lis‰t‰‰n tilausrivej‰ tilaukselle
+		
+		
+		Tilaus tilaus = new Tilaus();
+		
+		
+		
+		Tilausrivi tilausrivi = null;
+		Ostos ostos;
+		for (int i = 0; i < ostokset.size(); i++) {
+			ostos = ostokset.get(i);
+			// luodaan tilausrivi olio
+			
+		 tilausrivi = new Tilausrivi();
+		 tilausrivi.setPizza(ostos.getPizza()) ;
+		 tilausrivi.setExtramauste(ostos.getExtramauste());
+		 tilausrivi.setMaara(ostos.getLkm());
+		 tilaus.addTilausrivi(tilausrivi);
+			
+			
+		}
+		System.out.println("gjudafhdsfhdshgfdsfh " +tilausrivi);
+
+		
 	}
 
 }

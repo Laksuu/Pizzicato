@@ -84,7 +84,7 @@
 		</div>
 
 		<br>
-<form action="?" method="POST">
+<form action="TilausServlet" method="POST">
 		<table class="taulukko">
 			<tr>
 				<th>Pizzan numero</th>
