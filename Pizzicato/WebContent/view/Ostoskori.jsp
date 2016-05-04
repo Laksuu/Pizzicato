@@ -137,8 +137,8 @@
 <td><input type="text" name="osoite" value="esimerkkikuja 2 vantaa"></td>
 </tr>
 <tr>
-<td>Puh:</td> 
-<td><input type="text" name="puh" value="045 9325948"></td>
+<td>Puh: +358</td> 
+<td><input type="text" name="puh" value="459325948"></td>
 </tr>
 <tr>
 <td>Sähköposti:</td>
