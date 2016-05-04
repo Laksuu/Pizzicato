@@ -95,7 +95,7 @@
 				<th>extramauste</th>				
 			</tr>
 			
-			
+			<c:set var="tilauksenhinta" value="0"></c:set>
 			<c:forEach items="${ostokset}" var="ostos">
 
 				<tr>
@@ -108,8 +108,18 @@
 							value="${ostos.rivihinta}" /> EUR</td>
 							<td><c:out value="${ostos.extramauste}"></c:out></td>
 				
+				<c:set var="tilauksenhinta" value="${tilauksenhinta + ostos.rivihinta}"></c:set>
+				
 				</tr>
+			
+			
+			
 			</c:forEach>
+			<tr>
+			<td> Yhteensä
+			<c:out value="${tilauksenhinta}"> </c:out> euroa
+			</td>
+			</tr>
 		</table>
 
 	

@@ -102,9 +102,27 @@ public class Ostoskori extends HttpServlet {
 	System.out.print("valittu valkosipuli" + valittuValkosipuli);
 	
 	
-		int extramauste = 0;
+	//t‰‰ if-leikki toimii ja ilmoittaa int-tietona mit‰ on tai ei ole
+	// 0= ei mit‰‰n, 1=oregano, 2=valkosipuli, 3=oregano&valkosipuli
 	
+		int extramauste = 0;
 		
+		if (oregano == true && valkosipuli == true){
+			extramauste = 3;
+		} else if ( oregano == false && valkosipuli == true)
+				extramauste = 2;
+		 else if ( oregano == true && valkosipuli == false)
+				extramauste = 1;
+		 else {
+			extramauste = 0;
+		}
+		
+		
+		
+		
+		
+	
+		/*
 		 if (valittuOregano == null && valittuValkosipuli.equals("3")) {
 			 extramauste = 2;
 		 	
@@ -127,7 +145,7 @@ public class Ostoskori extends HttpServlet {
 			 extramauste = 0;
 		 }
 
-	
+	*/
 	
 		PizzaDAO pizzadao = new PizzaDAO();
 

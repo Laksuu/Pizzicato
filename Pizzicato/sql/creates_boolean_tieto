@@ -12,6 +12,7 @@ piilotettu
 
 extramauste int
 ESIM
-1 = valkosipuli
-2 = oregano
-3 = ...
+0 = ei mit‰‰n
+1 = oregano
+2 = valkosipuli
+3 = oregano ja valkosipuli

@@ -159,6 +159,7 @@
 				<td><%=pizza.getHinta()%>€</td>
 
 				<td>Määrä: <select name="lkm">
+						<option value="0">0 kpl</option>
 						<option value="1">1 kpl</option>
 						<option value="2">2 kpl</option>
 						<option value="3">3 kpl</option>
