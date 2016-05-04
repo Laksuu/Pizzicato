@@ -8,16 +8,18 @@ public class Tilausrivi {
 	private int maara;
 	private Pizza pizza;
 	private int extramauste;
+	private double rivihinta;
 	
 	
 	//construktorit
 	
-	public Tilausrivi(int tilausrivi_id, int maara, Pizza pizza, int extramauste) {
+	public Tilausrivi(int tilausrivi_id, int maara, Pizza pizza, int extramauste, double rivihinta) {
 		super();
 		this.tilausrivi_id = tilausrivi_id;
 		this.maara = maara;
 		this.pizza = pizza;
 		this.extramauste = extramauste;
+		this.rivihinta = rivihinta;
 	}
 	
 	public Tilausrivi(){
@@ -26,6 +28,7 @@ public class Tilausrivi {
 		this.maara = 0;
 		this.pizza = null;
 		this.extramauste = 0;
+		this.rivihinta = 0.0;
 	}
 	
 	//getterit ja setterit
@@ -62,6 +65,16 @@ public class Tilausrivi {
 	public void setExtramauste(int extramauste) {
 		this.extramauste = extramauste;
 	}
+
+	public double getRivihinta() {
+		return rivihinta;
+	}
+
+	public void setRivihinta(double rivihinta) {
+		this.rivihinta = rivihinta;
+	}
+	
+	
 	
 
 	

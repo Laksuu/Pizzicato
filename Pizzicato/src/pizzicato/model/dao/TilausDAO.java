@@ -46,11 +46,12 @@ public class TilausDAO extends DataAccessObject {
 				Pizza pizza = tilausrivi.getPizza();
 				 
 				
-				sqlInsert = "INSERT INTO tilausrivi(pizza_id, tilaus_id, maara, extramauste) VALUES (?,last_insert_id(),?.?)";
+				sqlInsert = "INSERT INTO tilausrivi(pizza_id, tilaus_id, maara, extramauste, rivihinta) VALUES (?,last_insert_id(),?.?,?)";
 				stmtInsert = connection.prepareStatement(sqlInsert);
 				stmtInsert.setInt(1, pizza.getPizza_id());
 				stmtInsert.setInt(3, tilausrivi.getMaara());
 				stmtInsert.setInt(4, tilausrivi.getExtramauste());
+				stmtInsert.setDouble(5, tilausrivi.getRivihinta());
 				stmtInsert.executeUpdate();
 				
 			
@@ -122,6 +123,8 @@ public class TilausDAO extends DataAccessObject {
 			String osoite = rs.getString("osoite");
 			int puh = rs.getInt("puh");
 			String sposti = rs.getString("sposti");
+
+			
 			
 			return new Tilaus(tilaus_id, pvm, toimitus, maksu, nimi, osoite, puh, sposti);
 		
@@ -172,8 +175,9 @@ public class TilausDAO extends DataAccessObject {
 			Pizza pizza = new Pizza();
 			pizza.setPizza_id(pizza_id);
 			int extramauste = rs.getInt("extramauste");
+			double rivihinta = rs.getDouble("rivihinta");
 			
-			return new Tilausrivi(tilausrivi_id, maara, pizza, extramauste);
+			return new Tilausrivi(tilausrivi_id, maara, pizza, extramauste, rivihinta);
 		} catch (SQLException e){
 			throw new RuntimeException(e);
 		}
