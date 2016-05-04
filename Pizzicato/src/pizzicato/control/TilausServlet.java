@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import pizzicato.model.Ostos;
 import pizzicato.model.Tilaus;
 import pizzicato.model.Tilausrivi;
+import pizzicato.model.dao.PizzaDAO;
+import pizzicato.model.dao.TilausDAO;
 
 /**
  * Servlet implementation class TilausServlet
@@ -55,6 +57,54 @@ public class TilausServlet extends HttpServlet {
 		
 		Tilaus tilaus = new Tilaus();
 		
+	
+		
+
+		String nimi = request.getParameter("nimi");
+		String osoite = request.getParameter("osoite");
+		String sposti = request.getParameter("sposti");
+		
+		String strpuh = request.getParameter("puh");
+		int puh  = new Integer(strpuh);
+		
+		
+		String valittutoimitus = request.getParameter("toimitus");
+		String valittumaksutapa = request.getParameter("maksutapa");
+		
+		System.out.println(valittutoimitus);
+		
+		
+		boolean toimitus = false;
+		
+		boolean maksutapa = false;
+		
+		
+		if (valittutoimitus.equals("0") && valittumaksutapa.equals("0")) {
+			toimitus = true;
+			maksutapa = true;
+		}
+		else if (valittutoimitus.equals("1") && valittumaksutapa.equals("0")) {
+		toimitus= false;
+		maksutapa = true;
+		}
+		
+		else if (valittutoimitus.equals("0") && valittumaksutapa.equals("1")) {
+			toimitus= true;
+			maksutapa = false;
+		}
+		else {
+				toimitus= false;
+				maksutapa= false;
+			}
+	
+		
+		tilaus.setNimi(nimi);
+		tilaus.setOsoite(osoite);
+		tilaus.setPuh(puh);
+		tilaus.setSposti(sposti);
+		tilaus.setToimitus(toimitus);
+		tilaus.setMaksu(maksutapa);
+		
 		
 		
 		Tilausrivi tilausrivi = new Tilausrivi();
@@ -67,12 +117,21 @@ public class TilausServlet extends HttpServlet {
 		 tilausrivi.setMaara(ostos.getLkm());
 		 tilausrivi.setRivihinta(ostos.getRivihinta());
 		 tilaus.addTilausrivi(tilausrivi);
+		 
 			
 			
 		}
 
 		System.out.println("tämä on tilausrivi" +tilausrivi);
-
+		System.out.println("tämä on tilaus" +tilaus);
+		
+		
+		
+		TilausDAO tilausdao = new TilausDAO();
+		//tilausdao.addTilaus(tilaus, tilausrivi);
+		
+		
+		
 		
 		tilaus.Laskehinta();
 		
