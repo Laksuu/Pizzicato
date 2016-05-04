@@ -4,6 +4,7 @@ import pizzicato.model.Pizza;
 
 public class Tilausrivi {
 
+
 	private int tilausrivi_id;
 	private int maara;
 	private Pizza pizza;
@@ -76,7 +77,12 @@ public class Tilausrivi {
 	
 	
 	
-
+	@Override
+	public String toString() {
+		return "Tilausrivi [tilausrivi_id=" + tilausrivi_id + ", maara="
+				+ maara + ", pizza=" + pizza + ", extramauste=" + extramauste
+				+ ", rivihinta=" + rivihinta + "]";
+	}
 	
 	
 }

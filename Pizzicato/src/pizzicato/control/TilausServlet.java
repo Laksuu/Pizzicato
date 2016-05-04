@@ -57,23 +57,25 @@ public class TilausServlet extends HttpServlet {
 		
 		
 		
-		Tilausrivi tilausrivi = null;
+		Tilausrivi tilausrivi = new Tilausrivi();
 		Ostos ostos;
 		for (int i = 0; i < ostokset.size(); i++) {
 			ostos = ostokset.get(i);
 			// luodaan tilausrivi olio
-			
-		 tilausrivi = new Tilausrivi();
 		 tilausrivi.setPizza(ostos.getPizza()) ;
 		 tilausrivi.setExtramauste(ostos.getExtramauste());
 		 tilausrivi.setMaara(ostos.getLkm());
+		 tilausrivi.setRivihinta(ostos.getRivihinta());
 		 tilaus.addTilausrivi(tilausrivi);
 			
 			
 		}
-		System.out.println("gjudafhdsfhdshgfdsfh " +tilausrivi);
+		System.out.println("tämä on tilausrivi" +tilausrivi);
 
-		
+		String jsp = "/view/Ostoskori.jsp";
+		RequestDispatcher dispather = getServletContext().getRequestDispatcher(
+				jsp);
+		dispather.forward(request, response);
 	}
 
 }

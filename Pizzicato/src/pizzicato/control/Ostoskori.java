@@ -98,8 +98,8 @@ public class Ostoskori extends HttpServlet {
 
 		
 		
-	System.out.print("dasdasdasdasdas" + valittuOregano);
-	System.out.print("dasdasdasdasdas      " + valittuValkosipuli);
+	System.out.print("Valittu Oregano" + valittuOregano);
+	System.out.print("valittu valkosipuli" + valittuValkosipuli);
 	
 	
 		int extramauste = 0;
