@@ -92,8 +92,7 @@
 				<th>yksilöHinta</th>
 				<th>Lukumäärä</th>
 				<th>Kokonaishinta</th>
-				<th>Oregano</th>
-				<th>Valkosipuli</th>
+				<th>extramauste</th>				
 			</tr>
 			
 			
@@ -107,8 +106,8 @@
 					<td><c:out value="${ostos.getLkm()}"></c:out></td>
 					<td><fmt:formatNumber type="currency" currencySymbol=""
 							value="${ostos.rivihinta}" /> EUR</td>
-					<td><c:out value="${ostos.oregano}"></c:out></td>
-					<td><c:out value="${ostos.valkosipuli}"></c:out></td>
+							<td><c:out value="${ostos.extramauste}"></c:out></td>
+				
 				</tr>
 			</c:forEach>
 		</table>
