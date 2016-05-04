@@ -163,6 +163,23 @@ public class Tilaus {
 	public ArrayList<Tilausrivi> getTilausrivit(){
 		return this.tilausrivit;
 	}
+	
+	public double Laskehinta(){
+		
+		double tilauksenhinta = 0.0;
+		double rivihinta;
+		Tilausrivi tilausrivi;
+		
+		//kysyy aktiiviselta pizzalta hinnan ja kertoo lkm:llä
+		for (int i = 0; i < tilausrivit.size(); i++) {
+			tilausrivi = tilausrivit.get(i);
+			tilauksenhinta+=tilausrivi.getRivihinta();
+			
+			
+			
+		}
+		return tilauksenhinta;
+	}
 
 
 	@Override

@@ -67,10 +67,14 @@ public class TilausServlet extends HttpServlet {
 		 tilausrivi.setPizza(ostos.getPizza()) ;
 		 tilausrivi.setExtramauste(ostos.getExtramauste());
 		 tilausrivi.setMaara(ostos.getLkm());
+		 tilausrivi.setRivihinta(ostos.getRivihinta());
 		 tilaus.addTilausrivi(tilausrivi);
 			
 			
 		}
+		
+		tilaus.Laskehinta();
+		
 		System.out.println("gjudafhdsfhdshgfdsfh " +tilausrivi);
 
 		
