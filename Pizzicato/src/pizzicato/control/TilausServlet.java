@@ -70,8 +70,12 @@ public class TilausServlet extends HttpServlet {
 			
 			
 		}
+
 		System.out.println("tämä on tilausrivi" +tilausrivi);
 
+		
+		tilaus.Laskehinta();
+		
 		String jsp = "/view/Ostoskori.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(
 				jsp);
