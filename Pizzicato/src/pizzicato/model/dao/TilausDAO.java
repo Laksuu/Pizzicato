@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+
 //import pizzicato.model.Asiakas;
 import pizzicato.model.Pizza;
 import pizzicato.model.Tilaus;
@@ -183,6 +185,38 @@ public class TilausDAO extends DataAccessObject {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public ArrayList<Tilausrivi> haetilausrivit() {	
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Tilausrivi> tilausrivit = new ArrayList<Tilausrivi>();
+		Tilausrivi Tilausrivi = null; 
+		try {
+			// Luodaan yhteys
+			conn = getConnection();
+			// Luodaan komento: haetaan kaikki rivit henkilo-taulusta
+			String sqlSelect = "SELECT tilausrivi_id, pizza_id, tilaus_id, maara, extramauste, rivihinta FROM tilausrivi;";
+			// Valmistellaan komento:
+			stmt = conn.prepareStatement(sqlSelect);
+			// L‰hetet‰‰n komento:
+			rs = stmt.executeQuery(sqlSelect);
+			// K‰yd‰‰n tulostaulun rivit l‰pi ja luetaan readHenkilo()-metodilla:
+			while (rs.next()) {
+				Tilausrivi = readTilausrivi(rs);
+				// lis‰t‰‰n henkilˆ listaan
+				tilausrivit.add(Tilausrivi);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			close(rs, stmt, conn); // Suljetaan
+		}
+	
+		return tilausrivit;
+	}
+	
+	
 	
 }
 
