@@ -39,25 +39,26 @@ public class TilausDAO extends DataAccessObject {
 			stmtInsert.setInt(5, tilaus.getPuh());
 			stmtInsert.setString(6, tilaus.getSposti());
 			stmtInsert.executeUpdate();
-			
+		
 			for (int i = 0; i < tilaus.getTilausrivit().size(); i++) {
 				
 				Tilausrivi tilausrivi = tilaus.getTilausrivi(i);
 				Pizza pizza = tilausrivi.getPizza();
 				 
 				
-				sqlInsert = "INSERT INTO tilausrivi(pizza_id, tilaus_id, maara, extramauste, rivihinta) VALUES (?,last_insert_id(),?.?,?)";
+				sqlInsert = "INSERT INTO tilausrivi(pizza_id, tilaus_id, maara, extramauste, rivihinta) VALUES (?,last_insert_id(),?,?,?)";
 				stmtInsert = connection.prepareStatement(sqlInsert);
-				stmtInsert.setInt(1, pizza.getPizza_id());
-				stmtInsert.setInt(3, tilausrivi.getMaara());
-				stmtInsert.setInt(4, tilausrivi.getExtramauste());
-				stmtInsert.setDouble(5, tilausrivi.getRivihinta());
+				stmtInsert.setInt(1, pizza.getPizza_id());		
+				stmtInsert.setInt(2, tilausrivi.getMaara());
+				stmtInsert.setInt(3, tilausrivi.getExtramauste());
+				
+				stmtInsert.setDouble(4, tilausrivi.getRivihinta());
 				stmtInsert.executeUpdate();
 				
 			
 			}
 			
-			System.out.println("tilaus ja tilausrivit lisätty");
+		
 			
 		} catch (SQLException e){
 			throw new RuntimeException(e);

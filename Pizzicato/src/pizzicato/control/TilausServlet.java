@@ -1,6 +1,7 @@
 package pizzicato.control;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -71,7 +72,7 @@ public class TilausServlet extends HttpServlet {
 		String valittutoimitus = request.getParameter("toimitus");
 		String valittumaksutapa = request.getParameter("maksutapa");
 		
-		System.out.println(valittutoimitus);
+	
 		
 		
 		boolean toimitus = false;
@@ -122,18 +123,26 @@ public class TilausServlet extends HttpServlet {
 			
 		}
 
-		System.out.println("tämä on tilausrivi" +tilausrivi);
-		System.out.println("tämä on tilaus" +tilaus);
+	
 		
 		
 		
 		TilausDAO tilausdao = new TilausDAO();
-		//tilausdao.addTilaus(tilaus, tilausrivi);
+		try {
+			tilausdao.addTilaus(tilaus);
+			session.invalidate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		
 		
 		tilaus.Laskehinta();
+		
+		
+		
 		
 		String jsp = "/view/Ostoskori.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(

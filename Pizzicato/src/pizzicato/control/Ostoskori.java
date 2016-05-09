@@ -173,25 +173,6 @@ public class Ostoskori extends HttpServlet {
 		System.out.print("ostokset::::" + ostokset);
 
 		response.sendRedirect("/Pizzicato/Ostoskori");
-		/*
-		 * double rivihinta = lkm * uusiPizza.getHinta();
-		 * 
-		 * Pizza uusipizza = uusiPizza;
-		 * 
-		 * Ostos ostos = new Ostos(uusipizza,lkm, rivihinta, oregano);
-		 * kori.lisaaOstoskoriin(ostos);
-		 * 
-		 * //Hinnat sessioon double hinta = kori.getTilauksenHinta();
-		 * request.getSession().setAttribute("hinta", hinta);
-		 * request.getSession().setAttribute("ohinta", hinta*0.9);
-		 * 
-		 * 
-		 * request.getSession().setAttribute("kori", kori);
-		 * response.sendRedirect("/Pizzicato/Etusivu");
-		 * System.out.print("Ostoskori"+ kori); } String jsp =
-		 * "/view/Ostoskori.jsp"; RequestDispatcher dispather =
-		 * getServletContext().getRequestDispatcher( jsp);
-		 * dispather.forward(request, response);
-		 */
+		
 	}
 }
