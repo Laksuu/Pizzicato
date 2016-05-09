@@ -106,7 +106,19 @@
 					<td><c:out value="${ostos.getLkm()}"></c:out></td>
 					<td><fmt:formatNumber type="currency" currencySymbol=""
 							value="${ostos.rivihinta}" /> EUR</td>
-							<td><c:out value="${ostos.extramauste}"></c:out></td>
+							<td><c:set var="extramauste" value="${ostos.getExtramauste()}"/>
+<c:if test="${ostos.extramauste == 0}">
+ <c:out value="ei maustetta"/>
+</c:if>
+<c:if test="${ostos.extramauste == 1}">
+<c:out value="oregano"/>
+</c:if>
+<c:if test="${ostos.extramauste == 2}">
+<c:out value="valkosipuli"/>
+</c:if>
+<c:if test="${ostos.extramauste == 3}">
+<c:out value="oregano ja valkosipuli"/>
+</c:if></td>
 				
 				<c:set var="tilauksenhinta" value="${tilauksenhinta + ostos.rivihinta}"></c:set>
 				
