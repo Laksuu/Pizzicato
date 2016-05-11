@@ -46,10 +46,8 @@
 
 					<c:when test="${Username != null}">
 						<div class="fixedlogin">
-							<h1>
-								<c:out value="${session.getAttribute(Username)}"></c:out>
-							</h1>
 							<div>
+								<a><c:out value=" ${Username}" /></a>
 								<a href="Logout"> Kirjaudu ulos </a>
 							</div>
 						</div>
@@ -92,8 +90,14 @@
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><c:choose>
-							<c:when test="${Username != null}">
+					
+							<c:when test="${Logtype ==\"master\"}">
 								<a href="Muokkaussivu">Muokkaussivu </a>
+							</c:when>
+						</c:choose>
+					<li><c:choose>
+							<c:when test="${Logtype == \"kokki\"}">
+								<a href="Kokki">Kokin näkymä </a>
 							</c:when>
 						</c:choose>
 				</ul>

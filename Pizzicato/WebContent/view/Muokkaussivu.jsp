@@ -28,21 +28,15 @@
 
 <body>
 
-
-<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
-
-<!--  N�ytet��n logout jos kirjautunut sis��n! -->
-
+			<!--  Näytetään logout jos kirjautunut sisään! -->
 
 			<div id="Login">
 				<c:choose>
 
 					<c:when test="${Username != null}">
 						<div class="fixedlogin">
-							<h1>
-								<c:out value="${session.getAttribute(Username)}"></c:out>
-							</h1>
 							<div>
+								<a><c:out value=" ${Username}" /></a>
 								<a href="Logout"> Kirjaudu ulos </a>
 							</div>
 						</div>
@@ -59,7 +53,7 @@
 								</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <input placeholder=password name=password id=password type=password />
-<span class="caps-lock-warning" title="Caps lock is on!"></span>
+<span class="caps-lock-warning" title="Caps lock on päällä!"></span>
 								<div id="submit">
 									<div>
 										<button type=submit>Kirjaudu</button>
@@ -83,19 +77,23 @@
 
 			<img src="Pizzicato.png" class="kuva1" />
 
-			<!--Navigointipalkin linkkien painikkeet ovat tässä-->	
+			<!--Navigointipalkin linkkien painikkeet ovat tässä-->
 			<div id="navigointipalkki">
 				<ul class="paavalikko">
 					<li><a class="active" href="Etusivu">Etusivu</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
-					<li>	<c:choose>
-							<c:when test="${Username != null}">
-						<a href="Muokkaussivu">Muokkaussivu  </a>
-							</c:when>
-							</c:choose>
+					<li><c:choose>
 					
-				
+							<c:when test="${Logtype ==\"master\"}">
+								<a href="Muokkaussivu">Muokkaussivu </a>
+							</c:when>
+						</c:choose>
+					<li><c:choose>
+							<c:when test="${Logtype == \"kokki\"}">
+								<a href="Kokki">Kokin näkymä </a>
+							</c:when>
+						</c:choose>
 				</ul>
 			</div>
 
