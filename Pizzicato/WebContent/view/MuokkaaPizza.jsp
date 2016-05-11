@@ -4,6 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 	<%@ page import="pizzicato.model.Pizza"%>
 	<%@ page import="pizzicato.control.MuokkaaPizza"%>
+	<%@ page import="pizzicato.model.Tayte"%>
+	<%@ page import="java.util.Collection, java.util.ArrayList"%>
 <html>
 <head>
 <link href="tyyli.css" rel="stylesheet" type="text/css">
@@ -92,29 +94,40 @@
 
 <br>
 <table class="taulukko">
-		<jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>" scope="request" />
-			<%@ page import="java.util.Collection, java.util.ArrayList"%>
+		<jsp:useBean id="pizza" class="pizzicato.model.Pizza" scope="request" />
+		<jsp:useBean id="taytteet" type="java.util.ArrayList<Tayte>" scope="request" />
 			
-			<%
-				for (int i = 0; i < pizzat.size(); i++) {
-			%>
 			<tr>
-				<td><%=i + 1%></td>
-				<td><%=pizzat.get(i).getNimi()%></td>
-				<td><%=pizzat.get(i).getHinta()%></td>
+			
+				<td><%=pizza.getNimi()%></td>
+				<td><%=pizza.getHinta()%></td>
 
 				<td>
 					<form action="MuokkaaPizza" method="POST">
-						<input type=hidden name=pizza_id value="<%=pizzat.get(i).getPizza_id()%>"/>
-						<input type="text" name="nimi" value="<%=pizzat.get(i).getNimi()%>"/>
-						<input type="text" name="hinta" value="<%=pizzat.get(i).getHinta()%>" />
+						<input type=hidden name=pizza_id value="<%=pizza.getPizza_id()%>"/>
+						<input type="text" name="nimi" value="<%=pizza.getNimi()%>"/>
+						<input type="text" name="hinta" value="<%=pizza.getHinta()%>" />
 						<input type=submit name= Tallenna class="submit-button" value="Tallenna" />
+					
+					
+					
+					
+					<%
+						for (int i = 0; i < taytteet.size(); i++) {
+					%>
+				
+				<tr>
+					<td id="piilossa" style="display: none;"><%=i + 1%></td>
+					<td></td>
+					<td><input type="checkbox" name=taytteet value="<%=taytteet.get(i).getTayte_id()%>"><%=taytteet.get(i).getTayte()%></td>
+					
+					<%
+						}
+					%>
 					
 					</form>
 				</td>
-	<%
-				}
-			%>
+	
 			</table>
 
 			<br> <br> <br> <br> <br> <br> <br>

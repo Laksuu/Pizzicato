@@ -268,22 +268,38 @@ public class PizzaDAO extends DataAccessObject {
 		Pizza pizza = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		int edellinenPizzaId = 0;
+		int nykyinenPizzaId = 0;
+		Tayte tayte = null;
+		ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
+		ResultSet rs = null;
+		
 		try {
 			// avataan yhteys tietokantaan
 			conn = getConnection();
 
 			// Luodaan sql stringistä statement ja suoritetaan sql haku
-			String sql = "SELECT pizza_id, nimi, hinta FROM pizza where pizza_id = ?";
+			String sql = "SELECT p.pizza_id, p.nimi, p.hinta, t.tayte_id, t.tayte FROM pizza p JOIN pizzantayte x ON x.pizza_id = p.pizza_id JOIN tayte t ON t.tayte_id = x.tayte_id where p.pizza_id = ?";
+					
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pizza_id);
 
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
+				nykyinenPizzaId = rs.getInt("pizza_id");
+				
+				if (nykyinenPizzaId != edellinenPizzaId) {
+					pizza = readPizza(rs);
+					pizzat.add(pizza);
+					edellinenPizzaId = nykyinenPizzaId;
+				}
+				
+				tayte = readTayte(rs);
+				pizza.addTayte(tayte);
 
-				pizza = new Pizza(rs.getInt("pizza_id"), rs.getString("nimi"),
-						rs.getDouble("hinta"));
+			
 			}
 
 		} catch (SQLException e) {

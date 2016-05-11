@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import pizzicato.model.Pizza;
 import pizzicato.model.Tayte;
 
 public class TayteDAO extends DataAccessObject {
@@ -184,5 +186,40 @@ public class TayteDAO extends DataAccessObject {
 		}
 
 		close(pstmt, conn);
+	}
+	
+	public Tayte etsiTayte(int tayte_id) {
+
+		Tayte tayte = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			// avataan yhteys tietokantaan
+			conn = getConnection();
+
+			// Luodaan sql stringistä statement ja suoritetaan sql haku
+			String sql = "SELECT tayte_id, tayte_hinta, tayte FROM tayte where tayte_id = ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, tayte_id);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				tayte = new Tayte(rs.getInt("tayte_id"), rs.getDouble("hinta"),
+						rs.getString("tayte"));
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			close(pstmt, conn);
+		} // Suljetaan statement ja yhteys
+
+		close(pstmt, conn);
+		// palautetaan saatu tulos
+
+		return tayte;
 	}
 }

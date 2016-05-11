@@ -141,12 +141,10 @@
 					</form>
 				<td>
 					<form action="/Pizzicato/MuokkaaPizza" method="GET">
-						<input type=hidden name="pizza_id"
-							value="<%=pizzat.get(i).getPizza_id()%>" /> <input type=hidden
-							name="nimi" value="<%=pizzat.get(i).getNimi()%>" /> <input
-							type=hidden name="hinta" value="<%=pizzat.get(i).getHinta()%>" />
-						<input type=submit name="Muokkaa" class="submit-button"
-							value="Muokkaa" />
+						<input type=hidden name="pizza_id" value="<%=pizzat.get(i).getPizza_id()%>" /> 
+						<input type=hidden name="nimi" value="<%=pizzat.get(i).getNimi()%>" /> 
+						<input type=hidden name="hinta" value="<%=pizzat.get(i).getHinta()%>" />
+						<input type=submit name="Muokkaa" class="submit-button" value="Muokkaa" />
 					</form>
 
 				</td>
@@ -206,11 +204,11 @@
 				<jsp:useBean id="jsp" scope="request" class="java.lang.String" />
 				<tr>
 					<td>Anna pizzan nimi:</td>
-					<td><input type="text" value="" name="nimi" size="60" pattern="\D\s[A-Za-z]{3,16}" title="Pizzan nimen tulee olla alle 16 kirjainmerkkiä" /></td>
+					<td><input type="text" value="" name="nimi" size="60"  title="Pizzan nimen tulee olla alle 16 kirjainmerkkiä" /></td>
 				</tr>
 				<tr>
 					<td>Anna pizzan hinta:</td>
-					<td><input type="text" value="" name="hinta" size="60" pattern="\d{1,10}(\.\d{2})?" title="Pizzan hinnan minimi hinta on 6€ ja maksimi hinta 30€" /></td>
+					<td><input type="text" value="" name="hinta" size="60" title="Pizzan hinnan minimi hinta on 6€ ja maksimi hinta 30€" /></td>
 				</tr>
 				<tr>
 
