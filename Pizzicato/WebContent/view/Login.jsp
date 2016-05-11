@@ -15,29 +15,71 @@
    <title>Kirjaudu</title>
 
 </head>
-<body>
-<div class="keho">
-		<div class="header">
+<!--  N‰ytet‰‰n logout jos kirjautunut sis‰‰n! -->
 
-			<img src="Pizzicato.png" class="kuva1" />
+			<div id="Login">
+				<c:choose>
 
-		<!--Navigointipalkin linkkien painikkeet ovat t‰ss‰-->
+					<c:when test="${Username != null}">
+						<div class="fixedlogin">
+							<div>
+								<a><c:out value=" ${Username}" /></a>
+								<a href="Logout"> Kirjaudu ulos </a>
+							</div>
+						</div>
+					</c:when>
+
+					<c:otherwise>
+						<div class="fixedlogin2">
+							<br>
+							<form method=post action="Login" id="kirjaudu_form">
+								<div id="username">
+									<div>
+										<input placeholder=username name=username required />
+									</div>
+								</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<input placeholder=password name=password id=password type=password />
+<span class="caps-lock-warning" title="Caps lock on p‰‰ll‰!"></span>
+								<div id="submit">
+									<div>
+										<button type=submit>Kirjaudu</button>
+									</div>
+								</div>
+							</form>
+							<div class="error">
+								<p style="color: crimson">
+									<c:out value="${error}"></c:out>
+								</p>
+							</div>
+						</div>
+					</c:otherwise>
+
+				</c:choose>
+
+			</div>
+
+			<!--Navigointipalkin linkkien painikkeet ovat t‰ss‰-->
 			<div id="navigointipalkki">
 				<ul class="paavalikko">
 					<li><a class="active" href="Etusivu">Etusivu</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><c:choose>
-							<c:when test="${Username != null}">
+					
+							<c:when test="${Logtype ==\"master\"}">
 								<a href="Muokkaussivu">Muokkaussivu </a>
+							</c:when>
+						</c:choose>
+					<li><c:choose>
+							<c:when test="${Logtype == \"kokki\"}">
+								<a href="Kokki">Kokin n‰kym‰ </a>
 							</c:when>
 						</c:choose>
 				</ul>
 			</div>
 
 		</div>
-<br>
-<br>
 <h1>Kirjaudu sis‰‰n</h1>
 <% 
    String message = (String) request.getAttribute("message");
