@@ -175,12 +175,17 @@ public class TilausDAO extends DataAccessObject {
 			int tilausrivi_id = rs.getInt("tilausrivi_id");
 			int maara = rs.getInt("maara");
 			int pizza_id = rs.getInt("pizza_id");
+			String nimi = rs.getString("nimi");
+			Date pvm = rs.getDate("pvm");
 			Pizza pizza = new Pizza();
+			Tilaus tilaus = new Tilaus();
+			tilaus.setPvm(pvm);;
+			pizza.setNimi(nimi);
 			pizza.setPizza_id(pizza_id);
 			int extramauste = rs.getInt("extramauste");
 			double rivihinta = rs.getDouble("rivihinta");
 			
-			return new Tilausrivi(tilausrivi_id, maara, pizza, extramauste, rivihinta);
+			return new Tilausrivi(tilausrivi_id, maara, pizza, tilaus, extramauste, rivihinta);
 		} catch (SQLException e){
 			throw new RuntimeException(e);
 		}
@@ -196,7 +201,7 @@ public class TilausDAO extends DataAccessObject {
 			// Luodaan yhteys
 			conn = getConnection();
 			// Luodaan komento: haetaan kaikki rivit henkilo-taulusta
-			String sqlSelect = "SELECT tilausrivi_id, pizza_id, tilaus_id, maara, extramauste, rivihinta FROM tilausrivi;";
+			String sqlSelect = " SELECT p.nimi, t.pizza_id, t.rivihinta, t.maara, tilausrivi_id, t.extramauste, r.pvm FROM pizza p JOIN tilausrivi t ON p.pizza_id= t.pizza_id JOIN tilaus r ON t.tilaus_id= r.tilaus_id;";
 			// Valmistellaan komento:
 			stmt = conn.prepareStatement(sqlSelect);
 			// L‰hetet‰‰n komento:
@@ -204,7 +209,7 @@ public class TilausDAO extends DataAccessObject {
 			// K‰yd‰‰n tulostaulun rivit l‰pi ja luetaan readHenkilo()-metodilla:
 			while (rs.next()) {
 				Tilausrivi = readTilausrivi(rs);
-				// lis‰t‰‰n henkilˆ listaan
+			
 				tilausrivit.add(Tilausrivi);
 			}
 		} catch (SQLException e) {
@@ -212,7 +217,7 @@ public class TilausDAO extends DataAccessObject {
 		} finally {
 			close(rs, stmt, conn); // Suljetaan
 		}
-	
+		System.out.println("TEAASDAIUSDUSAOHDUYSDSAUHDHSAUDHOSAUDSADYGAS    "+tilausrivit);
 		return tilausrivit;
 	}
 	

@@ -119,7 +119,7 @@ public class Tilaus {
 
 
 	public void setPvm(Date pvm) {
-		this.pvm = pvm;
+	this.pvm = pvm;
 	}
 
 

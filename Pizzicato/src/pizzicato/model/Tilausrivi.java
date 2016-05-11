@@ -1,7 +1,7 @@
 package pizzicato.model;
 
 import pizzicato.model.Pizza;
-
+import pizzicato.model.Tilaus;
 public class Tilausrivi {
 
 
@@ -10,17 +10,19 @@ public class Tilausrivi {
 	private Pizza pizza;
 	private int extramauste;
 	private double rivihinta;
+	private Tilaus tilaus;
 	
 	
 	//construktorit
 	
-	public Tilausrivi(int tilausrivi_id, int maara, Pizza pizza, int extramauste, double rivihinta) {
+	public Tilausrivi(int tilausrivi_id, int maara, Pizza pizza, Tilaus tilaus, int extramauste, double rivihinta) {
 		super();
 		this.tilausrivi_id = tilausrivi_id;
 		this.maara = maara;
 		this.pizza = pizza;
 		this.extramauste = extramauste;
 		this.rivihinta = rivihinta;
+		this.tilaus = tilaus;
 	}
 	
 	public Tilausrivi(){
@@ -28,6 +30,7 @@ public class Tilausrivi {
 		this.tilausrivi_id = 0;
 		this.maara = 0;
 		this.pizza = null;
+		this.tilaus = null;
 		this.extramauste = 0;
 		this.rivihinta = 0.0;
 	}
@@ -58,6 +61,15 @@ public class Tilausrivi {
 	public void setPizza(Pizza pizza) {
 		this.pizza = pizza;
 	}
+	
+	
+	public Tilaus getTilaus() {
+		return tilaus;
+	}
+
+	public void setTilaus(Tilaus tilaus) {
+		this.tilaus = tilaus;
+	}
 
 	public int getExtramauste() {
 		return extramauste;
@@ -80,7 +92,7 @@ public class Tilausrivi {
 	@Override
 	public String toString() {
 		return "Tilausrivi [tilausrivi_id=" + tilausrivi_id + ", maara="
-				+ maara + ", pizza=" + pizza + ", extramauste=" + extramauste
+				+ maara + ", pizza=" + pizza + ", tilaus=" + tilaus + ", extramauste=" + extramauste
 				+ ", rivihinta=" + rivihinta + "]";
 	}
 	
