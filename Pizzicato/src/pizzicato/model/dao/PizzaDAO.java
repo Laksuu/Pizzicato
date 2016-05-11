@@ -228,6 +228,8 @@ public class PizzaDAO extends DataAccessObject {
 			conn = getConnection();
 			String sql = "UPDATE pizza SET "
 					+ "nimi=?, hinta=? WHERE pizza_id=?";
+			
+				
 			pstmt = conn.prepareStatement(sql);
 			int p = 1;
 			pstmt.setString(1, pizza.getNimi());
@@ -238,7 +240,22 @@ public class PizzaDAO extends DataAccessObject {
 				System.out.print("virhe");
 			}
 			System.out.println("Rows inserted succesfully!");
+			
+			sql = "DELETE FROM pizzantayte WHERE pizza_id=?";
+			pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, pizza.getPizza_id());
+					pstmt.executeUpdate();
+			for (int i = 0; i < pizza.getTaytteet().size(); i++) {
 
+				Tayte tayte = pizza.getTaytteet().get(i);
+
+				sql = "INSERT INTO pizzantayte(pizza_id, tayte_id) VALUES (?, ?)";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, pizza.getPizza_id());
+				pstmt.setInt(2, tayte.getTayte_id());
+				pstmt.executeUpdate();
+
+			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
