@@ -191,25 +191,27 @@ public class PizzaDAO extends DataAccessObject {
 	public void poista(Integer pizza_id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		int p;
 		try {
 			conn = getConnection();
 
-			String sql = "DELETE FROM pizza WHERE pizza_id = ?";
+			String sql = "DELETE FROM pizzantayte WHERE pizza_id = ?";
 			pstmt = conn.prepareStatement(sql);
-			int p;
+			pstmt.setInt(1, pizza_id);
+			p = pstmt.executeUpdate();
+			if (p != 1) {
+				System.out.print("virhe");
+			}
+			
+			sql = "DELETE FROM pizza WHERE pizza_id = ?";
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pizza_id);
 			p = pstmt.executeUpdate();
 			if (p != 1) {
 				System.out.print("virhe");
 			}
 
-			sql = "DELETE FROM pizzantayte WHERE pizza_id = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, pizza_id);
-			p = pstmt.executeUpdate();
-			if (p != 1) {
-				System.out.print("virhe");
-			}
+			
 
 			pstmt.close();
 
@@ -226,8 +228,7 @@ public class PizzaDAO extends DataAccessObject {
 
 		try {
 			conn = getConnection();
-			String sql = "UPDATE pizza SET "
-					+ "nimi=?, hinta=? WHERE pizza_id=?";
+			String sql = "UPDATE pizza SET nimi=?, hinta=? WHERE pizza_id=?";
 			
 				
 			pstmt = conn.prepareStatement(sql);
