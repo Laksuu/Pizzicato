@@ -65,10 +65,14 @@
 
 			</div>
 
+
+
 <div class="keho">
 		<div class="header">
 
-			<!--Navigointipalkin linkkien painikkeet ovat tässä-->
+			<img src="Pizzicato.png" class="kuva1" />
+
+<!--Navigointipalkin linkkien painikkeet ovat tässä-->
 			<div id="navigointipalkki">
 				<ul class="paavalikko">
 					<li><a class="active" href="Etusivu">Etusivu</a></li>
@@ -91,31 +95,7 @@
 		</div>
 
 
-<div class="keho">
-		<div class="header">
-
-			<img src="Pizzicato.png" class="kuva1" />
-
-			<!--Navigointipalkin linkkien painikkeet ovat tässä-->	
-			<div id="navigointipalkki">
-				<ul class="paavalikko">
-					<li><a class="active" href="Etusivu">Etusivu</a></li>
-					<li><a href="Ostoskori">Ostoskori</a></li>
-					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
-					<li>	<c:choose>
-							<c:when test="${Username != null}">
-						<a href="Muokkaussivu">Muokkaussivu  </a>
-							</c:when>
-							</c:choose>
-					
-				
-				</ul>
-			</div>
-
-		</div>
-
-
-<br>
+<br><form action="MuokkaaPizza" method="POST">
 <table class="taulukko">
 		<jsp:useBean id="pizza" class="pizzicato.model.Pizza" scope="request" />
 		<jsp:useBean id="taytteet" type="java.util.ArrayList<Tayte>" scope="request" />
@@ -126,32 +106,33 @@
 				<td><%=pizza.getHinta()%></td>
 
 				<td>
-					<form action="MuokkaaPizza" method="POST">
+					
 						<input type=hidden name=pizza_id value="<%=pizza.getPizza_id()%>"/>
 						<input type="text" name="nimi" value="<%=pizza.getNimi()%>"/>
-						<input type="text" name="hinta" value="<%=pizza.getHinta()%>" />
-						<input type=submit name= Tallenna class="submit-button" value="Tallenna" />
+						<input type="text" name="hinta" value="<%=pizza.getHinta()%>" /> </td>
+					<td>	<input type=submit name= Tallenna class="submit-button" value="Tallenna" /> </td>
 					
-					
-					
-					
+					</tr>
+					<tr>
+					<td rowspan =2;>
 					<%
 						for (int i = 0; i < taytteet.size(); i++) {
 					%>
 				
-				<tr>
-					<td id="piilossa" style="display: none;"><%=i + 1%></td>
-					<td></td>
-					<td><input type="checkbox" name=taytteet value="<%=taytteet.get(i).getTayte_id()%>"><%=taytteet.get(i).getTayte()%></td>
+				
+					
+					<input type="checkbox" name=taytteet value="<%=taytteet.get(i).getTayte_id()%>"><%=taytteet.get(i).getTayte()%>
+				
 					
 					<%
 						}
 					%>
+					</td>
+					</tr>
 					
-					</form>
-				</td>
+		
 	
-			</table>
+		</table></form>	
 
 			<br> <br> <br> <br> <br> <br> <br>
 
