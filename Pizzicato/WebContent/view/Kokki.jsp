@@ -18,9 +18,10 @@
 <body>
 <div class="keho">
 
+<b>0= ei maustetta, 1=oregano, 2=valkosipuli, 3=oregano ja valkosipuli</b>
 <table class="taulukko">
 
-
+			
 			<tr>
 			<th>Pizzan nimi</th>
 			<th>m‰‰r‰</th>
