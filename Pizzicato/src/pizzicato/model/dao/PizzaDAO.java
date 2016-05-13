@@ -202,7 +202,7 @@ public class PizzaDAO extends DataAccessObject {
 			if (p != 1) {
 				System.out.print("virhe");
 			}
-			
+
 			sql = "DELETE FROM pizza WHERE pizza_id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pizza_id);
@@ -210,8 +210,6 @@ public class PizzaDAO extends DataAccessObject {
 			if (p != 1) {
 				System.out.print("virhe");
 			}
-
-			
 
 			pstmt.close();
 
@@ -229,8 +227,7 @@ public class PizzaDAO extends DataAccessObject {
 		try {
 			conn = getConnection();
 			String sql = "UPDATE pizza SET nimi=?, hinta=? WHERE pizza_id=?";
-			
-				
+
 			pstmt = conn.prepareStatement(sql);
 			int p = 1;
 			pstmt.setString(1, pizza.getNimi());
@@ -241,11 +238,11 @@ public class PizzaDAO extends DataAccessObject {
 				System.out.print("virhe");
 			}
 			System.out.println("Rows inserted succesfully!");
-			
+
 			sql = "DELETE FROM pizzantayte WHERE pizza_id=?";
 			pstmt = conn.prepareStatement(sql);
-					pstmt.setInt(1, pizza.getPizza_id());
-					pstmt.executeUpdate();
+			pstmt.setInt(1, pizza.getPizza_id());
+			pstmt.executeUpdate();
 			for (int i = 0; i < pizza.getTaytteet().size(); i++) {
 
 				Tayte tayte = pizza.getTaytteet().get(i);
@@ -291,14 +288,13 @@ public class PizzaDAO extends DataAccessObject {
 		Tayte tayte = null;
 		ArrayList<Pizza> pizzat = new ArrayList<Pizza>();
 		ResultSet rs = null;
-		
+
 		try {
 			// avataan yhteys tietokantaan
 			conn = getConnection();
 
 			// Luodaan sql stringistä statement ja suoritetaan sql haku
 			String sql = "SELECT p.pizza_id, p.nimi, p.hinta, t.tayte_id, t.tayte FROM pizza p JOIN pizzantayte x ON x.pizza_id = p.pizza_id JOIN tayte t ON t.tayte_id = x.tayte_id where p.pizza_id = ?";
-					
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pizza_id);
@@ -307,17 +303,16 @@ public class PizzaDAO extends DataAccessObject {
 
 			while (rs.next()) {
 				nykyinenPizzaId = rs.getInt("pizza_id");
-				
+
 				if (nykyinenPizzaId != edellinenPizzaId) {
 					pizza = readPizza(rs);
 					pizzat.add(pizza);
 					edellinenPizzaId = nykyinenPizzaId;
 				}
-				
+
 				tayte = readTayte(rs);
 				pizza.addTayte(tayte);
 
-			
 			}
 
 		} catch (SQLException e) {

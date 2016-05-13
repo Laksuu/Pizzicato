@@ -27,27 +27,17 @@ public class MuokkaaPizza extends HttpServlet {
 		String nimi;
 		double hinta;
 		String hintastr;
-		// arraylist taytteet
 
 		pizza_idstr = request.getParameter("pizza_id");
 		pizza_id = Integer.parseInt(request.getParameter("pizza_id"));
 		nimi = request.getParameter("nimi");
 		hintastr = request.getParameter("hinta");
 		hinta = Double.parseDouble(request.getParameter("hinta"));
-		// arraylist taytteet
 
-		
 		PizzaDAO pizzaDAO = new PizzaDAO();
 		Pizza pizza = pizzaDAO.etsiPizza(pizza_id);
-	
-		// int tayte_id = 0;
-		// String tayte_idstr;
-		
-		// tayte_idstr = request.getParameter("tayte_id");
-		// tayte_id = Integer.parseInt(request.getParameter("tayte_id"));
-		
 		TayteDAO tayteDAO = new TayteDAO();
-		ArrayList<Tayte> taytteet= tayteDAO.findAll();
+		ArrayList<Tayte> taytteet = tayteDAO.findAll();
 
 		request.setAttribute("pizza", pizza);
 		request.setAttribute("taytteet", taytteet);
@@ -73,26 +63,25 @@ public class MuokkaaPizza extends HttpServlet {
 			hintastr = request.getParameter("hinta");
 			hinta = Double.parseDouble(request.getParameter("hinta"));
 			pizza.setHinta(hinta);
-			
+
 			taytteet = request.getParameterValues("taytteet");
-			
-			//for toisto
+
+			// for toisto
 			for (int i = 0; i < taytteet.length; i++) {
-				
+
 				// taulukosta 1 t‰yte id -> int
 				taytestr = taytteet[i];
 				tayte_id = Integer.parseInt(taytestr);
-				
+
 				// luo t‰yteolio
 				Tayte tayteolio = new Tayte();
 				// lis‰‰ t‰yteoliolle t‰yte_id
 				tayteolio.setTayte_id(tayte_id);
 				// lis‰‰ t‰yteolio pizzalle
 				pizza.addTayte(tayteolio);
-				
+
 			}
-				
-			
+
 			pizza_idstr = request.getParameter("pizza_id");
 			pizza_id = Integer.parseInt(request.getParameter("pizza_id"));
 			pizza.setPizza_id(pizza_id);
@@ -103,7 +92,6 @@ public class MuokkaaPizza extends HttpServlet {
 		String nimi = request.getParameter("nimi");
 		pizza.setNimi(nimi);
 
-	
 		PizzaDAO dao = new PizzaDAO();
 		dao.muokkaa(pizza);
 
