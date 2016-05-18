@@ -34,8 +34,7 @@
 
 			<div class="fixedpuhno">
 				<b>Pizzeria Pizzicato <br>Helsinki<br> P. 0500555555
-				</b> <br>
-				<a href="Ostoskori">Ostoskori</a>
+				</b> <br> <a href="Ostoskori">Ostoskori</a>
 			</div>
 
 
@@ -47,8 +46,8 @@
 					<c:when test="${Username != null}">
 						<div class="fixedlogin">
 							<div>
-								<a><c:out value=" ${Username}" /></a>
-								<a href="Logout"> Kirjaudu ulos </a>
+								<a><c:out value=" ${Username}" /></a> <a href="Logout">
+									Kirjaudu ulos </a>
 							</div>
 						</div>
 					</c:when>
@@ -62,9 +61,11 @@
 										<input placeholder=username name=username required />
 									</div>
 								</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<input placeholder=password name=password id=password type=password />
-<span class="caps-lock-warning" title="Caps lock on päällä!"></span>
+								<script
+									src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+								<input placeholder=password name=password id=password
+									type=password /> <span class="caps-lock-warning"
+									title="Caps lock on päällä!"></span>
 								<div id="submit">
 									<div>
 										<button type=submit>Kirjaudu</button>
@@ -90,7 +91,7 @@
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><c:choose>
-					
+
 							<c:when test="${Logtype ==\"master\"}">
 								<a href="Muokkaussivu">Muokkaussivu </a>
 							</c:when>
@@ -178,9 +179,8 @@
 
 				</td>
 				<td class="pmauste"><input type="checkbox" name="oregano"
-					value="1"> oregano<br>
-					<input type="checkbox" name="valkosipuli"
-					value="3"> valkosipuli</td>
+					value="1"> oregano<br> <input type="checkbox"
+					name="valkosipuli" value="3"> valkosipuli</td>
 				<td><input type=hidden name=pizza_id
 					value=<%=pizza.getPizza_id()%> /></td>
 				<td>

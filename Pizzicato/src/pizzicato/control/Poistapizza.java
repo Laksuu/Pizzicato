@@ -16,7 +16,6 @@ public class Poistapizza extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		int pizza_id;
 		String pizza_idstr;
@@ -24,15 +23,18 @@ public class Poistapizza extends HttpServlet {
 		try {
 			pizza_idstr = request.getParameter("pizza_id");
 			pizza_id = Integer.parseInt(request.getParameter("pizza_id"));
+			PizzaDAO dao = new PizzaDAO();
+			dao.poista(pizza_id);
+			String page = "Muokkaussivu";
+			response.sendRedirect(page);
 		} catch (NumberFormatException e) {
 			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			return;
+		} catch (RuntimeException e) {
+			String page = "Muokkaussivu?message=poistovirhe";
+			response.sendRedirect(page);
 		}
-		PizzaDAO dao = new PizzaDAO();
-		dao.poista(pizza_id);
 
-		String page = "Muokkaussivu";
-		response.sendRedirect(page);
 	}
 
 }

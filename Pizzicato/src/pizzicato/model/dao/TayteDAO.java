@@ -187,7 +187,7 @@ public class TayteDAO extends DataAccessObject {
 
 		close(pstmt, conn);
 	}
-	
+
 	public Tayte etsiTayte(int tayte_id) {
 
 		Tayte tayte = null;

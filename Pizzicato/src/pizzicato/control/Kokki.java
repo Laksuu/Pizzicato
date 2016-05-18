@@ -23,8 +23,6 @@ import pizzicato.model.dao.TilausDAO;
 @WebServlet("/Kokki")
 public class Kokki extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -33,9 +31,9 @@ public class Kokki extends HttpServlet {
 		ArrayList<Tilausrivi> Tilausrivit = tilausDAO.haetilausrivit();
 
 		// Talletetaan request-olion alle tilauslista, jotta tiedot ovat
-				// käytössä jsp:llä
-				request.setAttribute("tilausrivit", Tilausrivit);
-		
+		// käytössä jsp:llä
+		request.setAttribute("tilausrivit", Tilausrivit);
+
 		// lähetä selaimelta tullut pyyntö servletiltä edelleen jsp:lle
 		String jsp = "/view/Kokki.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(
@@ -43,9 +41,10 @@ public class Kokki extends HttpServlet {
 		dispather.forward(request, response);
 
 	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 	}
 
 }

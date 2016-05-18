@@ -37,7 +37,7 @@ public class Login extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
+
 		String logtype = req.getParameter("logtype");
 		String username = req.getParameter("username");
 		Kayttaja kayttaja = new KayttajaDAO().findByUsername(username);
@@ -64,9 +64,7 @@ public class Login extends HttpServlet {
 		resp.sendRedirect(url);
 
 		session = req.getSession(false);
-		
-		
-		
+
 		if (session == null || session.getAttribute("Username") == null) {
 			// user is not logged in, do something about it
 		} else {

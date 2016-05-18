@@ -194,12 +194,15 @@ public class PizzaDAO extends DataAccessObject {
 		int p;
 		try {
 			conn = getConnection();
+			conn.setAutoCommit(false);
 
 			String sql = "DELETE FROM pizzantayte WHERE pizza_id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pizza_id);
 			p = pstmt.executeUpdate();
-			if (p != 1) {
+			System.out.println("pizzan poisto ep‰onnistui virhekoodi on" + p);
+			if (p == 0) { // 0 tarkoittaa pizzantaytteen (ja pizzan) poisto
+							// ep‰onnistui
 				System.out.print("virhe");
 			}
 
@@ -207,57 +210,82 @@ public class PizzaDAO extends DataAccessObject {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pizza_id);
 			p = pstmt.executeUpdate();
-			if (p != 1) {
+			if (p == 0) {
 				System.out.print("virhe");
 			}
 
+			conn.commit();
 			pstmt.close();
 
 		} catch (SQLException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			throw new RuntimeException(e);
 		} finally {
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			close(pstmt, conn);
 		}
 	}
 
 	public void muokkaa(Pizza pizza) {
+		// alustetaan tiedot tietokantayhteyden luomista varten
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
+			// luodaan yhteys tietokantaan
 			conn = getConnection();
+			// p‰ivitet‰‰n valitunpizzan nimi ja hintatiedot tietokantaan
 			String sql = "UPDATE pizza SET nimi=?, hinta=? WHERE pizza_id=?";
-
+			// preparedstatement p‰ivitt‰‰ tiedot ? kerrallaan
 			pstmt = conn.prepareStatement(sql);
 			int p = 1;
 			pstmt.setString(1, pizza.getNimi());
 			pstmt.setDouble(2, pizza.getHinta());
 			pstmt.setInt(3, pizza.getPizza_id());
-			p = pstmt.executeUpdate();
-			if (p != 1) {
-				System.out.print("virhe");
-			}
-			System.out.println("Rows inserted succesfully!");
 
+			// preparedstatement sulkee tietojen lis‰yksen ja est‰‰
+			// tietop‰ivityslis‰ykset,
+			// eli kantaan ei p‰‰se k‰siksi "ulkoa" t‰m‰n kautta
+			p = pstmt.executeUpdate();
+
+			// poistetaan muokattavana olevan pizzan t‰ytteet kannasta
 			sql = "DELETE FROM pizzantayte WHERE pizza_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pizza.getPizza_id());
-			pstmt.executeUpdate();
-			for (int i = 0; i < pizza.getTaytteet().size(); i++) {
+			pstmt.executeUpdate(); // preparedstatement sulkee kannan
+									// p‰ivityksen
 
+			// lis‰t‰‰n muokatulle pizzalle uudet t‰ytteet
+			// for silmukka pyˆr‰ht‰‰ niin kauan kun t‰ytteit‰ valittuna
+			for (int i = 0; i < pizza.getTaytteet().size(); i++) {
+				// luodaan pizzan t‰yteolio ja lis‰t‰‰n siihen t‰ytteit‰
 				Tayte tayte = pizza.getTaytteet().get(i);
 
+				// preparedstatement vahtii taas uusien t‰ytteiden lis‰‰mist‰
+				// ja pizzant‰yte tauluun lis‰t‰‰n tietueita
+				// samalla kun t‰yteolio saa t‰ytteit‰ yll‰
 				sql = "INSERT INTO pizzantayte(pizza_id, tayte_id) VALUES (?, ?)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, pizza.getPizza_id());
 				pstmt.setInt(2, tayte.getTayte_id());
-				pstmt.executeUpdate();
+				pstmt.executeUpdate(); // preparedstatement sulkee kannan
+										// p‰ivityksen
 
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			close(pstmt, conn); // Suljetaan statement ja yhteys
+			close(pstmt, conn); // Suljetaan statement ja myˆs yhteys
 		}
 
 		close(pstmt, conn);
@@ -326,38 +354,4 @@ public class PizzaDAO extends DataAccessObject {
 
 		return pizza;
 	}
-
 }
-
-// String sql = "UPDATE pizza SET nimi='?', hinta='?' WHERE pizza_id='?'";
-
-/*
- * Connection connection = null; PreparedStatement stmtInsert = null;
- * 
- * try { // Luodaan yhteys ja aloitetaan transaktio: connection =
- * getConnection(); //Luodaan uusi pizza tietokantaan: String sqlInsert =
- * "INSERT INTO pizza(nimi, hinta) VALUES (?, ?)"; stmtInsert =
- * connection.prepareStatement(sqlInsert); stmtInsert.setString(1,
- * pizza.getNimi()); stmtInsert.setDouble(2, pizza.getHinta());
- * stmtInsert.executeUpdate();
- * 
- * System.out.println("Rows inserted succesfully!");
- */
-/*
- * Connection conn = null; PreparedStatement pstmt = null;
- * 
- * try { conn = getConnection(); String sql =
- * "UPDATE pizza SET nimi='?', hinta='?' WHERE pizza_id='?'"; pstmt =
- * conn.prepareStatement(sql); int p = 1; pstmt.setInt(p++,
- * pizza.getPizza_id()); pstmt.setString(p++, pizza.getNimi());
- * pstmt.setDouble(p++, pizza.getHinta()); p = pstmt.executeUpdate(); if (p !=
- * 1) { System.out.print("virhe"); }
- * System.out.println("Rows inserted succesfully!");
- * 
- * } catch (SQLException e) { throw new RuntimeException(e); } finally {
- * close(pstmt, conn); // Suljetaan statement ja yhteys }
- * 
- * close(pstmt, conn);
- * 
- * }
- */

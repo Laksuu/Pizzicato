@@ -41,6 +41,16 @@ public class Muokkaussivu extends HttpServlet {
 		List<Tayte> tpiilossa = tayteDAO.findAllHidden();
 		request.setAttribute("piilotaytteet", tpiilossa);
 
+		String message = request.getParameter("message");
+
+		if (message != null) {
+			request.setAttribute("message",
+					"Pizzaa ei voi poistaa, siitä voi olla jo tehty tilaus. Piilota pizza.");
+
+		} else {
+			request.setAttribute("message", "");
+		}
+
 		String jsp = "/view/Muokkaussivu.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(
 				jsp);

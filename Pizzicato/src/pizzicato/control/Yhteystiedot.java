@@ -18,7 +18,7 @@ public class Yhteystiedot extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		String jsp = "/view/yhteystiedot.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(
 				jsp);
@@ -28,7 +28,7 @@ public class Yhteystiedot extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 	}
 
 }

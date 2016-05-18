@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,6 +18,7 @@
 	scope="request" />
 <jsp:useBean id="pizzat" type="java.util.ArrayList<Pizza>"
 	scope="request" />
+<jsp:useBean id="message" class="java.lang.String" scope="request" />
 <%@ page import="java.util.Collection, java.util.ArrayList"%>
 <title>Muokkaussivu</title>
 </head>
@@ -28,50 +29,52 @@
 
 <body>
 
-			<!--  Näytetään logout jos kirjautunut sisään! -->
+	<!--  Näytetään logout jos kirjautunut sisään! -->
 
-			<div id="Login">
-				<c:choose>
+	<div id="Login">
+		<c:choose>
 
-					<c:when test="${Username != null}">
-						<div class="fixedlogin">
+			<c:when test="${Username != null}">
+				<div class="fixedlogin">
+					<div>
+						<a><c:out value=" ${Username}" /></a> <a href="Logout">
+							Kirjaudu ulos </a>
+					</div>
+				</div>
+			</c:when>
+
+			<c:otherwise>
+				<div class="fixedlogin2">
+					<br>
+					<form method=post action="Login" id="kirjaudu_form">
+						<div id="username">
 							<div>
-								<a><c:out value=" ${Username}" /></a>
-								<a href="Logout"> Kirjaudu ulos </a>
+								<input placeholder=username name=username required />
 							</div>
 						</div>
-					</c:when>
-
-					<c:otherwise>
-						<div class="fixedlogin2">
-							<br>
-							<form method=post action="Login" id="kirjaudu_form">
-								<div id="username">
-									<div>
-										<input placeholder=username name=username required />
-									</div>
-								</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<input placeholder=password name=password id=password type=password />
-<span class="caps-lock-warning" title="Caps lock on päällä!"></span>
-								<div id="submit">
-									<div>
-										<button type=submit>Kirjaudu</button>
-									</div>
-								</div>
-							</form>
-							<div class="error">
-								<p style="color: crimson">
-									<c:out value="${error}"></c:out>
-								</p>
+						<script
+							src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+						<input placeholder=password name=password id=password
+							type=password /> <span class="caps-lock-warning"
+							title="Caps lock on päällä!"></span>
+						<div id="submit">
+							<div>
+								<button type=submit>Kirjaudu</button>
 							</div>
 						</div>
-					</c:otherwise>
+					</form>
+					<div class="error">
+						<p style="color: crimson">
+							<c:out value="${error}"></c:out>
+						</p>
+					</div>
+				</div>
+			</c:otherwise>
 
-				</c:choose>
+		</c:choose>
 
-			</div>
-			
+	</div>
+
 	<div class="keho">
 		<div class="header">
 
@@ -84,7 +87,7 @@
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><c:choose>
-					
+
 							<c:when test="${Logtype ==\"master\"}">
 								<a href="Muokkaussivu">Muokkaussivu </a>
 							</c:when>
@@ -99,30 +102,36 @@
 
 		</div>
 
-		<div class=otsikointi align="center"><h1>Muokkaa Pizzaa</h1> </div>
+		<div class=otsikointi align="center">
+			<h1>Muokkaa Pizzaa</h1>
+		</div>
+
+		<%=message%>
 
 		<table class="admintaulukko">
 
 
 			<%
-			Pizza pizza;
-			Tayte tayte;
-			
+				Pizza pizza;
+				Tayte tayte;
+
 				for (int i = 0; i < pizzat.size(); i++) {
-					pizza=pizzat.get(i);
+					pizza = pizzat.get(i);
 			%>
 			<tr>
 				<td><%=i + 1%></td>
-				<td><%=pizza.getNimi()%> <br> <div class="pienempifontti">
-					
-				 <%
-				 for (int t = 0; t < pizza.getTayteMaara(); t++ ){
-					 tayte=pizza.getTayte(t);
-					 %>
-					 <%=tayte.getTayte()%>
-				<% }
-				 %>
-				 </div></td>
+				<td><%=pizza.getNimi()%> <br>
+					<div class="pienempifontti">
+
+						<%
+							for (int t = 0; t < pizza.getTayteMaara(); t++) {
+									tayte = pizza.getTayte(t);
+						%>
+						<%=tayte.getTayte()%>
+						<%
+							}
+						%>
+					</div></td>
 				<td><%=pizza.getHinta()%></td>
 
 				<td>
@@ -139,10 +148,12 @@
 					</form>
 				<td>
 					<form action="/Pizzicato/MuokkaaPizza" method="GET">
-						<input type=hidden name="pizza_id" value="<%=pizzat.get(i).getPizza_id()%>" /> 
-						<input type=hidden name="nimi" value="<%=pizzat.get(i).getNimi()%>" /> 
-						<input type=hidden name="hinta" value="<%=pizzat.get(i).getHinta()%>" />
-						<input type=submit name="Muokkaa" class="submit-button" value="Muokkaa" />
+						<input type=hidden name="pizza_id"
+							value="<%=pizzat.get(i).getPizza_id()%>" /> <input type=hidden
+							name="nimi" value="<%=pizzat.get(i).getNimi()%>" /> <input
+							type=hidden name="hinta" value="<%=pizzat.get(i).getHinta()%>" />
+						<input type=submit name="Muokkaa" class="submit-button"
+							value="Muokkaa" />
 					</form>
 
 				</td>
@@ -156,29 +167,31 @@
 
 		<br> <br>
 
-		<div class=otsikointi align="center"><h1>Piilotetut Pizzat</h1> </div>
+		<div class=otsikointi align="center">
+			<h1>Piilotetut Pizzat</h1>
+		</div>
 
 		<table class="admintaulukko">
 			<jsp:useBean id="piilopizzat" type="java.util.ArrayList<Pizza>"
 				scope="request" />
 			<%
-			
-			
 				for (int i = 0; i < piilopizzat.size(); i++) {
-					pizza=pizzat.get(i);
+					pizza = pizzat.get(i);
 			%>
 			<tr>
 				<td><%=i + 1%></td>
-				<td><%=piilopizzat.get(i).getNimi()%><br> <div class="pienempifontti">
-					
-				 <%
-				 for (int t = 0; t < pizza.getTayteMaara(); t++ ){
-					 tayte=pizza.getTayte(t);
-					 %>
-					 <%=tayte.getTayte()%>
-				<% }
-				 %>
-				 </div></td>
+				<td><%=piilopizzat.get(i).getNimi()%><br>
+					<div class="pienempifontti">
+
+						<%
+							for (int t = 0; t < pizza.getTayteMaara(); t++) {
+									tayte = pizza.getTayte(t);
+						%>
+						<%=tayte.getTayte()%>
+						<%
+							}
+						%>
+					</div></td>
 				<td><%=piilopizzat.get(i).getHinta()%></td>
 
 				<td>
@@ -196,17 +209,21 @@
 			%>
 		</table>
 		<hr>
-		<div class=otsikointi align="center"><h1>Lisää Pizza</h1> </div>
+		<div class=otsikointi align="center">
+			<h1>Lisää Pizza</h1>
+		</div>
 		<form action="Lisaapizza" method="POST">
 			<table class="admintaulukko">
 				<jsp:useBean id="jsp" scope="request" class="java.lang.String" />
 				<tr>
 					<td>Anna pizzan nimi:</td>
-					<td><input type="text" value="" name="nimi" size="60"  title="Pizzan nimen tulee olla alle 16 kirjainmerkkiä" /></td>
+					<td><input type="text" value="" name="nimi" size="60"
+						title="Pizzan nimen tulee olla alle 16 kirjainmerkkiä" /></td>
 				</tr>
 				<tr>
 					<td>Anna pizzan hinta:</td>
-					<td><input type="text" value="" name="hinta" size="60" title="Pizzan hinnan minimi hinta on 6€ ja maksimi hinta 30€" /></td>
+					<td><input type="text" value="" name="hinta" size="60"
+						title="Pizzan hinnan minimi hinta on 6€ ja maksimi hinta 30€" /></td>
 				</tr>
 				<tr>
 
@@ -217,8 +234,9 @@
 				<tr>
 					<td id="piilossa" style="display: none;"><%=i + 1%></td>
 					<td></td>
-					<td><input type="checkbox" name=taytteet value="<%=taytteet.get(i).getTayte_id()%>"><%=taytteet.get(i).getTayte()%></td>
-					
+					<td><input type="checkbox" name=taytteet
+						value="<%=taytteet.get(i).getTayte_id()%>"><%=taytteet.get(i).getTayte()%></td>
+
 					<%
 						}
 					%>
@@ -234,7 +252,9 @@
 		</form>
 
 		<hr>
-		<div class=otsikointi align="center"><h1>Muokkaa Täytteitä</h1> </div>
+		<div class=otsikointi align="center">
+			<h1>Muokkaa Täytteitä</h1>
+		</div>
 		<table class="admintaulukko">
 
 
@@ -279,7 +299,9 @@
 
 		<br> <br>
 
-		<div class=otsikointi align="center"><h1>Piilotetut Täytteet</h1> </div>
+		<div class=otsikointi align="center">
+			<h1>Piilotetut Täytteet</h1>
+		</div>
 
 		<table class="admintaulukko">
 			<jsp:useBean id="piilotaytteet" type="java.util.ArrayList<Tayte>"
@@ -312,7 +334,9 @@
 
 
 
-		<div class=otsikointi align="center"><h1>Lisää Täyte</h1> </div>
+		<div class=otsikointi align="center">
+			<h1>Lisää Täyte</h1>
+		</div>
 		<form action="Lisaatayte" method="POST">
 			<table class="admintaulukko">
 				<jsp:useBean id="tjsp" scope="request" class="java.lang.String" />

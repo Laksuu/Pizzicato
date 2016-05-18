@@ -50,7 +50,7 @@ public class MuokkaaPizza extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
+		// luodaan doPostissa k‰ytett‰v‰t muuttujat ja alustetaan osa niist‰
 		int pizza_id;
 		String pizza_idstr = null;
 		double hinta;
@@ -58,12 +58,20 @@ public class MuokkaaPizza extends HttpServlet {
 		String[] taytteet;
 		int tayte_id;
 		String taytestr = null;
-		Pizza pizza = new Pizza();
-		try {
-			hintastr = request.getParameter("hinta");
-			hinta = Double.parseDouble(request.getParameter("hinta"));
-			pizza.setHinta(hinta);
 
+		// luodaan pizzaolio
+		Pizza pizza = new Pizza();
+
+		try {
+			// haetaan pizzaoliolle arvoja
+			// jsp:lt‰ tieto tulee string muotoisena
+			hintastr = request.getParameter("hinta");
+			// muunnetaan jsp:n ymm‰rt‰m‰ string kannan ja javan ymm‰rt‰m‰‰n
+			// double-tietoon
+			hinta = Double.parseDouble(request.getParameter("hinta"));
+			// asetetaan pizzalle hinta
+			pizza.setHinta(hinta);
+			// haetaan pizzaoliolle kaikki saatavilla olevat t‰ytteet
 			taytteet = request.getParameterValues("taytteet");
 
 			// for toisto
@@ -81,54 +89,27 @@ public class MuokkaaPizza extends HttpServlet {
 				pizza.addTayte(tayteolio);
 
 			}
-
+			// haetaan pizzan id, joka tulee stringin‰ jsp:lt‰
 			pizza_idstr = request.getParameter("pizza_id");
+			// muunnetaan string javan ja kannan ymm‰rt‰m‰‰n int muotoon
 			pizza_id = Integer.parseInt(request.getParameter("pizza_id"));
+			// asetetaan id pizzaoliolle
 			pizza.setPizza_id(pizza_id);
 		} catch (NumberFormatException e) {
 			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			return;
 		}
+		// haetaan pizzalle nimi
 		String nimi = request.getParameter("nimi");
+		// ja asetetaan se pizzaoliolle
 		pizza.setNimi(nimi);
 
+		// komennetaan DAO tˆihin ja l‰hetet‰‰n yll‰ esitetyt tiedot eteenp‰in
 		PizzaDAO dao = new PizzaDAO();
 		dao.muokkaa(pizza);
 
+		// siirryt‰‰n tarkastelemaan muokkaussivua kun pizza on muokattu
 		String page = "Muokkaussivu";
 		response.sendRedirect(page);
 	}
 }
-
-/*
- * int pizza_id; String pizza_idstr; String nimi; double hinta; String hintastr;
- * 
- * pizza_idstr = request.getParameter("pizza_id"); pizza_id =
- * Integer.parseInt(request.getParameter("pizza_id")); nimi=
- * request.getParameter("nimi"); hintastr = request.getParameter("hinta"); hinta
- * = Double.parseDouble(request.getParameter("hinta"));
- * 
- * 
- * System.out.println(pizza_id + nimi + hinta); Pizza pizza = new Pizza();
- * pizza.setPizza_id(pizza_id); pizza.setHinta(hinta); pizza.setNimi(nimi);
- * 
- * 
- * 
- * PizzaDAO pizzadao = new PizzaDAO();
- * 
- * try { pizzadao.muokkaa(pizza); } catch (NumberFormatException e) {
- * response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR); return; }
- * 
- * System.out.println(pizza_id + nimi + hinta);
- * 
- * System.out.println(pizza);
- * 
- * 
- * 
- * System.out.println(pizza_id + nimi + hinta + "3"); String jsp =
- * "/view/MuokkaaPizza.jsp"; RequestDispatcher dispather =
- * getServletContext().getRequestDispatcher(jsp); dispather.forward(request,
- * response); }
- * 
- * }
- */

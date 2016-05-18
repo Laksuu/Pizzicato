@@ -98,9 +98,10 @@
 <br><form action="MuokkaaPizza" method="POST">
 <table class="taulukko">
 		<jsp:useBean id="pizza" class="pizzicato.model.Pizza" scope="request" />
-		<jsp:useBean id="taytteet" type="java.util.ArrayList<Tayte>" scope="request" />
-			
-			<tr>
+				<jsp:useBean id="taytteet" type="java.util.ArrayList<Tayte>"
+					scope="request" />
+
+				<tr>
 			
 				<td><%=pizza.getNimi()%></td>
 				<td><%=pizza.getHinta()%></td>

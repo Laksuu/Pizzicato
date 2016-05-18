@@ -24,23 +24,6 @@ import pizzicato.model.dao.TayteDAO;
 public class Lisaapizza extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/*
-	 * protected void doGet(HttpServletRequest request, HttpServletResponse
-	 * response) throws ServletException, IOException {
-	 * 
-	 * String jsp = "/view/Muokkaussivu.jsp"; RequestDispatcher dispather =
-	 * getServletContext().getRequestDispatcher(jsp); dispather.forward(request,
-	 * response);
-	 * 
-	 * // Luodaan pizzatDAO ja käsketään hakemaan kaikki jutut PizzaDAO pizzaDAO
-	 * = new PizzaDAO(); ArrayList<Pizza> Pizza = pizzaDAO.findAll();
-	 * 
-	 * // Talletetaan request-olion alle pizzalista, jotta tiedot ovat //
-	 * käytössä jsp:llä request.setAttribute("pizza", Pizza);
-	 * 
-	 * 
-	 * }
-	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
